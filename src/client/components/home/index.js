@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../header/index.js';
-import Slideshow from 'react-slidez';
+// import Slideshow from 'react-slidez';
 
 const images = ['./assets/1.png', './assets/2.jpg'];
 
@@ -11,7 +11,7 @@ class Home extends Component {
         return(
             <div>
             <Header />
-            <Slideshow
+            {/* <Slideshow
                 showIndex
                 showArrows
                 autoplay
@@ -23,7 +23,7 @@ class Home extends Component {
                 effect={'fade'}
                 height={'100%'}
                 width={'100%'}
-            />
+            /> */}
         </div>
         )
     }
