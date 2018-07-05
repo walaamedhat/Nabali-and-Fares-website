@@ -1,0 +1,64 @@
+.newprojects{
+    max-width: 1170px;
+    margin: 0 auto !important;
+}
+.newprojects__top{
+    width: 85%;
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-between;
+    height: 28px;
+}
+.newprojects__down{
+    display: flex;
+    margin: 0 5px;
+    justify-content: center;
+}
+.newprojects__title{
+    width: 134px;
+    color: #3da5f9;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: "Helvetica Neue W 23 for SKY";
+}
+
+.newprojects__arrows span{
+    margin: 0 20px;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.fa-arrow-left{
+    color: #3da5f9;
+}
+
+.fa-arrow-right{
+    color: #c0ccda;
+}
+
+.newprojects__project{
+    width: 260px;
+    height: 392px;
+    margin-left: 2em;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+.newprojects__project:last-child{
+    margin-left: 0;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .newprojects__project, .newprojects__project:last-child{
+        margin: 10px auto;
+    }
+    .newprojects__down{
+        display: block;
+        margin: 0 auto;
+    }
+
+}
+

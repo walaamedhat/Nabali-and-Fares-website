@@ -22,7 +22,6 @@ class Header extends Component {
     }
 
     render() {
-        console.log(this.state, 'state is here ');
         
       return (
         <div className='container__header'>        

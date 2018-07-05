@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+
 import Header from '../header/index.js';
-// import Slideshow from 'react-slidez';
+import NewProjects from '../newprojects/index.js'
 
 const images = ['./assets/1.png', './assets/2.jpg'];
 
@@ -11,6 +12,7 @@ class Home extends Component {
         return(
             <div>
             <Header />
+            <NewProjects />
             {/* <Slideshow
                 showIndex
                 showArrows
