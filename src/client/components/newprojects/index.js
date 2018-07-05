@@ -14,7 +14,12 @@ class NewProjects extends Component {
                 </div>
             </div>
             <div className='newprojects__down'>
-                <div className='newprojects__project'></div>
+                <div className='newprojects__project'>
+                    <img src='./assets/1.png' />
+                    <div className='project__title'>مشروع سكاي تاورز</div>
+                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
+
+                </div>
                 <div className='newprojects__project'></div>
                 <div className='newprojects__project'></div>
             </div>
