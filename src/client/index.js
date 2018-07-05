@@ -11,10 +11,10 @@ import './index.css';
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <div className='app'>
+      <div class='app'>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route component={Page404} />
+          <Route component={Page404}/>
         </Switch>
       </div>
     </BrowserRouter>

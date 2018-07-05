@@ -5,3 +5,22 @@
     justify-content: space-evenly;
 }
 
+.header__logo{
+    margin-right: 10%;
+}
+
+.header__nav{
+    width: 50%;
+}
+
+.header__logo__div{
+    width: 50%;
+}
+
+.header__nav span{
+    margin: 0 1em;
+}
+
+.header__nav__contactus i{
+    margin: 0 0.5em;
+}
