@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Header from '../header/index.js';
 import NewProjects from '../newprojects/index.js'
-
+import FeaturedProjects from '../featuredprojects'
 const images = ['./assets/1.png', './assets/2.jpg'];
 
 import './index.css';
@@ -13,6 +13,7 @@ class Home extends Component {
             <div>
             <Header />
             <NewProjects />
+            <FeaturedProjects />
             {/* <Slideshow
                 showIndex
                 showArrows

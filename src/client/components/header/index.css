@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-evenly;
     padding-top: 5px;
+    font-family: 'sky';
 }
 
 .header__logo{
@@ -72,6 +73,13 @@
     top: 56px;
     margin: 0 2px;;
     left: 4%;
+}
+
+.header__nav>div:last-child{
+    color: #8ce532;
+}
+.header__nav>div:last-child:hover{
+    color: #3da5f9;
 }
 
 
