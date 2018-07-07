@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 
-import Header from '../header/index.js';
-import NewProjects from '../newprojects/index.js'
+import Header from '../header';
+import NewProjects from '../newprojects'
 import FeaturedProjects from '../featuredprojects'
+import MediaCenter from '../mediacenter'
 const images = ['./assets/1.png', './assets/2.jpg'];
 
 import './index.css';
@@ -14,6 +15,7 @@ class Home extends Component {
             <Header />
             <NewProjects />
             <FeaturedProjects />
+            <MediaCenter />
             {/* <Slideshow
                 showIndex
                 showArrows
