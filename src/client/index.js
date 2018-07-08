@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store';
 import Home from './components/home';
+import MediaCenter from './components/mediacenterpage'
 import Page404 from './components/page404';
 
 import './index.css';
@@ -14,6 +15,7 @@ ReactDOM.render(
       <div class='app'>
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route path='/mediacenter' component={MediaCenter} />
           <Route component={Page404}/>
         </Switch>
       </div>

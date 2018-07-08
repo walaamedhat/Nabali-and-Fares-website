@@ -27,7 +27,7 @@ class Header extends Component {
         <div className='container__header'>        
             <div className='header'>
                 <div className='header__logo__div'>
-                    <img className='header__logo' src='./assets/nabali-fares-logo.png' />
+                    <img className='header__logo' src={this.props.Logo} />
                 </div>
                 <div className='header__nav'>
                     <div href='#'>الرئيسية</div>

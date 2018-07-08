@@ -13,7 +13,7 @@ class Home extends Component {
     render(){
         return(
             <div>
-            <Header />
+            <Header Logo='./assets/nabali-fares-logo.png'/>
             <NewProjects />
             <FeaturedProjects />
             <MediaCenter />
