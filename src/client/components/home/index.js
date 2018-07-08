@@ -7,6 +7,7 @@ import MediaCenter from '../mediacenter'
 const images = ['./assets/1.png', './assets/2.jpg'];
 
 import './index.css';
+import OurApps from '../ourapps';
 
 class Home extends Component {
     render(){
@@ -16,6 +17,7 @@ class Home extends Component {
             <NewProjects />
             <FeaturedProjects />
             <MediaCenter />
+            <OurApps />
             {/* <Slideshow
                 showIndex
                 showArrows
