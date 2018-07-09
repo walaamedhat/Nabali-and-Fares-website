@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 
 import './index.css';
-   
+  
+
 
 class Header extends Component {
     constructor(){
@@ -11,6 +12,7 @@ class Header extends Component {
             show : false
         }
         this.showList = this.showList.bind(this);
+        this.changeColorNav = this.changeColorNav.bind(this);
     }
     
     showList(){
@@ -21,34 +23,36 @@ class Header extends Component {
         }
     }
 
+    changeColorNav(location){        
+        switch(location){
+            case 'homepage':
+                return <CompHome />
+            case 'mediacenterpage': 
+                return <CompMediaCenter />
+            default :
+                return <div>hi you have create componet iside Header to change</div>
+        }
+    }
+
     render() {
-        
       return (
         <div className='container__header'>        
             <div className='header'>
                 <div className='header__logo__div'>
                     <img className='header__logo' src={this.props.Logo} />
                 </div>
-                <div className='header__nav'>
-                    <div href='#'>الرئيسية</div>
-                    <div href='#'>عن الشركة</div>
-                    <div href='#'>مشاريعنا</div>
-                    <div href='#'>المركز الإعلامي</div>
-                    <div href='#' className='header__nav__contactus'>
-                        <i class="fas fa-phone"></i>
-                        إتصل بنا
-                    </div>
-                </div>
+                {this.changeColorNav(this.props.WhereAmI)}
                 <div className='header__burger'><i className="fas fa-align-justify" onClick={this.showList}></i></div>
             </div>
             {
                 this.state.show && 
                 <div className='header__list'>
                     <ul>
-                        <li href='#'>الرئيسية</li>
-                        <li href='#'>عن الشركة</li>
-                        <li href='#'>مشاريعنا</li>
-                        <li href='#'>إتصل بنا</li>
+                        <a href='/'><li>الرئيسية</li></a>
+                        <a href='/'><li>عن الشركة</li></a>
+                        <a href='/ourprojects'><li>مشاريعنا</li></a>
+                        <a href='/mediacenter'><li>المركز الإعلامي</li></a>
+                        <a href='/contactus'><li>إتصل بنا</li></a>
                     </ul>
                 </div>
             }
@@ -58,5 +62,34 @@ class Header extends Component {
     }
   }
   
-  export default Header;
+const CompHome = () =>{
+    return (
+        <div className='header__nav'>  
+                    <a href='#' className='colored_blue'><div >الرئيسية</div></a>
+                    <a href='/'><div>عن الشركة</div></a>
+                    <a href='/ourprojects'><div>مشاريعنا</div></a>
+                    <a href='/mediacenter'><div>المركز الإعلامي</div></a>
+                    <a href='/contactus'><div className='header__nav__contactus'>
+                        <i class="fas fa-phone"></i>
+                        إتصل بنا
+                    </div></a>
+        </div>
+    );
+}
+
+const CompMediaCenter = () =>{
+    return (
+        <div className='header__nav'>  
+                    <a href='/'><div >الرئيسية</div></a>
+                    <a href='/'><div>عن الشركة</div></a>
+                    <a href='/ourprojects'><div>مشاريعنا</div></a>
+                    <a href='#' className='colored_blue'><div>المركز الإعلامي</div></a>
+                    <a href='/contactus'><div className='header__nav__contactus'>
+                        <i class="fas fa-phone"></i>
+                        إتصل بنا
+                    </div></a>
+        </div>
+    );
+}
+export default Header;
    

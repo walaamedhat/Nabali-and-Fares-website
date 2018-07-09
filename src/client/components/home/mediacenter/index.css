@@ -100,7 +100,7 @@ mediacenter__top__lefttext:hover{
   and (min-device-width: 320px) 
   and (max-device-width: 480px){
     .mediacenter__bottom__box{
-        margin: 0 auto;
+        margin: 0 auto 15px auto;
     }
     .mediacenter__bottom{
         display: block;
@@ -110,5 +110,8 @@ mediacenter__top__lefttext:hover{
     }
     .mediacenter__bottom__box{
         height: auto;
+    }
+    .mediacenter__bottom__box:last-child{
+        margin: 0 auto;
     }
   }

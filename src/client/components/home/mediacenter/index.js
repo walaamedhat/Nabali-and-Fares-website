@@ -15,7 +15,6 @@ class MediaCenter extends Component{
                     <NewsBox />
                     <NewsBox />
                     <NewsBox />
-
                 </div>
             </div>
         );
