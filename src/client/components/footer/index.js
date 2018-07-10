@@ -6,7 +6,7 @@ import './index.css'
 class Footer extends Component {
   render(){
     return (
-      <div className='footer'>
+      <div className='footer' id='aboutUs'>
         <div className='footer-rightSection'>
           <img src='./assets/nabali-fares-logo.png'/>
           <p className='rightSection-paragraph' >
