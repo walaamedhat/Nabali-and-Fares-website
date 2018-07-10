@@ -18,7 +18,6 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div class='app'>
-        <Header/>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/contactUs' component={ContactUs} />

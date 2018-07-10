@@ -5,7 +5,7 @@ import '../index.css'
 const NewsBox = () => {
     return (
         <div className='mediacenter__bottom__box'>
-                        <img src='./assets/arch.png'/>
+                        <img src='./assets/mediaCenter.png'/>
                         <div className='mediacenter__bottom__icon'>
                             <img src='./assets/calender.png'/>
                             <span>قبل 5 دقائق</span>
