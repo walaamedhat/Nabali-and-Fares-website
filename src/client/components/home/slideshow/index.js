@@ -1,28 +1,35 @@
-import React, {Component} from 'react';
-const Slideshow = require('react-slidez');
-const images = ['./assets/1.png', './assets/2.jpg'];
+import React, { Component } from 'react';
+import { Fade } from 'react-slideshow-image';
+import './index.css';
 
+const images = [
+  './assets/1.png',
+  './assets/2.jpg'
+];
 
-class Slider extends Component {
-    render(){
-        return(
-            <div>
-                <Slideshow
-                    showIndex
-                    showArrows
-                    autoplay
-                    enableKeyboard
-                    useDotIndex
-                    slideInterval={2000}
-                    defaultIndex={1}
-                    slides={images}
-                    effect={'fade'}
-                    height={'100%'}
-                    width={'100%'}
-                />
-            </div>
-        )
-    }
+class Slideshow extends Component {
+  render(){
+    return (
+      <div style={{position: 'relative' }}>
+        <Fade
+          images={images}
+          duration={3000}
+          transitionDuration={1000}
+          />
+        <div className='slider-text'>
+          <h1 className='slider-text-title'>
+            هذا النص موجود فقط لتجربة منطقة العنوان الئيسي
+          </h1>
+          <h4 className='slider-text-desc'>
+            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
+          </h4>
+          <button className='slider-button'>عرض المزيد <i class="fas fa-arrow-left"></i></button>
+      </div>
+      <div className='slider-circle'>
+        <img className='slider-circle-img' src='./assets/circle.png'/>
+      </div>
+    </div>
+    )
+  }
 }
-
-export default Slider;
+export default Slideshow;

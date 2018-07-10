@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import './index.css';
-  
+
 
 
 class Header extends Component {
@@ -14,7 +14,7 @@ class Header extends Component {
         this.showList = this.showList.bind(this);
         this.changeColorNav = this.changeColorNav.bind(this);
     }
-    
+
     showList(){
         if(this.state.show){
             this.setState({show: false})
@@ -23,11 +23,11 @@ class Header extends Component {
         }
     }
 
-    changeColorNav(location){        
+    changeColorNav(location){
         switch(location){
             case 'homepage':
                 return <CompHome />
-            case 'mediacenterpage': 
+            case 'mediacenterpage':
                 return <CompMediaCenter />
             case 'ourprojectpage':
                 return <CompOurProject />
@@ -38,7 +38,7 @@ class Header extends Component {
 
     render() {
       return (
-        <div className='container__header'>        
+        <div className='container__header'>
             <div className='header'>
                 <div className='header__logo__div'>
                     <img className='header__logo' src={this.props.Logo} />
@@ -47,7 +47,7 @@ class Header extends Component {
                 <div className='header__burger'><i className="fas fa-align-justify" onClick={this.showList}></i></div>
             </div>
             {
-                this.state.show && 
+                this.state.show &&
                 <div className='header__list'>
                     <ul>
                         <a href='/'><li>الرئيسية</li></a>
@@ -60,13 +60,13 @@ class Header extends Component {
             }
         </div>
       );
-  
+
     }
   }
-  
+
 const CompHome = () =>{
     return (
-        <div className='header__nav'>  
+        <div className='header__nav'>
                     <a href='#' className='colored_blue'><div >الرئيسية</div></a>
                     <a href='/'><div>عن الشركة</div></a>
                     <a href='/ourprojects'><div>مشاريعنا</div></a>
@@ -81,7 +81,7 @@ const CompHome = () =>{
 
 const CompMediaCenter = () =>{
     return (
-        <div className='header__nav'>  
+        <div className='header__nav'>
                     <a href='/'><div >الرئيسية</div></a>
                     <a href='/'><div>عن الشركة</div></a>
                     <a href='/ourprojects'><div>مشاريعنا</div></a>
@@ -96,7 +96,7 @@ const CompMediaCenter = () =>{
 
 const CompOurProject = () =>{
     return (
-        <div className='header__nav'>  
+        <div className='header__nav'>
                     <a href='/'><div >الرئيسية</div></a>
                     <a href='/'><div>عن الشركة</div></a>
                     <a href='#' className='colored_blue'><div>مشاريعنا</div></a>

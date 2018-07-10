@@ -1,0 +1,34 @@
+{
+  "components": {
+    "contactInfo": {},
+    "ContactUS": {},
+    "Footer": {},
+    "GoogleMap": {
+      "attributes": [
+        "center",
+        "zoom"
+      ],
+      "props": {
+        "center": {
+          "defaultValue": {
+            "value": "{\n   lat: 31.898043, lng: 35.204269\n}",
+            "computed": false
+          },
+          "required": false
+        },
+        "zoom": {
+          "defaultValue": {
+            "value": "12",
+            "computed": false
+          },
+          "required": false
+        }
+      }
+    },
+    "Header": {},
+    "Home": {},
+    "OurProjects": {},
+    "projects": {},
+    "Page404": {}
+  }
+}

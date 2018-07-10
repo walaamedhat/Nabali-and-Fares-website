@@ -1,0 +1,121 @@
+.ourProjects{
+  display: flex;
+}
+
+.ourProjects-map{
+  width: 50%;
+}
+
+.ourProjects-project{
+  width: 50%;
+  background-color: #f9fafc;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+
+}
+
+.ourProjects-headers{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.titleAndNumber{
+  width: 28%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.ourProjects-title{
+  color: #475669;
+}
+
+.ourProjects-number{
+  color: #8492a6;
+}
+
+
+.projects-section{
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 171px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
+  background-color: #ffffff;
+  align-self: center;
+  margin-bottom: 50px;
+}
+
+.project-image{
+  padding-right: 20px;
+}
+.project-image img{
+  width: 150px;
+}
+.project-details{
+  justify-content: space-evenly;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  height: 61px;
+  justify-content: space-between;
+  color: #8492a6;
+}
+.project-content-descAndIcon{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.project-content-descAndIcon h5{
+  margin: 0;
+  display: flex;
+}
+.project-content-descAndIcon h5 img{
+  padding-left: 10px;
+}
+
+.show-more{
+  align-self: flex-end;
+  color: #3da5f9;
+  text-align: center;
+  width: 120px;
+  margin-bottom: 9px;
+}
+.show-more h5{
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1085px) {
+  .projects-section{
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .titleAndNumber{
+    width: 100%
+  }
+  .project-details > h5{
+    width: 140px;
+  }
+  .project-content{
+    height: 100px;
+  }
+  .project-content-descAndIcon{
+    width: 70%;
+    flex-wrap: wrap;
+  }
+  .project-image img {
+    width: 125px;
+  }
+
+}
