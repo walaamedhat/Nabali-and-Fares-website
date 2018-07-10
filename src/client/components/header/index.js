@@ -31,6 +31,8 @@ class Header extends Component {
                 return <CompMediaCenter />
             case 'ourprojectpage':
                 return <CompOurProject />
+            case 'contactuspage':
+                return <CompContactUs/>
             default :
                 return <div>hi you have create componet iside Header to change</div>
         }
@@ -51,7 +53,7 @@ class Header extends Component {
                 <div className='header__list'>
                     <ul>
                         <a href='/'><li>الرئيسية</li></a>
-                        <a href='/'><li>عن الشركة</li></a>
+                        <a href='#aboutUs'><li>عن الشركة</li></a>
                         <a href='/ourprojects'><li>مشاريعنا</li></a>
                         <a href='/mediacenter'><li>المركز الإعلامي</li></a>
                         <a href='/contactus'><li>إتصل بنا</li></a>
@@ -68,7 +70,7 @@ const CompHome = () =>{
     return (
         <div className='header__nav'>
                     <a href='#' className='colored_blue'><div >الرئيسية</div></a>
-                    <a href='/'><div>عن الشركة</div></a>
+                    <a href='#aboutUs'><div>عن الشركة</div></a>
                     <a href='/ourprojects'><div>مشاريعنا</div></a>
                     <a href='/mediacenter'><div>المركز الإعلامي</div></a>
                     <a href='/contactus'><div className='header__nav__contactus'>
@@ -83,7 +85,7 @@ const CompMediaCenter = () =>{
     return (
         <div className='header__nav'>
                     <a href='/'><div >الرئيسية</div></a>
-                    <a href='/'><div>عن الشركة</div></a>
+                    <a href='#aboutUs'><div>عن الشركة</div></a>
                     <a href='/ourprojects'><div>مشاريعنا</div></a>
                     <a href='#' className='colored_blue'><div>المركز الإعلامي</div></a>
                     <a href='/contactus'><div className='header__nav__contactus'>
@@ -98,7 +100,7 @@ const CompOurProject = () =>{
     return (
         <div className='header__nav'>
                     <a href='/'><div >الرئيسية</div></a>
-                    <a href='/'><div>عن الشركة</div></a>
+                    <a href='#aboutUs'><div>عن الشركة</div></a>
                     <a href='#' className='colored_blue'><div>مشاريعنا</div></a>
                     <a href='/mediacenter'><div>المركز الإعلامي</div></a>
                     <a href='/contactus'><div className='header__nav__contactus'>
@@ -108,5 +110,18 @@ const CompOurProject = () =>{
         </div>
     );
 }
+const CompContactUs = () =>{
+    return (
+        <div className='header__nav'>
+                    <a href='/'><div >الرئيسية</div></a>
+                    <a href='#aboutUs'><div>عن الشركة</div></a>
+                    <a href='/ourprojects'><div>مشاريعنا</div></a>
+                    <a href='/mediacenter'><div>المركز الإعلامي</div></a>
+                    <a href='#' className='colored_blue'><div className='header__nav__contactus'>
+                        <i class="fas fa-phone"></i>
+                        إتصل بنا
+                    </div></a>
+        </div>
+    );
+}
 export default Header;
-   

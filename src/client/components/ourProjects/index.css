@@ -63,7 +63,7 @@
 .project-content{
   display: flex;
   flex-direction: column;
-  padding: 10px 0;
+  padding: 5px 0;
   height: 61px;
   justify-content: space-between;
   color: #8492a6;
@@ -74,27 +74,19 @@
   justify-content: space-around;
 }
 
-.project-content-descAndIcon h5{
+.project-content-descAndIcon h6{
   margin: 0;
   display: flex;
 }
-.project-content-descAndIcon h5 img{
+.project-content-descAndIcon h6 img{
   padding-left: 10px;
 }
 
 .show-more{
   align-self: flex-end;
-  color: #3da5f9;
-  text-align: center;
-  width: 120px;
-  margin-bottom: 9px;
+  margin-left: 10px;
 }
-.show-more h5{
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+
 
 @media only screen and (max-width: 1085px) {
   .projects-section{
