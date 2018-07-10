@@ -107,3 +107,55 @@
 .projectpage__row5>div:nth-child(2):hover{
     cursor: pointer;
 }   
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px){
+    .porjectpage__images__img{
+        height: 180px;
+    }
+    .projectpage__4image>img{
+        height: 90px;
+    }
+    .projectpage__CompFeature>.projectpage__feature{
+        width: 43%;
+    }
+    .projectpage__details{
+        padding: 1em;
+    }
+    .projectpage__row1>h1{
+        font-size: 15px;
+    }
+    .project__page__street{
+        font-size: 11px;
+    }
+    .projectpage__details> div{
+        margin-bottom: 20px;
+    }
+    .projectpage__row2>div:first-child, .projectpage__row3>div:first-child, .projectpage__row4>div:first-child, .projectpage__row5>div:first-child{
+        font-size: 15px;
+    }
+    .projectpage__row2>div:nth-child(2), .projectpage__row3>div:nth-child(2), .projectpage__row4>div:nth-child(2), .projectpage__row5>div:nth-child(2){
+        font-size: 12px;
+        margin-left: 0%;
+    }
+    .projectpage__row4>div:first-child{
+        margin-left: 10px;
+    }
+    .projectpage__row5{
+        margin-bottom: 70px !important;
+    }
+    .projectpage__row5__video>div{
+        width: auto !important;
+        height: auto !important;
+    }
+    .projectpage__runvideobutton>div>video{
+        width: 99%;
+        height: 100%;
+    }
+    .projectpage__runvideobutton{
+        right: 12%;
+        top: 5%;
+        background-size: 75px;
+    }
+  }

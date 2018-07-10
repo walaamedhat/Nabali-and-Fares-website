@@ -1,7 +1,6 @@
 .newprojects{
     max-width: 1170px;
     margin: 0 auto !important;
-    font-family: 'sky';
 }
 .newprojects__top{
     width: 85%;
@@ -20,7 +19,6 @@
     color: #3da5f9;
     font-size: 22px;
     font-weight: 400;
-    font-family: "sky";
 }
 
 .newprojects__arrows span{

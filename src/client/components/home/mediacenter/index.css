@@ -1,7 +1,6 @@
 .mediacenter{
     max-width: 1170px;
     margin: 50px auto !important;
-    font-family: 'sky';
 }
 .mediacenter__top{
     width: 85%;
@@ -13,7 +12,6 @@
 .mediacenter__bottom{
     display: flex;
     justify-content: center;
-    font-family: 'sky';
 }
 .mediacenter__bottom__box{
     width: 260px;

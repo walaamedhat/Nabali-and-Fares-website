@@ -4,6 +4,7 @@ import Header from '../header/index';
 import Feature from './feature';
 import ReactPlayer from 'react-player'
 
+
 import './index.css'
 
 class ProjectPage extends Component {
@@ -11,7 +12,8 @@ class ProjectPage extends Component {
         super(props)
         
         this.state = {
-            run: false
+            run: false,
+            controled:false
         }
         this.runOrPauseVideo = this.runOrPauseVideo.bind(this);
     }
@@ -22,7 +24,9 @@ class ProjectPage extends Component {
             })
         }else{
             this.setState({
-                run:true
+                run:true,
+                controled:true
+                
             })
         }
        
@@ -86,9 +90,9 @@ class ProjectPage extends Component {
                     </div>
                     <div className='projectpage__row5'>
                         <div>فيديو المشروع</div>
-                        <div onClick={this.runOrPauseVideo}>
-                            {!this.state.run && <input className='projectpage__runvideobutton'/>}
-                            <ReactPlayer url={[{src: './assets/videoplayback.mp4', type: 'video/webm'}]} playing={this.state.run} />
+                        <div className='projectpage__row5__video' onClick={this.runOrPauseVideo}>
+                            {!this.state.controled && <input className='projectpage__runvideobutton'/>}
+                            <ReactPlayer url={[{src: './assets/videoplayback.mp4', type: 'video/webm'}]} playing={this.state.run} controls={this.state.controled}/>
                         </div>
                     </div>
                 </div>

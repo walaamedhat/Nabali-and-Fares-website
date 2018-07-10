@@ -1,6 +1,3 @@
-*{
-    font-family: 'sky';
-}
 
 .mediacenterpage__nav{
     max-width: 1440px;
@@ -10,7 +7,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-family: 'sky';
 }
 
 .mediacenterpage__nav>:first-child{
