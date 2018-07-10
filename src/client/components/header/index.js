@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import './index.css';
-   
+
 
 class Header extends Component {
     constructor(){
@@ -12,7 +12,7 @@ class Header extends Component {
         }
         this.showList = this.showList.bind(this);
     }
-    
+
     showList(){
         if(this.state.show){
             this.setState({show: false})
@@ -23,9 +23,9 @@ class Header extends Component {
 
     render() {
         console.log(this.state, 'state is here ');
-        
+
       return (
-        <div className='container__header'>        
+        <div className='container__header'>
             <div className='header'>
                 <div className='header__logo__div'>
                     <img className='header__logo' src='./assets/nabali-fares-logo.png' />
@@ -36,14 +36,14 @@ class Header extends Component {
                     <div href='#'>مشاريعنا</div>
                     <div href='#'>المركز الإعلامي</div>
                     <div href='#' className='header__nav__contactus'>
-                        <i class="fas fa-phone"></i>
+                        <i className="fas fa-phone"></i>
                         إتصل بنا
                     </div>
                 </div>
                 <div className='header__burger'><i className="fas fa-align-justify" onClick={this.showList}></i></div>
             </div>
             {
-                this.state.show && 
+                this.state.show &&
                 <div className='header__list'>
                     <ul>
                         <li href='#'>الرئيسية</li>
@@ -55,9 +55,8 @@ class Header extends Component {
             }
         </div>
       );
-  
+
     }
   }
-  
+
   export default Header;
-   

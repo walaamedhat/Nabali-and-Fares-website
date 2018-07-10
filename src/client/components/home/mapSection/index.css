@@ -1,0 +1,11 @@
+.map-img{
+  width: 1284px;
+  height: 431px;
+}
+
+
+
+.map-marker:hover{
+  background-color: red;
+  cursor: pointer;
+}
