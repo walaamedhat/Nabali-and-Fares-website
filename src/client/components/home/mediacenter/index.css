@@ -1,0 +1,115 @@
+.mediacenter{
+    max-width: 1170px;
+    margin: 50px auto !important;
+}
+.mediacenter__top{
+    width: 85%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    height: 28px;
+}
+.mediacenter__bottom{
+    display: flex;
+    justify-content: center;
+}
+.mediacenter__bottom__box{
+    width: 260px;
+    height: 375px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 25px;
+    margin-left: 2em;
+
+}
+.mediacenter__bottom__box:last-child{
+    margin-left: 0;
+}
+.mediacenter__bottom__box>img{
+    width: 256px;
+    height: 180px;
+    border-radius: 3px;
+}
+
+.mediacenter__bottom__icon{
+    display: flex;
+}
+.mediacenter__bottom__icon>img{
+    height: 14px;
+    margin-top: 1px;
+    margin-left: 5px;
+    color: #8492a6;
+}
+.mediacenter__bottom__icon>span{
+    font-size: 12px;
+    margin-left: 15px;
+    color: #8492a6;
+}
+
+.mediacenter__bottom__title{
+    color: #475669;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.mediacenter__bottom__p{
+    margin-top: 5px;
+    color: #8492a6;
+    font-size: 14px;
+}
+.mediacenter__top__righttext{
+    width: 134px;
+    color: #475669;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.mediacenter__top__lefttext{
+    color: #3da5f9;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+mediacenter__top__lefttext:hover{
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mediacenter__bottom__readmore{
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    color: #3da5f9;
+    font-size: 12px;
+}
+.mediacenter__bottom__readmore:hover{
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.mediacenter__bottom__readmore > span{
+    margin: 2px 10px 0 0 ;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px){
+    .mediacenter__bottom__box{
+        margin: 0 auto 15px auto;
+    }
+    .mediacenter__bottom{
+        display: block;
+    }
+    .mediacenter__bottom__box>img{
+        height: auto;
+    }
+    .mediacenter__bottom__box{
+        height: auto;
+    }
+    .mediacenter__bottom__box:last-child{
+        margin: 0 auto;
+    }
+  }
