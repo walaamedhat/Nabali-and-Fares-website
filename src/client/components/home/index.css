@@ -7,12 +7,12 @@ body{
 
 .slider-text{
     position: absolute;
-    top: 121px;
-    left: 678px;
+    top: 201px;
+    left: 655px;
 }
 .slider-circle{
     position: absolute;
-    top: 100px;
+    top: 175px;
     left: 95px;
 }
 .slider-circle-img{
