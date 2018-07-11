@@ -69,10 +69,10 @@ class Header extends Component {
 const CompHome = () =>{
     return (
         <div className='header__nav'>
-                    <a href='#' className='colored_blue'><div >الرئيسية</div></a>
-                    <a href='#aboutUs'><div>عن الشركة</div></a>
-                    <a href='/ourprojects'><div>مشاريعنا</div></a>
-                    <a href='/mediacenter'><div>المركز الإعلامي</div></a>
+                    <a style={{color:'white'}} href='#' className='colored_blue'><div >الرئيسية</div></a>
+                    <a style={{color:'white'}} href='#aboutUs'><div>عن الشركة</div></a>
+                    <a style={{color:'white'}} href='/ourprojects'><div>مشاريعنا</div></a>
+                    <a style={{color:'white'}} href='/mediacenter'><div>المركز الإعلامي</div></a>
                     <a href='/contactus'><div className='header__nav__contactus'>
                         <i class="fas fa-phone"></i>
                         إتصل بنا
