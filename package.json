@@ -8,6 +8,7 @@
     "start": "node ./src/server/",
     "watch": "nodemon ./src/server/",
     "dev:build": "webpack --watch",
+    "dev": "concurrently \"nodemon ./src/server/\" \"webpack --watch\"",
     "dev:start": "nodemon --exec node ./src/server/",
     "generate": "rc-autocomplete"
   },
@@ -17,6 +18,7 @@
   "dependencies": {
     "360-react-pannellum": "0.0.3",
     "axios": "^0.18.0",
+    "concurrently": "^3.6.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",

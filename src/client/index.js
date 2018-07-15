@@ -10,7 +10,6 @@ import ContactUs from './components/contactUS';
 import OurProjects from './components/ourProjects';
 import MediaCenter from './components/mediacenterpage'
 import ProjectPage from './components/projectpage';
-import ProjectPage from './components/projectpage'
 import MediaCenterPost from './components/mediaCenterPost'
 import Page404 from './components/page404';
 import Apartment from './components/apartmentpage'
