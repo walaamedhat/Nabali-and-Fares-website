@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Fade } from 'react-slideshow-image';
+import Header from '../../header';
+
 import './index.css';
 
 const images = [
@@ -16,6 +18,9 @@ class Slideshow extends Component {
           duration={3000}
           transitionDuration={1000}
           />
+        <div className='slider-header-nav'>
+          <Header Logo='./assets/nabali-fares-logo.png' WhereAmI='homepage'/>
+        </div>
         <div className='slider-text'>
           <h1 className='slider-text-title'>
             هذا النص موجود فقط لتجربة منطقة العنوان الئيسي
