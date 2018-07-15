@@ -9,9 +9,9 @@ import Home from './components/home';
 import ContactUs from './components/contactUS';
 import OurProjects from './components/ourProjects';
 import MediaCenter from './components/mediacenterpage'
-import ProjectPage from './components/projectpage'
+import ProjectPage from './components/projectpage';
 import Page404 from './components/page404';
-
+import Apartment from './components/apartmentpage'
 import './index.css';
 
 ReactDOM.render(
@@ -24,6 +24,7 @@ ReactDOM.render(
           <Route exact path='/ourprojects' component={OurProjects} />
           <Route path='/mediacenter' component={MediaCenter} />
           <Route path='/project' component={ProjectPage} />
+          <Route path='/apartment' component={Apartment} />
           <Route component={Page404}/>
         </Switch>
         <Footer/>
