@@ -1,5 +1,5 @@
 .fade-wrapper .images-wrap div img{
-    height: 560px;
+    height: 648px;
     width: 1284px;
 }
 
@@ -9,4 +9,11 @@
 
 .container .nav{
   display: none;
+}
+
+.slider-header-nav{
+  position: absolute;
+  top: 16px;
+  width: 100%;
+  left: 0px;
 }

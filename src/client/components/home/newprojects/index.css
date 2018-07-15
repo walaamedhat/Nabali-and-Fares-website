@@ -1,3 +1,12 @@
+.container:after{
+  content: '';
+  width: 100%;
+  height: 117%;
+  position: absolute;
+  background-color: #324057;
+  opacity: 0.86;
+  bottom: 10px;
+}
 .newprojects{
     max-width: 1170px;
     margin: 0 auto !important;
@@ -43,7 +52,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
     border-radius: 5px;
     background-color: #ffffff;
-    
+
 }
 .newprojects__project:last-child{
     margin-left: 0;
@@ -74,7 +83,7 @@
     font-size: 18px;
     font-weight: 700;
     margin: 0;
-    
+
 
 }
 
@@ -103,8 +112,8 @@
     font-weight: bold;
     cursor: pointer;
 }
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px) {
     .newprojects__project, .newprojects__project:last-child{
         margin: 10px auto;
@@ -115,4 +124,3 @@
     }
 
 }
-
