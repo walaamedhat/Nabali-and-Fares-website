@@ -9,11 +9,6 @@ import Upgrade from "../views/Upgrade/Upgrade";
 
 const dashboardRoutes = [
   {
-    path: "/",
-    name: "login",
-    component: Login
-  },
-  {
     path: "/dashboard",
     name: "Dashboard",
     icon: "pe-7s-graph",
@@ -37,7 +32,7 @@ const dashboardRoutes = [
     icon: "pe-7s-news-paper",
     component: Typography
   },
-  { redirect: true, path: "/", to: "/dashboard", name: "Dashboard" }
+  { redirect: true, path: "/", to: "/login", name: "Login" }
 ];
 
 export default dashboardRoutes;
