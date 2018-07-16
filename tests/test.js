@@ -6,24 +6,22 @@ const updateUser = require('../src/server/models/queries/user/update_user');
 const deleteUser = require('../src/server/models/queries/deleteAny');
 
 
-tape('dropping the schemas at the start of the test', (t) => {
-  Promise.all([
-    Users.remove({})
-  ]).then(() => {
-    Users.find({}).then((res) => {
-      t.equal(res.length, 0, 'Users schema has been dropped');
-    });
-    t.end();
-  })
-    .catch(err => t.end(err));
-});
+// tape('dropping the schemas at the start of the test', (t) => {
+//   Promise.all([
+//     Users.remove({})
+//   ]).then(() => {
+//     Users.find({}).then((res) => {
+//       t.equal(res.length, 0, 'Users schema has been dropped');
+//     });
+//     t.end();
+//   })
+//     .catch(err => t.end(err));
+// });
 
 tape('adding a new user to the database', (t) => {
   const data = {
       role: 'Admin',
-      name: 'Walaa Medhat',
-      email: 'walaa.mohtaseb@gmail.com',
-      password: 'wm23696',
+      name: 'Admin',
   };
   createUser(data, (err, res) => {
     console.log(data)
@@ -33,14 +31,14 @@ tape('adding a new user to the database', (t) => {
 });
 
 
-tape('find user in database', (t) => {
-  findUser((err,res)=>{
-      console.log(res);
-    t.equal(res.role, 'Admin', 'role should be Admin');
-    t.end();
+// tape('find user in database', (t) => {
+//   findUser((err,res)=>{
+//       console.log(res);
+//     t.equal(res.role, 'Admin', 'role should be Admin');
+//     t.end();
 
-  })
-  });
+//   })
+//   });
 
 //
 // tape('update user',(t) => {
@@ -59,10 +57,10 @@ tape('find user in database', (t) => {
 //   })
 // })
 //
-tape('delete User',(t) => {
-  deleteUser(Users,'5b49d103d8a2a84842495421', (err,res) => {
-    console.log(res);
-    console.log(err);
-    t.end();
-  })
-})
+// tape('delete User',(t) => {
+//   deleteUser(Users,'5b49d103d8a2a84842495421', (err,res) => {
+//     console.log(res);
+//     console.log(err);
+//     t.end();
+//   })
+// })
