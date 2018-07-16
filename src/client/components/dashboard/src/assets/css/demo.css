@@ -502,3 +502,31 @@
 .table-upgrade td:nth-child(3){
     text-align: center;
 }
+.login{
+
+    display:  flex;
+    justify-content:  center;
+    align-items:  center;
+    align-content:  center;
+    height: 100%;
+
+}
+.login__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    align-items: center;
+    font-size: 15px;
+}
+.login__form>input{
+    width: 250px;
+    margin-bottom: 15px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 9px;
+    border-width: 0.6;
+}
+.login__form>button{
+    width: 40%;
+}

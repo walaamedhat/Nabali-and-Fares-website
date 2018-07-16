@@ -100,6 +100,7 @@ class Dashboard extends Component {
     }
   }
   render() {
+    console.log('dash board routs ,' ,dashboardRoutes)
     return (
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />

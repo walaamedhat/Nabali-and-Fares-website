@@ -1,9 +1,26 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import fetchAllProjects from '../../../actions/ourprojectsAction';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
 class NewProjects extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            projects:[]
+        }
+    }
+    componentDidMount(){
+        console.log('GrandChild did mount.');
+        const { fetchAllProjects } = this.props;
+        fetchAllProjects();
+    }
     render(){
+        console.log('this is props,' , this.props)
+        console.log('this is state,' , this.state)
         return(
         <div className='newprojects'>
             <div className='newprojects__top'>
@@ -60,8 +77,20 @@ class NewProjects extends Component {
         </div>
         )
     }
-} 
+}
+NewProjects.propTypes = {
+    fetchAllProjects: PropTypes.func
+}
+const mapStateToProps = state =>{
+    return{
 
-export default NewProjects;
+    }
+}
+
+const mapDispatchToProps = {
+    fetchAllProjects
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewProjects);
    
 

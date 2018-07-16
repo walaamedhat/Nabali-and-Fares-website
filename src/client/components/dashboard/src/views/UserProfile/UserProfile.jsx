@@ -37,7 +37,7 @@ class UserProfile extends Component {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'
       },
-      body: JSON.stringify(value)
+      body: JSON.stringify({data:value})
       })
       .then(res => {
           console.log(res, ' res')}
