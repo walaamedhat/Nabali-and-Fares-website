@@ -29,26 +29,6 @@ class UserProfile extends Component {
     e.preventDefault();
     const value = document.getElementById('testId').value;
 
-    console.log(value);
-    var id = '5b4c7b35d026656e21478257';
-    fetch( `http://localhost:8000/getAdminData/${id}`,{
-      method: 'GET',
-      headers: {
-          Accept : 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-<<<<<<< HEAD
-      },
-      body: JSON.stringify({data:value})
-=======
-      }
->>>>>>> c4bb929c75b8f8478916e2ee6d019c7b2d1eb0e5
-      })
-      .then(res => {
-          console.log(res, ' res')}
-      ).catch(err => {
-          console.log(err, ' err')
-  })
   }
 
   render() {

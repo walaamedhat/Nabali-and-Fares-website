@@ -10,7 +10,7 @@ const loginFetchStart = () =>{
     };
 }
 
-const loginFetchSuccess = (projectsData) => { 
+const loginFetchSuccess = (projectsData) => {
     return ({
         type: LOGIN_USER_SUCCESS,
         payload: projectsData
@@ -26,16 +26,15 @@ const loginFetchFailure = (err) => {
 
 const LoginUser = (data) => dispatch => {
     dispatch(loginFetchStart())
-    fetch('http://localhost:8000/api/vi/login', {
-        method: "post",
+    fetch('http://localhost:8000/api/v1/login', {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
             "credentials": "same-origin"
         },
-        body: JSON.stringify({dataUser: data})
+        body: JSON.stringify(data)
     })
     .then(response => {
-        console.log(response.json(), ' response our projects');
         dispatch(loginFetchSuccess())
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)

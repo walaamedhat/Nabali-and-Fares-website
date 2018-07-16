@@ -4,6 +4,7 @@ const login = require('../../models/queries/dashboard/login');
 
 
 exports.post = (req, res) => {
+  console.log(req.body,'req.body');
   login(req.body, (err,result) => {
     if (err) {
       res.status(500).send(err);
