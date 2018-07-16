@@ -10,7 +10,8 @@
     "dev:build": "webpack --watch",
     "dev": "concurrently \"nodemon ./src/server/\" \"webpack --watch\"",
     "dev:start": "nodemon --exec node ./src/server/",
-    "generate": "rc-autocomplete"
+    "generate": "rc-autocomplete",
+    "test": "node tests/index.js | tap-spec"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-react": "^6.24.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "concurrently": "^3.6.0",
     "cookie-parser": "^1.4.3",
@@ -36,6 +38,7 @@
     "google-map-react": "^1.0.5",
     "google-maps-react": "^2.0.2",
     "loaders.css": "^0.1.2",
+    "mongoose": "^5.2.3",
     "morgan": "^1.9.0",
     "pg": "^7.4.1",
     "prop-types": "^15.6.1",
@@ -67,6 +70,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.19.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1",
     "webpack": "^3.6.0"
   },
   "devDependencies": {

@@ -8,7 +8,7 @@ import {
   FormControl
 } from "react-bootstrap";
 
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 import { Card } from "../../components/Card/Card.jsx";
 import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
 import { UserCard } from "../../components/UserCard/UserCard.jsx";
@@ -30,14 +30,19 @@ class UserProfile extends Component {
     const value = document.getElementById('testId').value;
 
     console.log(value);
-    fetch('http://localhost:8000/savadata',{
-      method: 'POST',
+    var id = '5b4c7b35d026656e21478257';
+    fetch( `http://localhost:8000/getAdminData/${id}`,{
+      method: 'GET',
       headers: {
           Accept : 'application/json',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'
+<<<<<<< HEAD
       },
       body: JSON.stringify({data:value})
+=======
+      }
+>>>>>>> c4bb929c75b8f8478916e2ee6d019c7b2d1eb0e5
       })
       .then(res => {
           console.log(res, ' res')}
@@ -97,7 +102,7 @@ class UserProfile extends Component {
                         }
                       ]}
                     />
- 
+
                     <Button bsStyle="info" pullRight fill type="submit" onClick={this.handleTestRequest}>
                       Update Profile
                     </Button>
@@ -119,94 +124,3 @@ const mapDispatchToProps = {
 }
 
 export default UserProfile;
-
-
-
-
-
-
-// <Col md={4}>
-//   <UserCard
-//     bgImage="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
-//     avatar={avatar}
-//     name="Mike Andrew"
-//     userName="michael24"
-//     description={
-//       <span>
-//         "Lamborghini Mercy
-//         <br />
-//         Your chick she so thirsty
-//         <br />
-//         I'm in that two seat Lambo"
-//       </span>
-//     }
-//     socials={
-//       <div>
-//         <Button simple>
-//           <i className="fa fa-facebook-square" />
-//         </Button>
-//         <Button simple>
-//           <i className="fa fa-twitter" />
-//         </Button>
-//         <Button simple>
-//           <i className="fa fa-google-plus-square" />
-//         </Button>
-//       </div>
-//     }
-//   />
-// </Col>
-
-
-// <Row>
-//   <Col md={12}>
-//     <FormGroup controlId="formControlsTextarea">
-//       <ControlLabel>About Me</ControlLabel>
-//       <FormControl
-//         rows="5"
-//         componentClass="textarea"
-//         bsClass="form-control"
-//         placeholder="Here can be your description"
-//         defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-//       />
-//     </FormGroup>
-//   </Col>
-// </Row>
-
-// <FormInputs
-//   ncols={["col-md-12"]}
-//   proprieties={[
-//     {
-//       label: "Adress",
-//       type: "text",
-//       bsClass: "form-control",
-//       placeholder: "Home Adress",
-//       defaultValue:
-//         "Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-//     }
-//   ]}
-// />
-// <FormInputs
-//   ncols={["col-md-4", "col-md-4", "col-md-4"]}
-//   proprieties={[
-//     {
-//       label: "City",
-//       type: "text",
-//       bsClass: "form-control",
-//       placeholder: "City",
-//       defaultValue: "Mike"
-//     },
-//     {
-//       label: "Country",
-//       type: "text",
-//       bsClass: "form-control",
-//       placeholder: "Country",
-//       defaultValue: "Andrew"
-//     },
-//     {
-//       label: "Postal Code",
-//       type: "number",
-//       bsClass: "form-control",
-//       placeholder: "ZIP Code"
-//     }
-//   ]}
-// />
