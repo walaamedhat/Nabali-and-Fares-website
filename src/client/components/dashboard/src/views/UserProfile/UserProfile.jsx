@@ -30,14 +30,14 @@ class UserProfile extends Component {
     const value = document.getElementById('testId').value;
 
     console.log(value);
-    fetch('http://localhost:8000/savadata',{
-      method: 'POST',
+    var id = '5b4c7b35d026656e21478257';
+    fetch( `http://localhost:8000/getAdminData/${id}`,{
+      method: 'GET',
       headers: {
           Accept : 'application/json',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify({data:value}),
+      }
       })
       .then(res => {
           console.log(res, ' res')}
