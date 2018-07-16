@@ -7,9 +7,10 @@ import LoginUser from '../../actions/loginAction';
 
 class Login extends Component{
     constructor(props){
-        super(props)   
+        super(props)
+        this.state = {message:''}
     }
-    
+
     onSubmit = e => {
         e.preventDefault();
         this.state={
@@ -17,11 +18,23 @@ class Login extends Component{
             password: document.getElementById('password').value
         }
         const { LoginUser } = this.props;
-        LoginUser(this.state)
+        LoginUser(this.state);
+        console.log(this.props.message);
     }
 
+
     render(){
-        console.log('this. props : ' , this.props)
+      switch (this.props.message) {
+      case 'Login Success':
+        this.props.history.push(`/dashboard`);
+      case 'User not found':
+        this.state = {message : 'User not found'}
+        // return (<div>user not found </div>);
+      case 'Password didn\'t match':
+        this.state = {message : 'Password didn\'t match'}
+        // return (<div>password not match</div>);
+      default:
+
         return(
             <div className='login'>
                   <form className='login__form' onSubmit={this.onSubmit}>
@@ -33,10 +46,13 @@ class Login extends Component{
                           Login
                         </Button>
                       <div className="clearfix" />
+                      <div style={{ marginTop:"10px", color:'red' }}>{this.state.message}</div>
                   </form>
             </div>
         )
     }
+
+  }
 
 }
 
@@ -44,9 +60,13 @@ Login.propTypes = {
     LoginUser: PropTypes.func
 }
 
+const mapStateToProps = state => {
+  return {
+    message: state.userData.message.message};
+};
 
 const mapDispatchToProps = {
     LoginUser
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

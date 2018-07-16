@@ -5,7 +5,7 @@ import {
 } from '../constants/actionTypes'
 
 const intialState = {
-    userdata:{},
+    message:'',
     isFetching: false,
     error: undefined
 }
@@ -22,7 +22,7 @@ const sendUserDate = (state = intialState, action) => {
         case LOGIN_USER_SUCCESS :{
             return{
                 ...state,
-                projectData:action.payload,
+                message:action.payload,
                 isFetching:false
             }
         }
