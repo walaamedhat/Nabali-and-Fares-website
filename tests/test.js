@@ -22,7 +22,6 @@ tape('adding a new user to the database', (t) => {
   const data = {
       role: 'Admin',
       name: 'Walaa Medhat',
-      email: 'walaa.mohtaseb@gmail.com',
       password: 'wm23696',
   };
   createUser(data, (err, res) => {

@@ -13,12 +13,15 @@ import "./assets/sass/light-bootstrap-dashboard.css?v=1.2.0";
 import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
+import Login from './views/Login/Login';
+
 import store from './store.js';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
+        <Route path='/login' component={Login} />
         {indexRoutes.map((prop, key) => {
           return <Route to={prop.path} component={prop.component} key={key} />;
         })}
