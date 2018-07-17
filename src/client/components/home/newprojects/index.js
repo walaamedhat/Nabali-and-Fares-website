@@ -14,19 +14,16 @@ class NewProjects extends Component {
         }
     }
     componentDidMount(){
-        console.log('GrandChild did mount.');
         const { fetchAllProjects } = this.props;
         fetchAllProjects();
     }
     render(){
-        console.log('this is props,' , this.props)
-        console.log('this is state,' , this.state)
         return(
         <div className='newprojects'>
             <div className='newprojects__top'>
                 <div className='newprojects__title'>جديد مشاريعنا</div>
                 <div className='newprojects__arrows'>
-                    <span><i class="fas fa-arrow-right"></i></span>            
+                    <span><i class="fas fa-arrow-right"></i></span>
                     <span><i class="fas fa-arrow-left"></i></span>
                 </div>
             </div>
@@ -62,7 +59,7 @@ class NewProjects extends Component {
                             <div className='gardens'>
                                 <img src='./assets/gardens.png'/>
                                 <span>حدائق</span>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                     <div className='newprojects__project__seemore'>
@@ -92,5 +89,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewProjects);
-   
-

@@ -1,11 +1,11 @@
 const Users = require('../../schemas/user_schema');
 
 
-const updateAdminData = (name,password,callback) => {
-  Users.findByIdAndUpdate(data.id, {
+const updateAdminData = (id,data,password,callback) => {
+  Users.findByIdAndUpdate(id, {
     $set: {
       role:'Admin',
-      username: name,
+      username: data.username,
       password: password
     },
   },

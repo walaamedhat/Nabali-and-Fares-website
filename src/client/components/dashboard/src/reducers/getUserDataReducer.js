@@ -1,7 +1,7 @@
 import {
-    LOGIN_USER_START,
-    LOGIN_USER_SUCCESS,
-    LOGIN_USER_FAILURE
+  GET_USER_DATA_START,
+  GET_USER_DATA_SUCCESS,
+  GET_USER_DATA_FAILURE
 } from '../constants/actionTypes'
 
 const intialState = {
@@ -11,22 +11,22 @@ const intialState = {
 }
 
 
-const sendUserDate = (state = intialState, action) => {
+const getUserData = (state = intialState, action) => {
     switch(action.type){
-        case LOGIN_USER_START:{
+        case GET_USER_DATA_START:{
             return{
                 ...state,
                 isFetching:true
             }
         }
-        case LOGIN_USER_SUCCESS :{
+        case GET_USER_DATA_SUCCESS :{
             return{
                 ...state,
                 message:action.payload,
                 isFetching:false
             }
         }
-        case LOGIN_USER_FAILURE :{
+        case GET_USER_DATA_FAILURE :{
             return{
                 ...state,
                 message: action.error,
@@ -37,4 +37,4 @@ const sendUserDate = (state = intialState, action) => {
     }
 }
 
-export default sendUserDate;
+export default getUserData;

@@ -10,7 +10,7 @@ import './index.css'
 class ProjectPage extends Component {
     constructor(props){
         super(props)
-        
+
         this.state = {
             run: false,
             controled:false
@@ -26,14 +26,12 @@ class ProjectPage extends Component {
             this.setState({
                 run:true,
                 controled:true
-                
+
             })
         }
-       
+
     }
     render(){
-        console.log(this.state, 'it is state');
-        
         return(
             <div className='pojectpage'>
                 <Header Logo='./assets/nabali-fares-colored.png' WhereAmI='ourprojectpage'/>
@@ -73,7 +71,7 @@ class ProjectPage extends Component {
                                 <Feature Image='./assets/gardens.png' Title='حدائق' Paragraph='ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى' />
                                 <Feature Image='./assets/bathroom.png' Title='حمامات' Paragraph='ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى' />
                                 <Feature Image='./assets/swimming.png' Title='مسابح' Paragraph='ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى' />
-                                
+
                             </div>
                         </div>
                     </div>

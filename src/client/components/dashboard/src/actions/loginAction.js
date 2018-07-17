@@ -30,13 +30,13 @@ const LoginUser = (data) => dispatch => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "credentials": "same-origin"
+            'Accept': "application/json",
         },
+        'credentials': 'include',
         body: JSON.stringify(data)
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data,'response');
         dispatch(loginFetchSuccess(data))
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)

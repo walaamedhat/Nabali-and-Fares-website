@@ -8,7 +8,7 @@ import LoginUser from '../../actions/loginAction';
 class Login extends Component{
     constructor(props){
         super(props)
-        this.state = {message:''}
+        this.state = {}
     }
 
     onSubmit = e => {
@@ -19,7 +19,6 @@ class Login extends Component{
         }
         const { LoginUser } = this.props;
         LoginUser(this.state);
-        console.log(this.props.message);
     }
 
 
@@ -27,14 +26,7 @@ class Login extends Component{
       switch (this.props.message) {
       case 'Login Success':
         this.props.history.push(`/dashboard`);
-      case 'User not found':
-        this.state = {message : 'User not found'}
-        // return (<div>user not found </div>);
-      case 'Password didn\'t match':
-        this.state = {message : 'Password didn\'t match'}
-        // return (<div>password not match</div>);
       default:
-
         return(
             <div className='login'>
                   <form className='login__form' onSubmit={this.onSubmit}>
@@ -46,7 +38,10 @@ class Login extends Component{
                           Login
                         </Button>
                       <div className="clearfix" />
-                      <div style={{ marginTop:"10px", color:'red' }}>{this.state.message}</div>
+
+
+                          <div style={{ marginTop:"10px", color:'red' }}>{this.props.message}</div>
+
                   </form>
             </div>
         )

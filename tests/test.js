@@ -25,7 +25,6 @@ tape('adding a new user to the database', (t) => {
       password: 'wm23696',
   };
   createUser(data, (err, res) => {
-    console.log(data)
     t.equal(res.role, 'Admin', 'role should be Admin');
     t.end();
   });
@@ -34,7 +33,6 @@ tape('adding a new user to the database', (t) => {
 
 tape('find user in database', (t) => {
   findUser((err,res)=>{
-      console.log(res);
     t.equal(res.role, 'Admin', 'role should be Admin');
     t.end();
 
@@ -51,8 +49,6 @@ tape('find user in database', (t) => {
 //     password: '123456'
 //   }
 //   updateUser(data,(err,res) => {
-//     console.log(res,'response');
-//     console.log(err,'error');
 //     t.equal(res.role, 'User', 'role should be Admin');
 //     t.end();
 //   })
@@ -60,8 +56,6 @@ tape('find user in database', (t) => {
 //
 tape('delete User',(t) => {
   deleteUser(Users,'5b49d103d8a2a84842495421', (err,res) => {
-    console.log(res);
-    console.log(err);
     t.end();
   })
 })
