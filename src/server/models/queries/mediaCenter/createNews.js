@@ -8,7 +8,8 @@ module.exports = (newsData, callback) => {
     type: newsData.type,
     discription: newsData.discription,
     video: newsData.video,
-    images: newsData.images,
+    secondaryImages: newsData.secondaryImages,
+    mainImage: newsData.mainImage,
   }).then((res) => {
     if (callback && typeof callback === 'function') return callback(null, res);
   })
