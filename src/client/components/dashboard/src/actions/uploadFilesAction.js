@@ -26,22 +26,16 @@ return {
 
 
 
-
-
-
 const upload = (data) => dispatch => {
   dispatch(uploadFetchStart())
   fetch('http://localhost:8000/api/v1/upload', {
       method:"POST",
       body:data
-    }).then((res) => { 
-      console.log(res,'dndjndjn');
-                   
-       res.json();
+    }).then((res) => {                    
+       return res.json();
     })
     .then((body) =>{
-      console.log(body, ' body body body');
-      dispatch(uploadFetchSuccess(body))
+      dispatch(uploadFetchSuccess(body.url))
     }).catch(error => {console.error(`Fetch Error =\n`, error)
       dispatch(uploadFetchFailer(error))
       });

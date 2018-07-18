@@ -8,13 +8,12 @@ import { log } from 'util';
 const intialState = {
     url:null,
     isFetching: false,
-    error: undefined
+    error: undefined,
+    message:''
 }
 
 
-const upload = (state = intialState, action) => {
-    console.log(action, ' action');
-    
+const upload = (state = intialState, action) => {    
     switch(action.type){
         case START_UPLOAD:{
             return{
@@ -23,21 +22,19 @@ const upload = (state = intialState, action) => {
             }
         }
         case SUCCESS_UPLOAD :{
-            console.log(action.payload, ' action.payload');
-            
             return{
                 ...state,
                 url:action.payload,
-                isFetching:false
+                isFetching:false,
+                message: 'Upload Success!'
             }
         }
-        case FAILURE_UPLOAD :{
-            console.log(action.error,'err in reducer');
-            
+        case FAILURE_UPLOAD :{            
             return{
                 ...state,
                 error: action.error,
-                isFetching: false
+                isFetching: false,
+                message: 'Upload Failed'
             }
         }
         default: return state
