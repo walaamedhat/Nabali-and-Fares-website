@@ -3,17 +3,18 @@ import {
   SUCCESS_UPLOAD,
   FAILURE_UPLOAD
 } from '../constants/actionTypes'
-import { log } from 'util';
 
 const uploadFetchStart = () => {
 return {
   type: START_UPLOAD
 };
 };
-const uploadFetchSuccess = data => {
+const uploadFetchSuccess = (attr,data) => {
 return {
   type: SUCCESS_UPLOAD,
-  payload: data
+  url: data,
+  name: attr
+
 };
 };
 
@@ -26,7 +27,7 @@ return {
 
 
 
-const upload = (data) => dispatch => {
+const upload = (attr, data) => dispatch => {
   dispatch(uploadFetchStart())
   fetch('http://localhost:8000/api/v1/upload', {
       method:"POST",
@@ -35,8 +36,10 @@ const upload = (data) => dispatch => {
        return res.json();
     })
     .then((body) =>{
-      dispatch(uploadFetchSuccess(body.url))
+      console.log(body, ' body')
+      dispatch(uploadFetchSuccess(attr, body.url))
     }).catch(error => {console.error(`Fetch Error =\n`, error)
+      console.log(error, ' eeeee ')
       dispatch(uploadFetchFailer(error))
       });
   }

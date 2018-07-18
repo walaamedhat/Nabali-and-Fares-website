@@ -52,7 +52,10 @@ class MediaCenter extends Component {
     data.append('image', file);
     data.append('name', fileName);
     const { uploadFiles } = this.props;
-    uploadFiles(data)
+    uploadFiles('mainImage', data)
+    // this.setState({
+    //   mainImage: this.props.filesUrl
+    // })
   }
 
   onSelectedMultipleImages = (e) => {
@@ -66,6 +69,9 @@ class MediaCenter extends Component {
     })
     const { uploadFiles } = this.props;
     uploadFiles(fd)
+    // this.setState({
+    //   secondaryImages: this.props.filesUrl
+    // })
 }
   onSelectedVideo = (event) => {
     const file = event.target.files[0];
@@ -75,6 +81,9 @@ class MediaCenter extends Component {
     data.append('name', fileName);
     const { uploadFiles } = this.props;
     uploadFiles(data)
+    // this.setState({
+    //   newsVideo: this.props.filesUrl
+    // })
   }
 
   render() {
