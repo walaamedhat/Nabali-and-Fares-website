@@ -27,7 +27,7 @@ ReactDOM.render(
           <Route path='/project' component={ProjectPage} />
           <Route path='/apartment' component={Apartment} />
           <Route path='/post' component={MediaCenterPost} />
-          <Route component={Page404}/>
+          <Route component={Page404} />
         </Switch>
         <Footer/>
       </div>

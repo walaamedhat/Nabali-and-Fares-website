@@ -71,14 +71,14 @@ class UserProfile extends Component {
                           type: "password",
                           bsClass: "form-control",
                           placeholder: "Old Password",
-                          defaultValue: "Walaa"
+                          defaultValue: ""
                         },
                         {
                           label: "New Password",
                           type: "password",
                           bsClass: "form-control",
                           placeholder: "New Password",
-                          defaultValue: "Medhat"
+                          defaultValue: ""
                         }
                       ]}
                     />

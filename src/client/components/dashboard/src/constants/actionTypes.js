@@ -1,3 +1,7 @@
 export const LOGIN_USER_START = Symbol('LOGIN_USER_START');
 export const LOGIN_USER_SUCCESS = Symbol('LOGIN_USER_SUCCESS');
 export const LOGIN_USER_FAILURE = Symbol('LOGIN_USER_FAILURE');
+
+export const ADDING_NEWS_START = Symbol('ADDING_NEWS_START');
+export const ADDING_NEWS_SUCCESS = Symbol('ADDING_NEWS_SUCCESS');
+export const ADDING_NEWS_FAILURE = Symbol('ADDING_NEWS_FAILURE');
