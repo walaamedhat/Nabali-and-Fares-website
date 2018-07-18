@@ -4,6 +4,7 @@ import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
 import Card from "../../components/Card/Card.jsx";
 import { thArray, tdArray } from "../../variables/Variables.jsx";
 import { connect } from 'react-redux';
+import { BarLoader } from 'react-spinners';
 
 import addNewsData from '../../actions/addNewsAction';
 import uploadFiles from '../../actions/uploadFilesAction';
@@ -51,7 +52,10 @@ class MediaCenter extends Component {
     data.append('image', file);
     data.append('name', fileName);
     const { uploadFiles } = this.props;
-    uploadFiles(data)
+    uploadFiles('mainImage', data)
+    // this.setState({
+    //   mainImage: this.props.filesUrl
+    // })
   }
 
   onSelectedMultipleImages = (e) => {
@@ -65,6 +69,9 @@ class MediaCenter extends Component {
     })
     const { uploadFiles } = this.props;
     uploadFiles(fd)
+    // this.setState({
+    //   secondaryImages: this.props.filesUrl
+    // })
 }
   onSelectedVideo = (event) => {
     const file = event.target.files[0];
@@ -74,9 +81,13 @@ class MediaCenter extends Component {
     data.append('name', fileName);
     const { uploadFiles } = this.props;
     uploadFiles(data)
+    // this.setState({
+    //   newsVideo: this.props.filesUrl
+    // })
   }
 
   render() {
+    const {isFetching} = this.props;
     return (
       <div className="content">
         <Grid fluid>
@@ -163,6 +174,12 @@ class MediaCenter extends Component {
                         }                        
                       ]}
                       />
+                    {
+                        isFetching ? 
+                          <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center> : <div/>
+                    }
+                      <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
+                   
                     <Button bsStyle="info" block type="submit">
                       Update Profile
                     </Button>
@@ -209,7 +226,9 @@ class MediaCenter extends Component {
 }
 const mapStateToProps = state => {   
   return {
-    filesUrl: state.filesUrl
+    filesUrl: state.filesUrl,
+    isFetching: state.filesUrl.isFetching,
+    message : state.filesUrl.message
   }
 }
 

@@ -22,9 +22,7 @@ const upload = (state = intialState, action) => {
                 isFetching:true
             }
         }
-        case SUCCESS_UPLOAD :{
-            console.log(action.payload, ' action.payload');
-            
+        case SUCCESS_UPLOAD :{            
             return{
                 ...state,
                 url:action.payload,
