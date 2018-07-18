@@ -11,7 +11,7 @@ const projectFetchStart = () =>{
     };
 }
 
-const projectFetchSuccess = (projectsData) => { 
+const projectFetchSuccess = (projectsData) => {
     return ({
         type: PROJECTS_FETCH_SUCCESS,
         payload: projectsData
@@ -34,7 +34,6 @@ const fetchAllProjects = () => dispatch => {
         }
     })
     .then(response => {
-        console.log(response.json(), ' response our projects');
         dispatch(projectFetchSuccess())
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)

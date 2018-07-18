@@ -28,7 +28,7 @@ const AddNews = (data) => dispatch => {
     console.log(data, ' data is Action');
     
     dispatch(loginFetchStart())
-    fetch('http://localhost:8000/api/v1/addnews', {
+    fetch('http://localhost:8000/api/v1/addNews', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -6,6 +6,7 @@ import { thArray, tdArray } from "../../variables/Variables.jsx";
 import { connect } from 'react-redux';
 
 import addNewsData from '../../actions/addNewsAction';
+import uploadFiles from '../../actions/uploadFilesAction';
 
 class MediaCenter extends Component {
   constructor(props){
@@ -19,6 +20,7 @@ class MediaCenter extends Component {
       newsVideo:null
     }
   }
+  
   onSubmit = (e) =>{
     e.preventDefault()
     console.log(this.state)
@@ -44,51 +46,35 @@ class MediaCenter extends Component {
   onSelectedMainImage = (event) => {
     const file = event.target.files[0];
     const fileName = event.target.files[0].name;
-    const reader = new FileReader();
-      reader.onload = e => {
-          this.setState({
-            mainImage:{
-              name:fileName,
-              image:e.target.result
-            }
-          })
-        }
-    reader.readAsText(file);
     
+    const data = new FormData();
+    data.append('image', file);
+    data.append('name', fileName);
+    const { uploadFiles } = this.props;
+    uploadFiles(data)
   }
 
   onSelectedMultipleImages = (e) => {
     const photos = Array.from(e.target.files);
-    const arr = [];
+    const fd = new FormData();
     photos.forEach((element,i) => {
       const fileName = element.name;
       const file = element;
-      const reader = new FileReader();
-      reader.onload = e => {
-          arr.push({ 
-            index:i,
-            name:fileName,
-            image:e.target.result
-          })
-        }
-        this.setState({secondaryImages: arr})
-      reader.readAsText(file);
-    });
+      fd.append('image', file);
+      fd.append('name', fileName);
+    })
+    const { uploadFiles } = this.props;
+    uploadFiles(fd)
 }
-onSelectedVideo = (event) => {
-  const file = event.target.files[0];
-  const fileName = event.target.files[0].name;
-  const reader = new FileReader();
-    reader.onload = e => {
-        this.setState({
-          newsVideo:{
-            name:fileName,
-            vedio:e.target.result
-          }
-        })
-      }
-  reader.readAsText(file);
-}
+  onSelectedVideo = (event) => {
+    const file = event.target.files[0];
+    const fileName = event.target.files[0].name;
+    const data = new FormData();
+    data.append('image', file);
+    data.append('name', fileName);
+    const { uploadFiles } = this.props;
+    uploadFiles(data)
+  }
 
   render() {
     return (
@@ -221,11 +207,17 @@ onSelectedVideo = (event) => {
     );
   }
 }
+const mapStateToProps = state => {   
+  return {
+    filesUrl: state.filesUrl
+  }
+}
 
 const mapDispatchToProps = {
-  addNewsData
+  addNewsData,
+  uploadFiles
 }
 
 
 
-export default connect(null, mapDispatchToProps)(MediaCenter);
+export default connect(mapStateToProps, mapDispatchToProps)(MediaCenter);

@@ -7,7 +7,6 @@ const createUser = (data, callback) => {
     username: data.name,
     password: data.password,
   }).then((res) => {
-    console.log(res);
     if (callback && typeof callback === 'function') return callback(null, res);
   })
     .catch((err) => {

@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "360-react-pannellum": "0.0.3",
+    "aws-sdk": "^2.276.1",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
@@ -33,10 +34,12 @@
     "env2": "^2.2.0",
     "es6-promise": "^4.2.4",
     "express": "^4.16.1",
+    "express-fileupload": "^0.4.0",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "google-map-react": "^1.0.5",
     "google-maps-react": "^2.0.2",
+    "jsonwebtoken": "^8.3.0",
     "loaders.css": "^0.1.2",
     "mongoose": "^5.2.3",
     "morgan": "^1.9.0",
@@ -70,6 +73,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.19.0",
+    "sweetalert": "^2.1.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1",
     "webpack": "^3.6.0"

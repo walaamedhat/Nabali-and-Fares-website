@@ -10,10 +10,10 @@ const loginFetchStart = () =>{
     };
 }
 
-const loginFetchSuccess = (projectsData) => {
+const loginFetchSuccess = (data) => {
     return ({
         type: LOGIN_USER_SUCCESS,
-        payload: projectsData
+        payload: data
     })
 }
 
@@ -30,12 +30,14 @@ const LoginUser = (data) => dispatch => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "credentials": "same-origin"
+            'Accept': "application/json",
         },
+        'credentials': 'include',
         body: JSON.stringify(data)
     })
-    .then(response => {
-        dispatch(loginFetchSuccess())
+    .then(response => response.json())
+    .then(data => {
+        dispatch(loginFetchSuccess(data))
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)
         dispatch(loginFetchFailure(error))

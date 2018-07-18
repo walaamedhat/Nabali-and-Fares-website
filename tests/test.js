@@ -18,17 +18,17 @@ const deleteUser = require('../src/server/models/queries/deleteAny');
 //     .catch(err => t.end(err));
 // });
 
-tape('adding a new user to the database', (t) => {
-  const data = {
-      role: 'Admin',
-      name: 'Admin',
-  };
-  createUser(data, (err, res) => {
-    console.log(data)
-    t.equal(res.role, 'Admin', 'role should be Admin');
-    t.end();
-  });
-});
+// tape('adding a new user to the database', (t) => {
+//   const data = {
+//       role: 'Admin',
+//       name: 'Admin',
+//       password: '$2a$10$DnIIOabMGCi13bY5Kedgc.U.WeNUhgweAFHxxJ75ttAsoYDTztL86'
+//   };
+//   createUser(data, (err, res) => {
+//     t.equal(res.role, 'Admin', 'role should be Admin');
+//     t.end();
+//   });
+// });
 
 
 // tape('find user in database', (t) => {
@@ -36,7 +36,6 @@ tape('adding a new user to the database', (t) => {
 //       console.log(res);
 //     t.equal(res.role, 'Admin', 'role should be Admin');
 //     t.end();
-
 //   })
 //   });
 
@@ -50,17 +49,15 @@ tape('adding a new user to the database', (t) => {
 //     password: '123456'
 //   }
 //   updateUser(data,(err,res) => {
-//     console.log(res,'response');
-//     console.log(err,'error');
 //     t.equal(res.role, 'User', 'role should be Admin');
 //     t.end();
 //   })
 // })
 //
-// tape('delete User',(t) => {
-//   deleteUser(Users,'5b49d103d8a2a84842495421', (err,res) => {
-//     console.log(res);
-//     console.log(err);
-//     t.end();
-//   })
-// })
+tape('delete User',(t) => {
+  deleteUser(Users,'5b4ca3a5d877bd655d11d80e', (err,res) => {
+    console.log(res);
+    console.log(err);
+    t.end();
+  })
+})

@@ -15,7 +15,6 @@ module.exports = (dataProject, callback) => {
     stars: dataProject.starts,
     type: dataProject.type
   }).then((res) => {
-    console.log(res);
     if (callback && typeof callback === 'function') return callback(null, res);
   })
     .catch((err) => {
