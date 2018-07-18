@@ -8,6 +8,8 @@ const login = require('./dashboard/login');
 const logout = require('./dashboard/logout');
 const auth = require('./dashboard/auth');
 const mediaCenter = require('./dashboard/mediaCenter');
+const uploadFiles = require('./dashboard/uploadFiles');
+
 
 
 router.post('/login', login.post);
@@ -21,5 +23,7 @@ router.post('/updateAdminData', adminProfile.post);
 ///Media Center Routes
 router.get('/getAllNews', mediaCenter.get);
 router.post('/addNews', mediaCenter.post);
+
+router.post('/upload', uploadFiles.post);
 
 module.exports = router;

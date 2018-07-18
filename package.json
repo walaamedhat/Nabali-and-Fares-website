@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "360-react-pannellum": "0.0.3",
+    "aws-sdk": "^2.276.1",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
@@ -33,6 +34,7 @@
     "env2": "^2.2.0",
     "es6-promise": "^4.2.4",
     "express": "^4.16.1",
+    "express-fileupload": "^0.4.0",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "google-map-react": "^1.0.5",

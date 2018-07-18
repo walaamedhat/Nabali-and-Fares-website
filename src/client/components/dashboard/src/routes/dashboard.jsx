@@ -1,6 +1,6 @@
 import Dashboard from "../views/Dashboard/Dashboard";
 import UserProfile from "../views/UserProfile/UserProfile";
-import TableList from "../views/TableList/TableList";
+import MediaCenter from "../views/MediaCenter/MediaCenter";
 import Typography from "../views/Typography/Typography";
 import Login from "../views/Login/Login";
 import Maps from "../views/Maps/Maps";
@@ -24,7 +24,7 @@ const dashboardRoutes = [
     path: "/mediacenter",
     name: "Media Center",
     icon: "pe-7s-note2",
-    component: TableList
+    component: MediaCenter
   },
   {
     path: "/ourprojects",

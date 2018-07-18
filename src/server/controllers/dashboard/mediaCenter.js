@@ -1,6 +1,6 @@
 const getAllNews = require('../../models/queries/mediaCenter/findNews');
 const addNews = require('../../models/queries/mediaCenter/createNews');
-
+const uploadfiles = require('../../helpers/awsHelper')
 
 exports.get = (req, res) => {
   getAllNews(err,result => {
@@ -16,7 +16,16 @@ exports.get = (req, res) => {
 
 
 exports.post = (req, res) => {
-  console.log(req.body,'body');
+  console.log(req.files, ' req.files')
+//   console.log(typeof req.body.mainImage , 'req.body.mainImage ')
+ uploadfiles(req.files, (err, result)=>{
+
+  if(err) console.log('hey, there is error : ',err)
+  else console.log('uploading successfully ....')
+
+ })
+  
+  
   // addNews(req.body,(err,result) => {
   //   if (err) {
   //     console.log(err);
