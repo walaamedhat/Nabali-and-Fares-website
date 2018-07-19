@@ -24,9 +24,14 @@ const loginFetchFailure = (err) => {
     })
 }
 
-const AddNews = (data) => dispatch => {
+const AddNews = data => (dispatch, getState)=> {
     console.log(data, ' data is Action');
-    
+    console.log(getState().filesUrl, ' filesUrl is Action');
+    data.mainImage = getState().filesUrl.mainImage;
+    data.secondaryImages = getState().filesUrl.secondaryImages;
+    data.video = getState().filesUrl.video;
+    console.log(data, ' data after add files url');
+
     dispatch(loginFetchStart())
     fetch('http://localhost:8000/api/v1/addNews', {
         method: "POST",

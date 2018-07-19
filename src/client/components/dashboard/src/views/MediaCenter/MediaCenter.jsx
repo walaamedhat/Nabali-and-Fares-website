@@ -18,13 +18,12 @@ class MediaCenter extends Component {
       newsDescription:"",
       mainImage:null,
       secondaryImages:[],
-      newsVideo:null
+      video:null
     }
   }
-  
+
   onSubmit = (e) =>{
     e.preventDefault()
-    console.log(this.state)
     const { addNewsData } = this.props;
     addNewsData(this.state);
   }
@@ -47,15 +46,13 @@ class MediaCenter extends Component {
   onSelectedMainImage = (event) => {
     const file = event.target.files[0];
     const fileName = event.target.files[0].name;
-    
+
     const data = new FormData();
     data.append('image', file);
     data.append('name', fileName);
     const { uploadFiles } = this.props;
     uploadFiles('mainImage', data)
-    // this.setState({
-    //   mainImage: this.props.filesUrl
-    // })
+
   }
 
   onSelectedMultipleImages = (e) => {
@@ -68,10 +65,8 @@ class MediaCenter extends Component {
       fd.append('name', fileName);
     })
     const { uploadFiles } = this.props;
-    uploadFiles(fd)
-    // this.setState({
-    //   secondaryImages: this.props.filesUrl
-    // })
+    uploadFiles('secondaryImages',fd)
+
 }
   onSelectedVideo = (event) => {
     const file = event.target.files[0];
@@ -80,10 +75,8 @@ class MediaCenter extends Component {
     data.append('image', file);
     data.append('name', fileName);
     const { uploadFiles } = this.props;
-    uploadFiles(data)
-    // this.setState({
-    //   newsVideo: this.props.filesUrl
-    // })
+    uploadFiles('video',data)
+
   }
 
   render() {
@@ -93,14 +86,15 @@ class MediaCenter extends Component {
         <Grid fluid>
           <Row>
             <Col md={12}>
+              <img src='https://nabaliandfares.s3.amazonaws.com/mcimages/Elegant.png'/>
               <Card
                 title="إضف هنا في المركز الإعلامي"
                 content={
                   <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit}>
                     <FormInputs
                       ncols={["col-md-5", "col-md-7"]}
-                      proprieties={[                        
-                        
+                      proprieties={[
+
                         {
                           label: "نوع الخبر",
                           type: "text",
@@ -116,7 +110,7 @@ class MediaCenter extends Component {
                           placeholder: "ادخل هنا عنوان الخبر",
                           required: true,
                           onChange: this.handleTitInputChange
-                                                    
+
                         }
                       ]}
                     />
@@ -137,8 +131,8 @@ class MediaCenter extends Component {
                     </Row>
                     <FormInputs
                       ncols={["col-md-12"]}
-                      proprieties={[                        
-                        
+                      proprieties={[
+
                         {
                           label: "أدخل هنا الصورة الرئيسية",
                           type: "file",
@@ -146,12 +140,12 @@ class MediaCenter extends Component {
                           id:'mainImage',
                           onChange:this.onSelectedMainImage,
                           required: true
-                        }                        
+                        }
                       ]}
                       />
                       <FormInputs
                       ncols={["col-md-12"]}
-                      proprieties={[                        
+                      proprieties={[
                         {
                           label: "أدخل هنا الصور الثانوية",
                           type: "file",
@@ -159,27 +153,28 @@ class MediaCenter extends Component {
                           id:'secondaryImages',
                           onChange: this.onSelectedMultipleImages,
                           multiple:true
-                        }                       
+                        }
                       ]}
                       />
                       <FormInputs
                       ncols={["col-md-12"]}
-                      proprieties={[                        
+                      proprieties={[
                         {
                           label: "أدخل هنا الفيديو (إن وجد)",
                           type: "file",
                           bsClass: "form-control",
                           id:'newsVideo',
                           onChange: this.onSelectedVideo
-                        }                        
+                        }
                       ]}
                       />
                     {
-                        isFetching ? 
-                          <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center> : <div/>
+                        isFetching ?
+                          <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
+                            :
+                          <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
                     }
-                      <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
-                   
+
                     <Button bsStyle="info" block type="submit">
                       Update Profile
                     </Button>
@@ -224,7 +219,7 @@ class MediaCenter extends Component {
     );
   }
 }
-const mapStateToProps = state => {   
+const mapStateToProps = state => {
   return {
     filesUrl: state.filesUrl,
     isFetching: state.filesUrl.isFetching,

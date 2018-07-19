@@ -6,15 +6,18 @@ import {
 import { log } from 'util';
 
 const intialState = {
-    url:null,
+    mainImage:'',
+    secondaryImages:'',
+    video:'',
     isFetching: false,
-    error: undefined
+    error: undefined,
+    message:''
 }
 
 
 const upload = (state = intialState, action) => {
     console.log(action, ' action');
-    
+
     switch(action.type){
         case START_UPLOAD:{
             return{
@@ -22,20 +25,45 @@ const upload = (state = intialState, action) => {
                 isFetching:true
             }
         }
-        case SUCCESS_UPLOAD :{            
-            return{
-                ...state,
-                url:action.payload,
-                isFetching:false
-            }
+        case SUCCESS_UPLOAD :{
+          var data;
+          switch (action.name) {
+            case 'mainImage':
+                return{
+                    ...state,
+                    mainImage:action.url,
+                    isFetching:false,
+                    message : 'Upload Success'
+                }
+              break;
+            case 'secondaryImages':
+                  return{
+                      ...state,
+                      secondaryImages:action.url,
+                      isFetching:false,
+                      message : 'Upload Success'
+                  }
+              break;
+            case 'video':
+                  return{
+                      ...state,
+                      video:action.url,
+                      isFetching:false,
+                      message : 'Upload Success'
+                  }
+              break;
+
+          }
+
         }
         case FAILURE_UPLOAD :{
             console.log(action.error,'err in reducer');
-            
+
             return{
                 ...state,
                 error: action.error,
-                isFetching: false
+                isFetching: false,
+                message: 'Upload Faild'
             }
         }
         default: return state

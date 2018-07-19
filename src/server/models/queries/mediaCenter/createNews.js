@@ -3,10 +3,10 @@ const mediaCenter = require('../../schemas/mediaCenterSchema');
 
 module.exports = (newsData, callback) => {
   mediaCenter.create({
-    name: newsData.name,
+    name: newsData.newsTitle,
     date: Date.now(),
-    type: newsData.type,
-    discription: newsData.discription,
+    type: newsData.newsType,
+    discription: newsData.newsDescription,
     video: newsData.video,
     secondaryImages: newsData.secondaryImages,
     mainImage: newsData.mainImage,
