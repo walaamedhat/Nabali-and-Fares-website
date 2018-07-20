@@ -16,7 +16,6 @@ const intialState = {
 
 
 const upload = (state = intialState, action) => {
-    console.log(action, ' action');
 
     switch(action.type){
         case START_UPLOAD:{
@@ -57,7 +56,6 @@ const upload = (state = intialState, action) => {
 
         }
         case FAILURE_UPLOAD :{
-            console.log(action.error,'err in reducer');
 
             return{
                 ...state,

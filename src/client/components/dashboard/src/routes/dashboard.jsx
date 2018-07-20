@@ -1,6 +1,7 @@
 import Dashboard from "../views/Dashboard/Dashboard";
 import UserProfile from "../views/UserProfile/UserProfile";
 import MediaCenter from "../views/MediaCenter/MediaCenter";
+import AddNews from "../views/MediaCenter/AddNews";
 import Typography from "../views/Typography/Typography";
 import Login from "../views/Login/Login";
 import Maps from "../views/Maps/Maps";
@@ -27,9 +28,15 @@ const dashboardRoutes = [
     component: MediaCenter
   },
   {
+    path: "/addnews",
+    name: "Add News",
+    icon: "pe-7s-news-paper",
+    component: AddNews
+  },
+  {
     path: "/ourprojects",
     name: "Our Projects",
-    icon: "pe-7s-news-paper",
+    icon: "pe-7s-portfolio",
     component: Typography
   },
   { redirect: true, path: "/", to: "/login", name: "Login" }

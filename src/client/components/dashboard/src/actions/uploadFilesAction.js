@@ -32,14 +32,12 @@ const upload = (attr, data) => dispatch => {
   fetch('http://localhost:8000/api/v1/upload', {
       method:"POST",
       body:data
-    }).then((res) => {                    
+    }).then((res) => {
        return res.json();
     })
     .then((body) =>{
-      console.log(body, ' body')
       dispatch(uploadFetchSuccess(attr, body.url))
     }).catch(error => {console.error(`Fetch Error =\n`, error)
-      console.log(error, ' eeeee ')
       dispatch(uploadFetchFailer(error))
       });
   }
