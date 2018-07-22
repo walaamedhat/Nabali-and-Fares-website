@@ -24,12 +24,10 @@ class PrivateRoute extends Component {
     }
     switch (rest.path) {
       case '/' :
-
         return (
           <Route
             {...rest}
             render={props => {
-
               return (
                 isLogged && user === 'Admin'? (
                   <Redirect
@@ -53,7 +51,6 @@ class PrivateRoute extends Component {
           />
         );
       case '/login' :
-
         return (
           <Route
             {...rest}
@@ -80,7 +77,6 @@ class PrivateRoute extends Component {
           />
         );
       case '/dashboard' :
-
         return (
           <Route
             {...rest}
@@ -134,6 +130,33 @@ class PrivateRoute extends Component {
             />
           );
         case '/mediacenter':
+
+          return (
+            <Route
+              {...rest}
+              render={props => {
+
+                return (
+                  user === 'Admin' &&isLogged? (
+                    <ComponentName {...props} />
+                  ) :isLogged && user != 'Admin'? (<Redirect
+                    to={{ pathname: '/page404' }}
+                  />):
+                    !isLogged &&(rest.path==='/')?
+                      (
+                        <Redirect
+                          to={{ pathname: '/' }}
+                        />
+                      )
+                      :(<Redirect
+                        to={{ pathname: '/login' }}
+                      />)
+                );
+              }
+              }
+            />
+          );
+        case '/addnews':
 
           return (
             <Route

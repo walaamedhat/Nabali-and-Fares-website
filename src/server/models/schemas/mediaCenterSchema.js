@@ -6,7 +6,8 @@ const mediaCenterSchema = mongoose.Schema({
   type: String,
   discription: String,
   video: String,
-  images: Array
+  secondaryImages: Array,
+  mainImage:String
 })
 
 module.exports = mongoose.model('mediaCenter', mediaCenterSchema);

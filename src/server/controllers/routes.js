@@ -22,8 +22,10 @@ router.get('/getAdminData', adminProfile.get);
 router.post('/updateAdminData', adminProfile.post);
 
 ///Media Center Routes
-router.get('/getAllNews', mediaCenter.get);
+router.get('/getNews', mediaCenter.get);
 router.post('/addNews', mediaCenter.post);
+router.post('/editNews', mediaCenter.edit);
+router.post('/deleteNews', mediaCenter.delete);
 
 /// Projects Routes
 router.post('/addProject', ourProjects.post)

@@ -1,25 +1,25 @@
 import {
-    ADDING_NEWS_START,
-    ADDING_NEWS_SUCCESS,
-    ADDING_NEWS_FAILURE
+    EDIT_NEWS_START,
+    EDIT_NEWS_SUCCESS,
+    EDIT_NEWS_FAILURE
 } from '../constants/actionTypes'
 
-const loginFetchStart = () =>{
+const editNewsStart = () =>{
     return {
-        type: ADDING_NEWS_START
+        type: EDIT_NEWS_START
     };
 }
 
-const loginFetchSuccess = (newsData) => {
+const editNewsSuccess = (newsData) => {
     return ({
-        type: ADDING_NEWS_SUCCESS,
+        type: EDIT_NEWS_SUCCESS,
         payload: newsData
     })
 }
 
-const loginFetchFailure = (err) => {
+const editNewsFailure = (err) => {
     return ({
-        type: ADDING_NEWS_FAILURE,
+        type: EDIT_NEWS_FAILURE,
         error: err
     })
 }
@@ -29,8 +29,8 @@ const AddNews = data => (dispatch, getState)=> {
     data.secondaryImages = getState().filesUrl.secondaryImages;
     data.video = getState().filesUrl.video;
 
-    dispatch(loginFetchStart())
-    fetch('http://localhost:8000/api/v1/addNews', {
+    dispatch(editNewsStart())
+    fetch('http://localhost:8000/api/v1/editNews', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -41,10 +41,10 @@ const AddNews = data => (dispatch, getState)=> {
        return response.json()
     })
     .then(res => {
-        dispatch(loginFetchSuccess(res))
+        dispatch(editNewsSuccess(res))
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)
-        dispatch(loginFetchFailure(error))
+        dispatch(editNewsFailure(error))
     });
 };
 

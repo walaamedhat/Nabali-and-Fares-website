@@ -6,6 +6,18 @@ export const ADDING_NEWS_START = Symbol('ADDING_NEWS_START');
 export const ADDING_NEWS_SUCCESS = Symbol('ADDING_NEWS_SUCCESS');
 export const ADDING_NEWS_FAILURE = Symbol('ADDING_NEWS_FAILURE');
 
+export const DELETE_NEWS_START = Symbol('DELETE_NEWS_START');
+export const DELETE_NEWS_SUCCESS = Symbol('DELETE_NEWS_SUCCESS');
+export const DELETE_NEWS_FAILURE = Symbol('DELETE_NEWS_FAILURE');
+
+export const EDIT_NEWS_START = Symbol('EDIT_NEWS_START');
+export const EDIT_NEWS_SUCCESS = Symbol('EDIT_NEWS_SUCCESS');
+export const EDIT_NEWS_FAILURE = Symbol('EDIT_NEWS_FAILURE');
+
+export const GET_NEWS_START = Symbol('GET_NEWS_START');
+export const GET_NEWS_SUCCESS = Symbol('GET_NEWS_SUCCESS');
+export const GET_NEWS_FAILURE = Symbol('GET_NEWS_FAILURE');
+
 export const GET_USER_DATA_START = Symbol('GET_USER_DATA_START');
 export const GET_USER_DATA_SUCCESS = Symbol('GET_USER_DATA_SUCCESS');
 export const GET_USER_DATA_FAILURE = Symbol('GET_USER_DATA_FAILURE');
@@ -16,7 +28,7 @@ export const UPDATE_USER_DATA_FAILURE = Symbol('UPDATE_USER_DATA_FAILURE');
 
 export const START_LOGIN = Symbol('START_LOGIN');
 export const SUCCESS_LOGIN = Symbol('SUCCESS_LOGIN');
-export const FAILURE_LOGIN = Symbol('FAILURE_LOGIN'); 
+export const FAILURE_LOGIN = Symbol('FAILURE_LOGIN');
 
 export const REQUEST_PENDING = 'REQUEST_PENDING';
 export const REQUEST_FAILED = 'REQUEST_FAILED';
@@ -30,3 +42,5 @@ export const FAILURE_UPLOAD = 'FAILURE_UPLOAD';
 export const ADDING_PROJECT_START = Symbol('ADDING_PROJECT_START');
 export const ADDING_PROJECT_SUCCESS = Symbol('ADDING_PROJECT_SUCCESS');
 export const ADDING_PROJECT_FAILURE = Symbol('ADDING_PROJECT_FAILURE');
+export const SUCCESS_UPLOAD = 'SUCCESS_UPLOAD';
+export const FAILURE_UPLOAD = 'FAILURE_UPLOAD';

@@ -32,6 +32,7 @@ ReactDOM.render(
         })}
         <PrivateRoute path='/user' ComponentName={Dashboard} />;
         <PrivateRoute path='/mediacenter' ComponentName={Dashboard} />;
+        <PrivateRoute path='/addnews' ComponentName={Dashboard} />;
         <PrivateRoute path='/ourprojects' ComponentName={Dashboard} />;
         <PrivateRoute path='/' ComponentName={Login} />;
         <Route component={Page404}/>

@@ -1,9 +1,11 @@
 const getAllNews = require('../../models/queries/mediaCenter/findNews');
 const addNews = require('../../models/queries/mediaCenter/createNews');
+const editNews = require('../../models/queries/mediaCenter/updateNews');
+const deleteNews = require('../../models/queries/mediaCenter/deleteNews');
 const uploadfiles = require('../../helpers/awsHelper')
 
 exports.get = (req, res) => {
-  getAllNews(err,result => {
+  getAllNews((err,result) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -16,22 +18,36 @@ exports.get = (req, res) => {
 
 
 exports.post = (req, res) => {
-  console.log(req.files, ' req.files')
-//   console.log(typeof req.body.mainImage , 'req.body.mainImage ')
- uploadfiles(req.files, (err, result)=>{
+  addNews(req.body,(err,result) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    else {
+      res.status(200).send(result);
+    }
+  })
+}
 
-  if(err) console.log('hey, there is error : ',err)
-  else console.log('uploading successfully ....')
+exports.edit = (req, res) => {
+  editNews(req.body,(err,result) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    else {
+      res.status(200).send(result);
+    }
+  })
+}
 
- })
-  
-  
-  // addNews(req.body,(err,result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   else {
-  //     console.log(result);
-  //   }
-  // })
+
+exports.delete = (req, res) => {
+  console.log(req.body.id,'req.body.id');
+  deleteNews(req.body.id,(err,result) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    else {
+      res.status(200).send(result);
+    }
+  })
 }

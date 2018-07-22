@@ -33,7 +33,7 @@ const upload = (state = intialState, action) => {
                     ...state,
                     mainImage:action.url,
                     isFetching:false,
-                    massage : 'Upload Success'
+                    message : 'Upload Success'
                 }
               break;
             case 'secondaryImages':
@@ -41,7 +41,7 @@ const upload = (state = intialState, action) => {
                       ...state,
                       secondaryImages:action.url,
                       isFetching:false,
-                      massage : 'Upload Success'
+                      message : 'Upload Success'
                   }
               break;
             case 'video':
@@ -61,7 +61,6 @@ const upload = (state = intialState, action) => {
                   }
               break;
           }
-
         }
 
         case FAILURE_UPLOAD :{

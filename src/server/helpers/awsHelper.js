@@ -27,7 +27,7 @@ const uploadFile = (file) => new Promise((resolve, reject) => {
 const uploadfiles = files => new Promise((resolve, reject) => {
     const arr = files.map(file => uploadFile(file));
     try  {
-        
+
         Promise.all(arr).then(values => {
             resolve(values);
         });
@@ -36,7 +36,7 @@ const uploadfiles = files => new Promise((resolve, reject) => {
         reject(e);
     }
 })
-      
+
 
 
 module.exports = uploadfiles;
