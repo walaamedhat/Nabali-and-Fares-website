@@ -21,7 +21,7 @@ return {
 const uploadFetchFailer = massage => {
 return {
   type: FAILURE_UPLOAD,
-  payload: massage
+  error: massage
 };
 };
 
@@ -39,7 +39,6 @@ const upload = (attr, data) => dispatch => {
       console.log(body, ' body')
       dispatch(uploadFetchSuccess(attr, body.url))
     }).catch(error => {console.error(`Fetch Error =\n`, error)
-      console.log(error, ' eeeee ')
       dispatch(uploadFetchFailer(error))
       });
   }

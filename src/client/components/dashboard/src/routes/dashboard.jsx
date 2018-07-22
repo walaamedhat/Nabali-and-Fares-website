@@ -1,7 +1,7 @@
 import Dashboard from "../views/Dashboard/Dashboard";
 import UserProfile from "../views/UserProfile/UserProfile";
 import MediaCenter from "../views/MediaCenter/MediaCenter";
-import Typography from "../views/Typography/Typography";
+import OurProjects from "../views/OurProjects/OurProjects";
 import Login from "../views/Login/Login";
 import Maps from "../views/Maps/Maps";
 import Notifications from "../views/Notifications/Notifications";
@@ -30,7 +30,7 @@ const dashboardRoutes = [
     path: "/ourprojects",
     name: "Our Projects",
     icon: "pe-7s-news-paper",
-    component: Typography
+    component: OurProjects
   },
   { redirect: true, path: "/", to: "/login", name: "Login" }
 ];

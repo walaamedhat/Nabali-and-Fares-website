@@ -530,3 +530,41 @@
 .login__form>button{
     width: 40%;
 }
+.apartmentType{
+    padding: 0 15px;
+}
+.apartmentType>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+.apartmentType_inputText{
+    background-color: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    padding: 8px 12px;
+    height: 40px;
+    box-shadow: none;
+    width: 300px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.apartmentType_inputButton{
+    background-image: url("../img/plus.png");
+    width: 38px;
+    height: 37px;
+    background-size: 38px;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: inherit;
+    border-radius: 21px
+}
+.apartmentType_inputButton:hover{
+    background-color: lavender;
+}
+
+.apartmentType_div>div{
+    display: flex;
+}
