@@ -7,8 +7,8 @@ const projectsSchema = mongoose.Schema({
   typesOfApartments: Array,
   videoUrl: String,
   image360Url: String,
-  images: String,
-  address: String,
+  images: Array,
+  address: Object,
   date: Date,
   stars: Boolean,
   type: String

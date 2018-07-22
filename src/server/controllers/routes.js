@@ -9,12 +9,13 @@ const logout = require('./dashboard/logout');
 const auth = require('./dashboard/auth');
 const mediaCenter = require('./dashboard/mediaCenter');
 const uploadFiles = require('./dashboard/uploadFiles');
-
+const ourProjects = require('./dashboard/addProjects');
 
 
 router.post('/login', login.post);
 router.get('/current_user', auth.get);
 router.get('/logout', logout.get);
+
 
 /////User Profile Routes
 router.get('/getAdminData', adminProfile.get);
@@ -23,6 +24,9 @@ router.post('/updateAdminData', adminProfile.post);
 ///Media Center Routes
 router.get('/getAllNews', mediaCenter.get);
 router.post('/addNews', mediaCenter.post);
+
+/// Projects Routes
+router.post('/addProject', ourProjects.post)
 
 router.post('/upload', uploadFiles.post);
 

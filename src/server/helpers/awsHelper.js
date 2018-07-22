@@ -12,7 +12,8 @@ const uploadFile = (file) => new Promise((resolve, reject) => {
     const options = {
         Body: file.data,
         Bucket: `${process.env.BUCKET_NAME}/mcimages`,
-        Key: file.name
+        Key: file.name,
+        ACL:'public-read'
     }
     S3.upload(options, (err,result) => {
         if(err){

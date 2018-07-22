@@ -10,7 +10,7 @@ module.exports = (dataProject, callback) => {
     videoUrl: dataProject.videoUrl,
     image360Url: dataProject.image360Url,
     images: dataProject.images,
-    address: dataProject.title,
+    address: dataProject.address,
     date: Date.now(),
     stars: dataProject.starts,
     type: dataProject.type
