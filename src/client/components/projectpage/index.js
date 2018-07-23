@@ -31,6 +31,11 @@ class ProjectPage extends Component {
         }
 
     }
+    componentDidMount() {
+      console.log(this.props.match.params.project_id,'this.props.match.params.project_id');
+      // const { pojectData } = this.props;
+      // pojectData(this.props.match.params.project_id);
+    }
     render(){
         return(
             <div className='pojectpage'>

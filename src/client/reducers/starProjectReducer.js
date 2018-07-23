@@ -1,31 +1,31 @@
 import {
-    PROJECTS_FETCH_START,
-    PROJECTS_FETCH_SUCCESS,
-    PROJECTS_FETCH_FAILURE
+    GET_PROJECTS_START,
+    GET_PROJECTS_SUCCESS,
+    GET_PROJECTS_FAILURE
 } from '../constants/actionTypes';
 
 const initalState = {
-    projectData : [],
+    starProjects : [],
     error: undefined,
     isFetching: false
 }
 
 const projectsdata = (state = initalState , action)  => {
     switch(action.type){
-        case PROJECTS_FETCH_START:{
+        case GET_PROJECTS_START:{
             return{
                 ...state,
                 isFetching:true
             }
         }
-        case PROJECTS_FETCH_SUCCESS :{
+        case GET_PROJECTS_SUCCESS :{
             return{
                 ...state,
-                projectData:action.payload.data,
+                starProjects:action.payload.data,
                 isFetching:false
             }
         }
-        case PROJECTS_FETCH_FAILURE :{
+        case GET_PROJECTS_FAILURE :{
             return{
                 ...state,
                 error: action.error,

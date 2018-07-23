@@ -1,33 +1,32 @@
 import {
-    PROJECTS_FETCH_START,
-    PROJECTS_FETCH_SUCCESS,
-    PROJECTS_FETCH_FAILURE
+    GET_NEWS_START,
+    GET_NEWS_SUCCESS,
+    GET_NEWS_FAILURE
 } from '../constants/actionTypes';
-import { DH_NOT_SUITABLE_GENERATOR } from 'constants';
 
 const projectFetchStart = () =>{
     return {
-        type: PROJECTS_FETCH_START
+        type: GET_NEWS_START
     };
 }
 
 const projectFetchSuccess = (projectsData) => {
     return ({
-        type: PROJECTS_FETCH_SUCCESS,
+        type: GET_NEWS_SUCCESS,
         payload: projectsData
     })
 }
 
 const projectFetchFailure = (err) => {
     return ({
-        type: PROJECTS_FETCH_FAILURE,
+        type: GET_NEWS_FAILURE,
         error: err
     })
 }
 
-const fetchAllProjects = () => dispatch => {
+const allNews = () => dispatch => {
     dispatch(projectFetchStart())
-    fetch('/api/v1/all/projects', {
+    fetch('/api/v1/allnews', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -44,4 +43,4 @@ const fetchAllProjects = () => dispatch => {
     });
 };
 
-export default fetchAllProjects;
+export default allNews;

@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import Map from '../googleMap'
+import fetchAllProjects from '../../actions/ourprojectsAction';
+import Map from '../map/Map'
 import Header from '../header'
 import Projects from './projects';
 import './index.css';
 
 
 class OurProjects extends Component {
+  constructor(props){
+      super(props);
+
+      this.state = {
+          projects:[]
+      }
+  }
+  componentDidMount(){
+      const { fetchAllProjects } = this.props;
+      fetchAllProjects();
+  }
+
     render() {
+      const {allProjects, isFetching} = this.props;
+
       return (
         <div>
           <Header Logo='./assets/nabali-fares-colored.png' WhereAmI='ourprojectpage'/>
@@ -24,12 +41,21 @@ class OurProjects extends Component {
                   </h5>
                 </div>
               </div>
-              <Projects/>
-              <Projects/>
-              <Projects/>
+              {
+                isFetching || allProjects.length==0 ? <div>...Loading</div>
+                :
+
+                  allProjects.map(e => {
+
+                    return <Projects data={e}/>
+                  })
+
+
+              }
             </div>
             <div className='ourProjects-map'>
-              <Map/>
+              <Map data={allProjects}/>
+
             </div>
           </div>
         </div>
@@ -38,6 +64,18 @@ class OurProjects extends Component {
     }
 }
 
+OurProjects.propTypes = {
+    fetchAllProjects: PropTypes.func
+}
+const mapStateToProps = state =>{
+    return{
+      allProjects : state.ourprojects.projectData,
+      isFetching : state.ourprojects.isFetching
+    }
+}
 
+const mapDispatchToProps = {
+    fetchAllProjects
+}
 
-export default OurProjects;
+export default connect(mapStateToProps, mapDispatchToProps)(OurProjects);

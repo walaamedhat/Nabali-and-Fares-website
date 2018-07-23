@@ -19,9 +19,10 @@
     height: 28px;
 }
 .newprojects__down{
-    display: flex;
+    display: flex !important;
     margin: 0 5px;
-    justify-content: center;
+    justify-content: space-evenly;
+    padding-bottom: 51px;
 }
 .newprojects__title{
     width: 134px;
@@ -111,6 +112,9 @@
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
+}
+.slick-slide img{
+  display: inline;
 }
 @media only screen
   and (min-device-width: 320px)

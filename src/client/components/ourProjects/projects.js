@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 
 import './index.css';
 
 
 class Projects extends Component{
   render() {
+    const {data} = this.props;
     return (
       <div className='projects-section'>
         <div className='project-image'>
           <img src='./assets/project.png'/>
         </div>
         <div className='project-details'>
-          <h3 style={{ margin:'0', color:'#3da5f9', padding: '9px 15px 0 0' }}>مشروع ديماس</h3>
-          <h6 style={{ margin:'0',color: '#8492a6',padding: '5px 15px 0 0' }}>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها</h6>
+          <h3 style={{ margin:'0', color:'#3da5f9', padding: '9px 15px 0 0' }}>{data.name}</h3>
+          <h6 style={{ margin:'0',color: '#8492a6',padding: '5px 15px 0 0' }}>{data.description.substring(0, 151)}...</h6>
           <div className='project-content'>
             <div className='project-content-descAndIcon'>
               <h6>
@@ -44,12 +45,13 @@ class Projects extends Component{
               </h6>
             </div>
           </div>
-          <div className='mediacenter__bottom__readmore show-more'>
-          عرض المزيد
+          <Link  style={{ alignSelf: 'flex-end' }} to={'/project/' + `${data._id}`}>
+            <div className='mediacenter__bottom__readmore show-more'>
+              عرض المزيد
               <span><i class="fas fa-arrow-left"></i></span>
+            </div>
+          </Link>
           </div>
-        </div>
-
       </div>
     );
   }

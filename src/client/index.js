@@ -24,9 +24,9 @@ ReactDOM.render(
           <Route exact path='/contactUs' component={ContactUs} />
           <Route exact path='/ourprojects' component={OurProjects} />
           <Route path='/mediacenter' component={MediaCenter} />
-          <Route path='/project' component={ProjectPage} />
+          <Route path='/project/:project_id' component={ProjectPage} />
           <Route path='/apartment' component={Apartment} />
-          <Route path='/post' component={MediaCenterPost} />
+          <Route path='/post/:news_id' component={MediaCenterPost} />
           <Route component={Page404} />
         </Switch>
         <Footer/>

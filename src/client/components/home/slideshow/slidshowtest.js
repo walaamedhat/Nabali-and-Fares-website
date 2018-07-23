@@ -9,41 +9,17 @@ const images = [
   './assets/1.png',
   './assets/2.jpg'
 ];
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "none"}}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "none" }}
-      onClick={onClick}
-    />
-  );
-}
 
 class Slideshow extends Component {
   render(){
     var settings = {
      dots: true,
-     dotsClass: "slick-dots slick-thumb",
      infinite: true,
      speed: 500,
      slidesToShow: 1,
      slidesToScroll: 1,
      autoplay: true,
-     autoplaySpeed: 4000,
-     nextArrow: <SampleNextArrow />,
-     prevArrow: <SamplePrevArrow />
+     autoplaySpeed: 2000
    };
     return (
       <div style={{position: 'relative' }}>
@@ -59,7 +35,7 @@ class Slideshow extends Component {
             <Slider {...settings}>
             <div>
               <h1 className='slider-text-title'>
-                هذا النص موجود فقط لتجربة منطقة العنوان الرئيسي
+                هذا النص موجود فقط لتجربة منطقة العنوان الئيسي
               </h1>
               <h4 className='slider-text-desc'>
                 هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.

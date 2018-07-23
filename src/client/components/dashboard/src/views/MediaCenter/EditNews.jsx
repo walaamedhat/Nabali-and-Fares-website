@@ -34,7 +34,7 @@ class EditSection extends Component {
       [e.target[2].name]: e.target[2].value
     }
     const { updateNewsData } = this.props;
-
+    console.log(this.state);
     updateNewsData(this.state);
   }
 
@@ -86,14 +86,16 @@ class EditSection extends Component {
   }
 
 
-  componentDidUpdate(prevProps){
-      if(prevProps.data !== this.props.data){
-          this.setState({
-              data: this.props.data
-          });
-          this.forceUpdate();
-      }
-  }
+  // componentDidUpdate(prevProps){
+  //   console.log('data did updateNewsData');
+  //     if(prevProps.data !== this.props.data){
+  //         this.setState({
+  //             data: this.props.data
+  //         });
+  //         console.log(this.props.data,'dddaata');
+  //         this.forceUpdate();
+  //     }
+  // }
 
   render() {
     console.log('staaaate in editNews',this.state);
@@ -163,7 +165,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     id:'mainImage',
                     onChange:this.onSelectedMainImage,
-                    required: true,
+                    defaultValue:this.state.data.mainImage
 
                   }
                 ]}
@@ -177,7 +179,8 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     id:'secondaryImages',
                     onChange: this.onSelectedMultipleImages,
-                    multiple:true
+                    multiple:true,
+                    defaultValue:this.state.data.secondaryImages
                   }
                 ]}
                 />
@@ -189,7 +192,8 @@ class EditSection extends Component {
                     type: "file",
                     bsClass: "form-control",
                     id:'newsVideo',
-                    onChange: this.onSelectedVideo
+                    onChange: this.onSelectedVideo,
+                    defaultValue: this.state.data.video
                   }
                 ]}
                 />

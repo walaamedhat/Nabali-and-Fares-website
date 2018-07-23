@@ -1,31 +1,31 @@
 import {
-    PROJECTS_FETCH_START,
-    PROJECTS_FETCH_SUCCESS,
-    PROJECTS_FETCH_FAILURE
+    GET_NEWS_START,
+    GET_NEWS_SUCCESS,
+    GET_NEWS_FAILURE
 } from '../constants/actionTypes';
 
 const initalState = {
-    projectData : [],
+    newsData : [],
     error: undefined,
     isFetching: false
 }
 
-const projectsdata = (state = initalState , action)  => {
+const newsData = (state = initalState , action)  => {
     switch(action.type){
-        case PROJECTS_FETCH_START:{
+        case GET_NEWS_START:{
             return{
                 ...state,
                 isFetching:true
             }
         }
-        case PROJECTS_FETCH_SUCCESS :{
+        case GET_NEWS_SUCCESS :{
             return{
                 ...state,
-                projectData:action.payload.data,
+                newsData:action.payload.data,
                 isFetching:false
             }
         }
-        case PROJECTS_FETCH_FAILURE :{
+        case GET_NEWS_FAILURE :{
             return{
                 ...state,
                 error: action.error,
@@ -36,4 +36,4 @@ const projectsdata = (state = initalState , action)  => {
     }
 }
 
-export default projectsdata;
+export default newsData;
