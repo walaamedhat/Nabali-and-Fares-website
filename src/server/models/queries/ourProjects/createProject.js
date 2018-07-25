@@ -12,7 +12,7 @@ module.exports = (dataProject, callback) => {
     images: dataProject.images,
     address: dataProject.address,
     date: Date.now(),
-    stars: dataProject.starts,
+    star: dataProject.star,
     type: dataProject.type
   }).then((res) => {
     if (callback && typeof callback === 'function') return callback(null, res);

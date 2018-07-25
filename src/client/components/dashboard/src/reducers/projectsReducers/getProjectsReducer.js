@@ -1,34 +1,35 @@
 import {
-    GET_NEWS_START,
-    GET_NEWS_SUCCESS,
-    GET_NEWS_FAILURE
-} from '../constants/actionTypes';
+    FETCH_PROJECTS_START,
+    FETCH_PROJECTS_SUCCESS,
+    FETCH_PROJECTS_FAILURE,
+    DELETE_PROJECT_SUCCESS
+} from '../../constants/actionTypes'
 
 const intialState = {
-    newsData:{},
+    projectsData:{},
     isFetching: false,
     error: undefined,
     message: ''
 }
 
 
-const getNewsData = (state = intialState, action) => {
+const getProjectsData = (state = intialState, action) => {
     switch(action.type){
-        case GET_NEWS_START:{
+        case FETCH_PROJECTS_START:{
             return{
                 ...state,
                 isFetching:true
             }
         }
-        case GET_NEWS_SUCCESS :{
+        case FETCH_PROJECTS_SUCCESS :{            
             return{
                 ...state,
-                newsData:action.payload,
+                projectsData:action.payload,
                 isFetching:false,
                 message: 'Get News Success'
             }
         }
-        case GET_NEWS_FAILURE :{
+        case FETCH_PROJECTS_FAILURE :{
             return{
                 ...state,
                 error: action.error,
@@ -36,8 +37,11 @@ const getNewsData = (state = intialState, action) => {
                 message: 'Get News Faild, Try Again!!'
             }
         }
+        case DELETE_PROJECT_SUCCESS : {
+            return action.payload
+        }
         default: return state
     }
 }
 
-export default getNewsData;
+export default getProjectsData;

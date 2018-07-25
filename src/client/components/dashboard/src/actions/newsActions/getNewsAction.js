@@ -2,7 +2,7 @@ import {
     GET_NEWS_START,
     GET_NEWS_SUCCESS,
     GET_NEWS_FAILURE
-} from '../constants/actionTypes'
+} from '../../constants/actionTypes'
 
 const getFetchStart = () =>{
     return {

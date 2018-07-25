@@ -7,7 +7,7 @@ import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import CustomButton from "../../components/CustomButton/CustomButton.jsx";
 import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
 import Card from "../../components/Card/Card.jsx";
-import updateNewsData from '../../actions/editNewsAction';
+import updateNewsData from '../../actions/newsActions/editNewsAction';
 import uploadFiles from '../../actions/uploadFilesAction';
 
 
@@ -74,9 +74,9 @@ class EditSection extends Component {
     uploadFiles('video',data)
 
   }
+  
   closeWindow= () => {
      document.getElementById('editing_div').style.display = "none";;
-
   }
 
   componentWillMount(){
@@ -95,8 +95,11 @@ class EditSection extends Component {
       }
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({data: nextProps.data});
+  }
+
   render() {
-    console.log('staaaate in editNews',this.state);
     const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;
     return(
 
@@ -199,8 +202,7 @@ class EditSection extends Component {
                         : this.props.messageUpdate ?
                       <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpdate}</div>
                       : <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
-
-              }
+                }
 
 
               <Button bsStyle="info" block type="submit">

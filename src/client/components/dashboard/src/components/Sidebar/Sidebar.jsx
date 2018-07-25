@@ -40,7 +40,7 @@ class Sidebar extends Component {
         <div className="logo">
           <a
             href="https://www.creative-tim.com"
-            className="simple-text logo-normal"
+            className="simple-text logo-normal logo-style"
             style={{ textAlign:'center', marginRight:'77px'}}
           >
             <div className="logo-img">

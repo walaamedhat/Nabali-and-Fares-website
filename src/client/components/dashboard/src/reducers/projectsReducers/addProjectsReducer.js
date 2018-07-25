@@ -2,12 +2,13 @@ import {
     ADDING_PROJECT_START,
     ADDING_PROJECT_SUCCESS,
     ADDING_PROJECT_FAILURE
-} from '../constants/actionTypes'
+} from '../../constants/actionTypes';
 
 const intialState = {
     projectData:{},
     isFetching: false,
-    error: undefined
+    error: undefined,
+    addingDone: false
 }
 
 
@@ -16,21 +17,24 @@ const addProjectData = (state = intialState, action) => {
         case ADDING_PROJECT_START:{
             return{
                 ...state,
-                isFetching:true
+                isFetching:true,
+                addingDone:false
             }
         }
         case ADDING_PROJECT_SUCCESS :{
             return{
                 ...state,
                 projectData:action.payload,
-                isFetching:false
+                isFetching:false,
+                addingDone:true
             }
         }
         case ADDING_PROJECT_FAILURE :{
             return{
                 ...state,
                 error: action.error,
-                isFetching: false
+                isFetching: false,
+                addingDone:false
             }
         }
         default: return state

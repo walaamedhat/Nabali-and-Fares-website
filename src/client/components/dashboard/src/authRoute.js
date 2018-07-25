@@ -209,7 +209,34 @@ class PrivateRoute extends Component {
               }
               }
             />
-          );
+        );
+        case '/addprojects':
+
+        return (
+          <Route
+            {...rest}
+            render={props => {
+
+              return (
+                user === 'Admin' &&isLogged? (
+                  <ComponentName {...props} />
+                ) :isLogged && user != 'Admin'? (<Redirect
+                  to={{ pathname: '/page404' }}
+                />):
+                  !isLogged &&(rest.path==='/')?
+                    (
+                      <Redirect
+                        to={{ pathname: '/' }}
+                      />
+                    )
+                    :(<Redirect
+                      to={{ pathname: '/login' }}
+                    />)
+              );
+            }
+            }
+          />
+      );
     }
   }
 }

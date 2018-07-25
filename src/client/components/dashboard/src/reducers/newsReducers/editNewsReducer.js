@@ -2,7 +2,7 @@ import {
     EDIT_NEWS_START,
     EDIT_NEWS_SUCCESS,
     EDIT_NEWS_FAILURE
-} from '../constants/actionTypes';
+} from '../../constants/actionTypes';
 
 const intialState = {
     newsData:{},

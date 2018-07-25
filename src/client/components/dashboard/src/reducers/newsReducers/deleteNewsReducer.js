@@ -2,7 +2,7 @@ import {
     DELETE_NEWS_START,
     DELETE_NEWS_SUCCESS,
     DELETE_NEWS_FAILURE
-} from '../constants/actionTypes';
+} from '../../constants/actionTypes';
 
 const intialState = {
     newsData:{},

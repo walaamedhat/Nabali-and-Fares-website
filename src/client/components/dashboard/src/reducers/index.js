@@ -1,15 +1,21 @@
 import { combineReducers } from 'redux';
 import userData from './loginReducer';
-import newsData from './addNewsReducer'
-import editnewsData from './editNewsReducer'
-import deletenewsData from './deleteNewsReducer'
-import allNews from './getNewsReducer'
+
 import getUserData from './getUserDataReducer';
 import updateUserData from './updateUserDataReducer';
 import auth from './authReducer';
 import filesUrl from './uploadFilesReducer';
-import projectsData from './addProjectsReducer';
 import {transferIdReducer} from './transferNewsId';
+
+import newsData from './newsReducers/addNewsReducer'
+import editnewsData from './newsReducers/editNewsReducer'
+import deletenewsData from './newsReducers/deleteNewsReducer'
+import allNews from './newsReducers/getNewsReducer'
+
+import projectsData from './projectsReducers/addProjectsReducer';
+import allProjects from './projectsReducers/getProjectsReducer'
+import deletedProject from './projectsReducers/deleteProjectReducer';
+import editPrjectData from './projectsReducers/editProjectReducer';
 
 export default combineReducers({
     userData,
@@ -22,5 +28,8 @@ export default combineReducers({
     filesUrl,
     projectsData,
     allNews,
-    transferIdReducer
+    allProjects,
+    transferIdReducer,
+    deletedProject,
+    editPrjectData
 });

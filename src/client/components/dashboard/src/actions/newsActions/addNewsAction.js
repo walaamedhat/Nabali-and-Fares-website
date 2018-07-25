@@ -2,7 +2,7 @@ import {
     ADDING_NEWS_START,
     ADDING_NEWS_SUCCESS,
     ADDING_NEWS_FAILURE
-} from '../constants/actionTypes'
+} from '../../constants/actionTypes'
 
 const loginFetchStart = () =>{
     return {

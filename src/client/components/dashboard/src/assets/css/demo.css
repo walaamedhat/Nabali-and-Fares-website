@@ -568,3 +568,34 @@
 .apartmentType_div>div{
     display: flex;
 }
+
+.font-size-icon{
+    font-size: 24px;
+    margin: 5px;
+}
+
+.sweet-alert{
+    right: 40% !important;
+    width: 366px !important;
+    top: 45% !important;
+}
+.sweet-alert>h2{
+    font-size: 26px !important;
+}
+
+#editing_project{
+    display: none;
+}
+.logo-style{
+    margin-bottom: 8px;
+    margin-right: 10px !important;
+    text-align: initial !important;
+}
+.navbar-brand{
+    margin-left: 63% !important;   
+}
+.navbar-header{
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+}

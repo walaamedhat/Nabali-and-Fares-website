@@ -8,7 +8,7 @@ import { BarLoader } from 'react-spinners';
 import Popup from 'react-popup';
 
 
-import addNewsData from '../../actions/addNewsAction';
+import addNewsData from '../../actions/newsActions/addNewsAction';
 import uploadFiles from '../../actions/uploadFilesAction';
 
 class AddNews extends Component {
@@ -169,14 +169,14 @@ class AddNews extends Component {
                         }
                       ]}
                       />
-                    {
-                        isFetching ?
-                          <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
-                            :
-                          <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
-                    }
-
-
+                    
+                   {
+                    this.props.isFetching || this.props.isFetchingAddNews ?
+                      <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
+                        : this.props.messageUpdate ?
+                      <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageAddNews}</div>
+                      : <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
+                   }
                     <Button bsStyle="info" block type="submit">
                       Add News
                     </Button>

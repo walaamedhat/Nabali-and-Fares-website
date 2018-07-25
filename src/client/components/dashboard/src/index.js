@@ -10,7 +10,6 @@ import PrivateRoute from "./authRoute";
 import Dashboard from "./layouts/Dashboard/Dashboard.jsx";
 import UserProfile from "./views/UserProfile/UserProfile";
 
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
 import "./assets/sass/light-bootstrap-dashboard.css?v=1.2.0";
@@ -34,6 +33,7 @@ ReactDOM.render(
         <PrivateRoute path='/mediacenter' ComponentName={Dashboard} />;
         <PrivateRoute path='/addnews' ComponentName={Dashboard} />;
         <PrivateRoute path='/ourprojects' ComponentName={Dashboard} />;
+        <PrivateRoute path='/addprojects' ComponentName={Dashboard} />;
         <PrivateRoute path='/' ComponentName={Login} />;
         <Route component={Page404}/>
       </Switch>

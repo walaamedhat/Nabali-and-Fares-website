@@ -2,25 +2,30 @@
 const initialState = {
   id:'',
   isFetching: false,
+  payload:''
 };
 
 
 const transferIdStart = () => {
     return ({
         type: 'TransferStart' ,
+        isFetching: false
     })
 }
-const transferId = (id) => {
+const transferId = (data) => {
     return ({
         type: 'TransferSuccess' ,
-        payload: id,
+        isFetching: true,
+        id: data.id,
+        payload: data
 
     })
 }
 
-const transferIdAction = (id) => dispatch => {
-        dispatch(transferIdStart())
-        dispatch(transferId(id))
+const transferIdAction = (id) => (dispatch, getState) => {
+        dispatch(transferIdStart())        
+        const projData = getState().allProjects.projectsData.data.filter(elem => elem._id === id.id)        
+        dispatch(transferId(projData))
 };
 
 const transferIdReducer = (state = initialState, action) => {
@@ -28,13 +33,14 @@ const transferIdReducer = (state = initialState, action) => {
     case 'TransferStart': {
       return {
         ...state,
-        isFetching:true,
+        isFetching:false,
       }}
     case 'TransferSuccess': {
       return {
         ...state,
-        id: action.payload.id,
-        isFetching: false,
+        id: action.id,
+        projData: action.payload,
+        isFetching: true,
       }}
 
     default:

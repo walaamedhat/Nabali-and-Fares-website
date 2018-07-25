@@ -69,11 +69,13 @@
     "react-svg-loader": "^2.1.0",
     "react-table": "^6.7.6",
     "react-xhr-uploader": "^0.5.0",
+    "reactjs-popup": "^1.1.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.19.0",
     "sweetalert": "^2.1.0",
+    "sweetalert-react": "^0.4.11",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1",
     "webpack": "^3.6.0"

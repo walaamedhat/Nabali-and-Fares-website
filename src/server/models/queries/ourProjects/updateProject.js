@@ -13,7 +13,7 @@ module.exports = (id,newsData,callback) => {
       images: dataProject.images,
       address: dataProject.title,
       date: Date.now(),
-      stars: dataProject.starts,
+      star: dataProject.star,
       type: dataProject.type
     },
   },

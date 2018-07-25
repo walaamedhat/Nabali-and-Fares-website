@@ -10,7 +10,7 @@ const projectsSchema = mongoose.Schema({
   images: Array,
   address: Object,
   date: Date,
-  stars: Boolean,
+  star: Boolean,
   type: String
 });
 

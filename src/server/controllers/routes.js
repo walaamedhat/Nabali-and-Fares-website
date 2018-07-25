@@ -9,7 +9,7 @@ const logout = require('./dashboard/logout');
 const auth = require('./dashboard/auth');
 const mediaCenter = require('./dashboard/mediaCenter');
 const uploadFiles = require('./dashboard/uploadFiles');
-const ourProjects = require('./dashboard/addProjects');
+const ourProjects = require('./dashboard/ourProjects');
 
 
 router.post('/login', login.post);
@@ -28,7 +28,9 @@ router.post('/editNews', mediaCenter.edit);
 router.post('/deleteNews', mediaCenter.delete);
 
 /// Projects Routes
+router.get('/getProjects', ourProjects.get)
 router.post('/addProject', ourProjects.post)
+router.post('/deleteProjects', ourProjects.delete);
 
 router.post('/upload', uploadFiles.post);
 

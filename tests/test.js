@@ -18,17 +18,30 @@ const deleteUser = require('../src/server/models/queries/deleteAny');
 //     .catch(err => t.end(err));
 // });
 
-tape('adding a new user to the database', (t) => {
-  const data = {
+tape('update user profile', t =>{
+    const data = {
+      id: "5b5855b035707b1bc188bcb5",
       role: 'Admin',
       name: 'Admin',
       password: '$2a$10$DnIIOabMGCi13bY5Kedgc.U.WeNUhgweAFHxxJ75ttAsoYDTztL86'
-  };
-  createUser(data, (err, res) => {
-    t.equal(res.role, 'Admin', 'role should be Admin');
-    t.end();
-  });
-});
+    }
+    updateUser(data, (err, res) =>{
+      t.equal(res.role, "Admin");
+      t.end();
+    })
+})
+
+// tape('adding a new user to the database', (t) => {
+//   const data = {
+//       role: 'Admin',
+//       name: 'Admin',
+//       password: '$2a$10$DnIIOabMGCi13bY5Kedgc.U.WeNUhgweAFHxxJ75ttAsoYDTztL86'
+//   };
+//   createUser(data, (err, res) => {
+//     t.equal(res.role, 'Admin', 'role should be Admin');
+//     t.end();
+//   });
+// });
 
 
 // tape('find user in database', (t) => {
@@ -55,7 +68,7 @@ tape('adding a new user to the database', (t) => {
 // })
 //
 // tape('delete User',(t) => {
-//   deleteUser(Users,'5b4ca3a5d877bd655d11d80e', (err,res) => {
+//   deleteUser(Users,'5b4ee98d326cfb0ad9cdcdab', (err,res) => {
 //     console.log(res);
 //     console.log(err);
 //     t.end();

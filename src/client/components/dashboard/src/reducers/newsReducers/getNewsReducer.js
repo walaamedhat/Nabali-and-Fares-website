@@ -1,8 +1,8 @@
 import {
-    ADDING_NEWS_START,
-    ADDING_NEWS_SUCCESS,
-    ADDING_NEWS_FAILURE
-} from '../constants/actionTypes';
+    GET_NEWS_START,
+    GET_NEWS_SUCCESS,
+    GET_NEWS_FAILURE
+} from '../../constants/actionTypes';
 
 const intialState = {
     newsData:{},
@@ -12,32 +12,32 @@ const intialState = {
 }
 
 
-const addNewsData = (state = intialState, action) => {
+const getNewsData = (state = intialState, action) => {
     switch(action.type){
-        case ADDING_NEWS_START:{
+        case GET_NEWS_START:{
             return{
                 ...state,
                 isFetching:true
             }
         }
-        case ADDING_NEWS_SUCCESS :{
+        case GET_NEWS_SUCCESS :{
             return{
                 ...state,
                 newsData:action.payload,
                 isFetching:false,
-                message: 'Add News Success'
+                message: 'Get News Success'
             }
         }
-        case ADDING_NEWS_FAILURE :{
+        case GET_NEWS_FAILURE :{
             return{
                 ...state,
                 error: action.error,
                 isFetching: false,
-                message: 'Add News Faild, Try Again!!'
+                message: 'Get News Faild, Try Again!!'
             }
         }
         default: return state
     }
 }
 
-export default addNewsData;
+export default getNewsData;

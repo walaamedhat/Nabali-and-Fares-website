@@ -13,9 +13,9 @@ class HeaderLinks extends Component {
     );
     return (
       <div>
-        <Nav pullRight>
+        <Nav >
           <NavItem eventKey={3} href="http://localhost:8000/api/v1/logout">
-            Log out
+            تسجيل الخروج
           </NavItem>
         </Nav>
       </div>

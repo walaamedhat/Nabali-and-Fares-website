@@ -2,7 +2,7 @@ import {
     ADDING_PROJECT_START,
     ADDING_PROJECT_SUCCESS,
     ADDING_PROJECT_FAILURE
-} from '../constants/actionTypes'
+} from '../../constants/actionTypes'
 
 const projectFetchStart = () =>{
     return {
@@ -29,6 +29,15 @@ const AddProject = (data) => (dispatch, getState) => {
     data.image360Url = getState().filesUrl.image360Url;
     data.videoUrl = getState().filesUrl.video
     data.images = getState().filesUrl.secondaryImages;
+        
+    let obj = {
+        address : {
+            city: data.city,
+        district: data.district,
+        street: data.street
+        }
+    }
+    const newdata = Object.assign(data,  obj);
     
     dispatch(projectFetchStart())
     
@@ -38,10 +47,13 @@ const AddProject = (data) => (dispatch, getState) => {
             "Content-Type": "application/json",
             "credentials": "same-origin"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(newdata)
     })
     .then(response => {
-        dispatch(projectFetchSuccess(response))
+        return response.json()
+    })
+    .then(res => {
+        dispatch(projectFetchSuccess(res))
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)
         dispatch(projectFetchFailure(error))
