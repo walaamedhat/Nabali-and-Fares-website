@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import '../index.css'
 
-const NewsBox = () => {
+class NewsBox extends Component {
+  constructor(props){
+    super(props)
+  }
+  render(){
+    const news = this.props.data;
+  console.log(this.props.data,'props box news');
     return (
         <div className='mediacenter__bottom__box'>
-                        <img src='./assets/mediaCenter.png'/>
+                        <img src={news.mainImage}/>
                         <div className='mediacenter__bottom__icon'>
                             <img src='./assets/calender.png'/>
                             <span>قبل 5 دقائق</span>
                             <img src='./assets/flag.png'/>
-                            <span>خبر</span>
+                            <span>{news.type}</span>
                         </div>
-                        <div className='mediacenter__bottom__title'>عنوان الخبر او المقال هنا</div>
-                        <p className='mediacenter__bottom__p'>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
-                        <div className='mediacenter__bottom__readmore'>
-                        إقرأ المزيد
+                        <div className='mediacenter__bottom__title'>{news.name.substring(0, 30)}...</div>
+                        <p className='mediacenter__bottom__p'>{news.discription.substring(0, 151)}...</p>
+                        <Link to={'/post/' + `${news._id}`}>
+                          <div className='mediacenter__bottom__readmore'>
+                            إقرأ المزيد
                             <span><i class="fas fa-arrow-left"></i></span>
-                        </div>
+                          </div>
+                        </Link>
         </div>
     );
+  }
 
  }
 

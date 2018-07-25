@@ -34,7 +34,6 @@ class EditSection extends Component {
       [e.target[2].name]: e.target[2].value
     }
     const { updateNewsData } = this.props;
-
     updateNewsData(this.state);
   }
 
@@ -80,26 +79,23 @@ class EditSection extends Component {
   }
 
   componentWillMount(){
+    console.log(this.props,'props');
     this.setState({
         data: this.props.data
     });
   }
 
 
-  componentDidUpdate(prevProps){
-      if(prevProps.data !== this.props.data){
-          this.setState({
-              data: this.props.data
-          });
-          this.forceUpdate();
-      }
-  }
+
 
   componentWillReceiveProps(nextProps){
     this.setState({data: nextProps.data});
   }
 
   render() {
+    const {AllNews , idNewsToEdit, data} = this.props;
+    console.log(data,'idNewsToEdit');
+
     const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;
     return(
 
@@ -112,7 +108,7 @@ class EditSection extends Component {
         <Card
           title=" عدل الخبر من هنا  "
           content={
-            <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={this.state.data._id}>
+            <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={data[0]._id}>
               <FormInputs
                 ncols={["col-md-5", "col-md-7"]}
                 proprieties={[
@@ -123,7 +119,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
                     required: true,
-                    defaultValue: this.state.data.type,
+                    defaultValue: data[0].type,
                     onChange: this.handleInputChange,
                     name: 'newsType'
                   },
@@ -133,7 +129,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     placeholder: "ادخل هنا عنوان الخبر",
                     required: true,
-                    defaultValue: this.state.data.name,
+                    defaultValue: data[0].name,
                     onChange: this.handleInputChange,
                     name: 'newsTitle'
 
@@ -149,7 +145,7 @@ class EditSection extends Component {
                       componentClass="textarea"
                       bsClass="form-control"
                       placeholder="أدخل هنا وصف الخبر/الإعلان"
-                      defaultValue={this.state.data.discription}
+                      defaultValue={data[0].discription}
                       onChange={this.handleInputChange}
                       name= 'newsDescription'
                     />
@@ -166,7 +162,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     id:'mainImage',
                     onChange:this.onSelectedMainImage,
-                    required: true,
+                    defaultValue:data[0].mainImage
 
                   }
                 ]}
@@ -180,7 +176,8 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     id:'secondaryImages',
                     onChange: this.onSelectedMultipleImages,
-                    multiple:true
+                    multiple:true,
+                    defaultValue:data[0].secondaryImages
                   }
                 ]}
                 />
@@ -192,7 +189,8 @@ class EditSection extends Component {
                     type: "file",
                     bsClass: "form-control",
                     id:'newsVideo',
-                    onChange: this.onSelectedVideo
+                    onChange: this.onSelectedVideo,
+                    defaultValue: data[0].video
                   }
                 ]}
                 />
@@ -221,6 +219,9 @@ class EditSection extends Component {
 
 const mapStateToProps = state => {
     return {
+      AllNews: state.allNews.newsData,
+      idNewsToEdit : state.transferIdReducer.id,
+      // data : state.transferIdReducer.data,
       isFetching: state.filesUrl.isFetching,
       message : state.filesUrl.message,
       isFetchingUpdate: state.editnewsData.isFetching,

@@ -46,7 +46,7 @@ class Header extends Component {
                     <img className='header__logo' src={this.props.Logo} />
                 </div>
                 {this.changeColorNav(this.props.WhereAmI)}
-                <div className='header__burger'><i className="fas fa-align-justify" onClick={this.showList}></i></div>
+                <div className='header__burger'><i style={{ color : 'white'}} className="fas fa-align-justify" onClick={this.showList}></i></div>
             </div>
             {
                 this.state.show &&

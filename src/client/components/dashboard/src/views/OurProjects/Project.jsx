@@ -4,9 +4,8 @@ import {connect} from 'react-redux';
 import Button from "../../components/CustomButton/CustomButton.jsx";
 import DeleteProject from '../../actions/projectsActions/deleteProjectAction';
 import { BarLoader } from 'react-spinners';
-import {transferIdAction} from '../../reducers/transferNewsId';
+import {transferIdProjectAction} from '../../reducers/transferNewsId';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom'
 
 class Project extends Component {
     
@@ -111,7 +110,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = {
   DeleteProject,
-  transferId : transferIdAction,
+  transferId : transferIdProjectAction,
 
 }
 

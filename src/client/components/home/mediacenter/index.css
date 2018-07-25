@@ -21,11 +21,10 @@
     background-color: #ffffff;
     padding: 25px;
     margin-left: 2em;
+    margin-top: 33px;
 
 }
-.mediacenter__bottom__box:last-child{
-    margin-left: 0;
-}
+
 .mediacenter__bottom__box>img{
     width: 256px;
     height: 180px;
@@ -72,7 +71,8 @@
     font-weight: 700;
 }
 
-mediacenter__top__lefttext:hover{
+
+.mediacenter__top__lefttext:hover{
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
@@ -94,8 +94,8 @@ mediacenter__top__lefttext:hover{
     margin: 2px 10px 0 0 ;
 }
 
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px){
     .mediacenter__bottom__box{
         margin: 0 auto 15px auto;

@@ -31,11 +31,11 @@ const AddProject = (data) => (dispatch, getState) => {
     data.images = getState().filesUrl.secondaryImages;
         
     let obj = {
-        address : {
-            city: data.city,
-        district: data.district,
-        street: data.street
-        }
+        address : [
+        data.street,
+        data.district,
+        data.city
+        ]
     }
     const newdata = Object.assign(data,  obj);
     

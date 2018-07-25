@@ -8,7 +8,7 @@ const projectsSchema = mongoose.Schema({
   videoUrl: String,
   image360Url: String,
   images: Array,
-  address: Object,
+  address: Array,
   date: Date,
   star: Boolean,
   type: String

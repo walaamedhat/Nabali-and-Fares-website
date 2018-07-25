@@ -2,6 +2,7 @@ const ourProjects = require('../../schemas/ourProjectsSchema');
 
 
 module.exports = (dataProject, callback) => {
+  console.log(dataProject);
   ourProjects.create({
     name: dataProject.name,
     description: dataProject.description,
@@ -18,6 +19,7 @@ module.exports = (dataProject, callback) => {
     if (callback && typeof callback === 'function') return callback(null, res);
   })
     .catch((err) => {
+      console.log(err , 'erorr');
       if (callback && typeof callback === 'function') return callback(err);
     });
 };

@@ -7,9 +7,24 @@
 .header-postImage{
   height: 360px;
   width: 100%;
-  filter: blur(1px);
+  /* filter: blur(1px); */
+  vertical-align: middle;
 }
 
+.content_over_image{
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: #f1f1f1;
+      width: 100%;
+      text-align: center;
+      height: 360px;
+}
+.content_over_image h2{
+  align-self: center;
+  width: 100%;
+}
 .post-desc{
   top: 229px;
   position: absolute;
@@ -170,11 +185,12 @@
   cursor: pointer;
 }
 .comments-section{
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .comments-image{
   width: 20%;
 }

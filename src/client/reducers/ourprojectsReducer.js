@@ -21,7 +21,7 @@ const projectsdata = (state = initalState , action)  => {
         case PROJECTS_FETCH_SUCCESS :{
             return{
                 ...state,
-                projectData:action.payload,
+                projectData:action.payload.data,
                 isFetching:false
             }
         }

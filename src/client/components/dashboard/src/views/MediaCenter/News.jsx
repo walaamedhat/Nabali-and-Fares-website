@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import {connect} from 'react-redux';
 import Button from "../../components/CustomButton/CustomButton.jsx";
-import {transferIdAction} from '../../reducers/transferNewsId';
+import {transferIdNewsAction} from '../../reducers/transferNewsId';
 import PropTypes from 'prop-types';
 import deleteNews from '../../actions/newsActions/deleteNews';
 
@@ -68,7 +68,7 @@ News.propTypes = {
     transferId: PropTypes.func
 }
 const mapDispatchToProps = {
-  transferId : transferIdAction,
+  transferId : transferIdNewsAction,
   deleteNews
 }
 export default connect (null, mapDispatchToProps)(News);

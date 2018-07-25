@@ -27,14 +27,17 @@ const projectFetchFailure = (err) => {
 
 const fetchAllProjects = () => dispatch => {
     dispatch(projectFetchStart())
-    fetch('/api/projects/all', {
+    fetch('/api/v1/all/projects', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         }
     })
     .then(response => {
-        dispatch(projectFetchSuccess())
+        return response.json();
+    })
+    .then(data => {
+        dispatch(projectFetchSuccess(data))
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)
         dispatch(projectFetchFailure(error))

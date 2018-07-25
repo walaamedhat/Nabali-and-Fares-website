@@ -1,7 +1,5 @@
 const express = require('express');
-
 const router = express.Router();
-
 
 const adminProfile = require('./dashboard/adminProfile');
 const login = require('./dashboard/login');
@@ -11,14 +9,24 @@ const mediaCenter = require('./dashboard/mediaCenter');
 const uploadFiles = require('./dashboard/uploadFiles');
 const ourProjects = require('./dashboard/ourProjects');
 
+const findAllProject = require('./allProject');
+const findProject = require('./projectData');
+const allNews = require('./allNews');
+const newsData = require('./newsData');
 
+const comment = require('./comment');
+
+const contactUs = require('./contactUs');
+
+
+//////////////// Dashboard Routes
 router.post('/login', login.post);
 router.get('/current_user', auth.get);
 router.get('/logout', logout.get);
 
 
 /////User Profile Routes
-router.get('/getAdminData', adminProfile.get);
+router.get('/gall/projectsetAdminData', adminProfile.get);
 router.post('/updateAdminData', adminProfile.post);
 
 ///Media Center Routes
@@ -33,5 +41,26 @@ router.post('/addProject', ourProjects.post)
 router.post('/deleteProjects', ourProjects.delete);
 
 router.post('/upload', uploadFiles.post);
+
+/////////////////Website Routes
+
+
+router.get('/all/projects', findAllProject.get);
+router.get('/stars_project', findAllProject.starProjects);
+router.get('/project/:project_id', findProject.get);
+
+
+router.get('/allnews', allNews.get);
+router.get('/post/:news_id', newsData.get);
+
+
+router.post('/addComment', comment.post);
+router.post('/allComment', comment.get);
+
+router.post('/contactUs', contactUs.post);
+
+
+
+
 
 module.exports = router;

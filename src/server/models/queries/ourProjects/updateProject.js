@@ -1,6 +1,5 @@
 const ourProjects = require('../../schemas/ourProjectsSchema');
 
-
 module.exports = (id,newsData,callback) => {
   ourProjects.findByIdAndUpdate(id, {
     $set: {
@@ -24,3 +23,19 @@ module.exports = (id,newsData,callback) => {
     .then(res => callback(null, res))
     .catch(err => callback(err));
 };
+
+
+// query test
+// module.exports = (id,newsData,callback) => {
+//   ourProjects.findByIdAndUpdate(id, {
+//     $set: {
+//       images: dataProject.images
+//     },
+//   },
+//   { new: true },
+//   (error, result) => {
+//     if (error) return callback(error);
+//   })
+//     .then(res => callback(null, res))
+//     .catch(err => callback(err));
+// };

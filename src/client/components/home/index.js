@@ -17,7 +17,7 @@ class Home extends Component {
           <div className='home-component'>
             <Slideshow/>
             <Map/>
-            <NewProjects />
+            <NewProjects props={this.props}/>
             <FeaturedProjects />
             <MediaCenter />
             <OurApps />
