@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom'
 
 import './index.css';
 
-
 class Projects extends Component{
+  constructor(props){
+    super(props)
+  }
+  
+  view = (e)=> {
+    this.props.props.history.push(`/project/${e.target.id}`);
+  }
   render() {
     const {data} = this.props;
     return (
@@ -45,12 +51,12 @@ class Projects extends Component{
               </h6>
             </div>
           </div>
-          <Link  style={{ alignSelf: 'flex-end' }} to={'/project/' + `${data._id}`}>
-            <div className='mediacenter__bottom__readmore show-more'>
+
+            <div className='mediacenter__bottom__readmore show-more' id={data._id} onClick={this.view}>
               عرض المزيد
               <span><i class="fas fa-arrow-left"></i></span>
             </div>
-          </Link>
+
           </div>
       </div>
     );

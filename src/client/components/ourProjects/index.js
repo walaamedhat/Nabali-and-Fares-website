@@ -47,14 +47,14 @@ class OurProjects extends Component {
 
                   allProjects.map(e => {
 
-                    return <Projects data={e}/>
+                    return <Projects props={this.props} data={e}/>
                   })
 
 
               }
             </div>
             <div className='ourProjects-map'>
-              <Map data={allProjects}/>
+              <Map height='648px' data={allProjects}/>
 
             </div>
           </div>

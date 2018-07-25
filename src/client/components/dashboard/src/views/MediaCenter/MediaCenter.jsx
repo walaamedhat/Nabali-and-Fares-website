@@ -28,34 +28,17 @@ class MediaCenter extends Component {
     getAllNews();
 
   }
-  reRender(){
-    this.componentDidMount;
-    this.setState({
-        data: this.props.AllNews.data
-    });
+
+  componentWillReceiveProps(nextProps){
+    this.setState({data: nextProps.AllNews.data});
   }
 
   render() {
-    {
-      this.props.AllNews.data ?
-        this.state={
-            data: this.props.AllNews.data
-        }
-      : this.state={data:''}
-    }
-    const {AllNews , idNewsToEdit , isFetching, editMessage} = this.props;
-    var newsDataToEdit ;
-    {
-      ! idNewsToEdit ? <div/> :
-       newsDataToEdit = AllNews.data.filter(e => e._id === idNewsToEdit);
-    }
-    // this.state = newsDataToEdit;
-    console.log(this.state,'stttttattatt');
-
+    const {AllNews , idNewsToEdit , isFetching, editMessage, dataToEdit} = this.props;
     return (
       <div className="content">
         {
-          editMessage ? this.reRender:
+          editMessage ? <div></div>:
 
           <Grid fluid>
             <Row>
@@ -75,8 +58,8 @@ class MediaCenter extends Component {
                   />
               </Col>
               {
-                newsDataToEdit && ! isFetching?
-                <EditSection data={newsDataToEdit[0]}/>
+                dataToEdit && ! isFetching?
+                <EditSection  data={dataToEdit} />
 
                 : <div/>
             }
@@ -95,6 +78,7 @@ MediaCenter.propTypes = {
 const mapStateToProps = state => {
   return {
     AllNews: state.allNews.newsData,
+    dataToEdit : state.transferIdReducer.data,
     idNewsToEdit : state.transferIdReducer.id,
     isFetching : state.transferIdReducer.isFetching,
     editMessage: state.editnewsData.message
@@ -106,109 +90,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MediaCenter);
-
-
-
-
-
-
-// <Col md={6} id='editing_div'>
-//   <OverlayTrigger placement="top" overlay={close}>
-//     <CustomButton bsStyle="info" simple type="button" bsSize="xs" onClick={this.closeWindow}>
-//       <i className="fa fa-close" />
-//     </CustomButton>
-//   </OverlayTrigger>
-//   <Card
-//     title=" عدل الخبر من هنا  "
-//     content={
-//       <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit}>
-//         <FormInputs
-//           ncols={["col-md-5", "col-md-7"]}
-//           proprieties={[
-//
-//             {
-//               label: "نوع الخبر",
-//               type: "text",
-//               bsClass: "form-control",
-//               placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
-//               required: true,
-//               defaultValue: newsDataToEdit[0].type,
-//               onChange: this.handleTypeInputChange
-//             },
-//             {
-//               label: "عنوان الخبر",
-//               type: "text",
-//               bsClass: "form-control",
-//               placeholder: "ادخل هنا عنوان الخبر",
-//               required: true,
-//               defaultValue: newsDataToEdit[0].name,
-//               onChange: this.handleTitInputChange
-//
-//             }
-//           ]}
-//         />
-//         <Row>
-//           <Col md={12}>
-//             <FormGroup>
-//               <ControlLabel>وصف الخبر/الإعلان</ControlLabel>
-//               <FormControl
-//                 rows="5"
-//                 componentClass="textarea"
-//                 bsClass="form-control"
-//                 placeholder="أدخل هنا وصف الخبر/الإعلان"
-//                 defaultValue={newsDataToEdit[0].discription}
-//                 onChange={this.handleDesInputChange}
-//               />
-//             </FormGroup>
-//           </Col>
-//         </Row>
-//         <FormInputs
-//           ncols={["col-md-12"]}
-//           proprieties={[
-//
-//             {
-//               label: "أدخل هنا الصورة الرئيسية",
-//               type: "file",
-//               bsClass: "form-control",
-//               id:'mainImage',
-//               onChange:this.onSelectedMainImage,
-//               required: true,
-//
-//             }
-//           ]}
-//           />
-//           <FormInputs
-//           ncols={["col-md-12"]}
-//           proprieties={[
-//             {
-//               label: "أدخل هنا الصور الثانوية",
-//               type: "file",
-//               bsClass: "form-control",
-//               id:'secondaryImages',
-//               onChange: this.onSelectedMultipleImages,
-//               multiple:true
-//             }
-//           ]}
-//           />
-//           <FormInputs
-//           ncols={["col-md-12"]}
-//           proprieties={[
-//             {
-//               label: "أدخل هنا الفيديو (إن وجد)",
-//               type: "file",
-//               bsClass: "form-control",
-//               id:'newsVideo',
-//               onChange: this.onSelectedVideo
-//             }
-//           ]}
-//           />
-//
-//
-//         <Button bsStyle="info" block type="submit">
-//           Update News
-//         </Button>
-//       </form>
-//     }
-//   />
-// </Col>
-//

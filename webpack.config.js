@@ -5,7 +5,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public/'),
-    publicPath: './public'
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -40,7 +40,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]'
-            }  
+            }
           }
         ]
       }

@@ -7,7 +7,19 @@ const deleteUser = require('../src/server/models/queries/deleteAny');
 
 
 const createProject = require('../src/server/models/queries/ourProjects/createProject');
+const updateProject = require('../src/server/models/queries/ourProjects/updateProject');
 
+tape('update project',(t) => {
+  const data = {
+    images:['http://nabalifares.ps/images/homs/saida.jpg','http://nabalifares.ps/images/homs/arbel.jpg','http://nabalifares.ps/images/homs/fas.jpg','http://nabalifares.ps/images/homs/albet-alandlwse.jpg','http://nabalifares.ps/images/homs/demas.jpg',
+            'http://nabalifares.ps/images/homs/saida.jpg','http://nabalifares.ps/images/homs/arbel.jpg','http://nabalifares.ps/images/homs/fas.jpg','http://nabalifares.ps/images/homs/albet-alandlwse.jpg','http://nabalifares.ps/images/homs/demas.jpg'
+            ]
+  }
+  updateProject('5b53b63fc02aa6099d86a904',data,(err,res) => {
+    t.equal(res.name, 'مشروع ديماس', 'name should be demas');
+    t.end();
+  })
+})
 // tape('adding a new project to the database', (t) => {
 //   const data = {
 //     name:'مشروع طرابلس',

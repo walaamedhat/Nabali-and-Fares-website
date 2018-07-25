@@ -1,25 +1,9 @@
-.porjectpage__images__img{
-    width: 50%;
-    height: 360px;
+.projectpage__details> div{
+  display: flex;
+  margin-bottom: 40px;
 }
 .projectpage__details{
-    padding: 4em;
-}
-.projectpage__details> div{
-    display: flex;
-    margin-bottom: 40px;
-}
-.porjectpage__images{
-    display: flex;
-}
-.projectpage__4image{
-    display: flex;
-    flex-wrap: wrap;
-    width: 50%;
-}
-.projectpage__4image>img{
-    width: 50%;
-    height: 180px;
+  padding: 4em;
 }
 
 .projectpage__row1{
@@ -35,7 +19,7 @@
     color: #475669;
 }
 .project__page__street{
-    display: flex;  
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -106,10 +90,10 @@
 
 .projectpage__row5>div:nth-child(2):hover{
     cursor: pointer;
-}   
+}
 
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px){
     .porjectpage__images__img{
         height: 180px;

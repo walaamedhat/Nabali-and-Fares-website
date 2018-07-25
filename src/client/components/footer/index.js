@@ -8,7 +8,7 @@ class Footer extends Component {
     return (
       <div className='footer' id='aboutUs'>
         <div className='footer-rightSection'>
-          <img src='./assets/nabali-fares-logo.png'/>
+          <img src='../assets/nabali-fares-logo.png'/>
           <p className='rightSection-paragraph' >
             هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها
 
