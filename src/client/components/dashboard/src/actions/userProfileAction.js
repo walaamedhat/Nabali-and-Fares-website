@@ -26,12 +26,18 @@ const getDataFailure = (err) => {
 
 const GetUserData = () => dispatch => {
     dispatch(getDataStart())
+    
     fetch('http://localhost:8000/api/v1/getAdminData', {
         method: "GET",
         'credentials': 'include'
     })
-    .then(response => response.json())
+    .then(response => {
+            return response.json()
+        }
+    )
     .then(data => {
+        console.log('data in user profile Action, :',data);
+        
         dispatch(getDataSuccess(data))
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)

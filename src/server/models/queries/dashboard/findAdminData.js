@@ -1,7 +1,7 @@
 const Users = require('../../schemas/user_schema');
 
 
-const findUsers = (id , callback) => {
+const findUsers = (id , callback) => {  
   Users.findOne({_id:id})
     .then(res => {
       callback(null, res)})

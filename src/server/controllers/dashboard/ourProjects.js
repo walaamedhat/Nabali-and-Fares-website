@@ -1,10 +1,12 @@
 const createNewProject = require('../../models/queries/ourProjects/createProject');
-const getAllProjects = require('../../models/queries/ourProjects/findProject');
+const getAllProjects = require('../../models/queries/ourProjects/findAllProject');
 const deleteProject = require('../../models/queries/ourProjects/deleteProject');
 
 exports.get = (req, res) => {
     getAllProjects((err,result) => {
       if (err) {
+        console.log(err);
+        
         res.status(500).send(err);
       }
       else {

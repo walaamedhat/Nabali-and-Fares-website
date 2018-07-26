@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-<<<<<<< HEAD
-// import projectData from '../../actions/getProjectData';
-=======
 import projectData from '../../actions/getProjectData';
->>>>>>> 8903972c36bc85fda11817f27ba8e49a53ca7903
 import Header from '../header/index';
 import Feature from './feature';
 import ReactPlayer from 'react-player';
@@ -45,13 +41,10 @@ class ProjectPage extends Component {
       // const { pojectData } = this.props;
       // pojectData(this.props.match.params.project_id);
     }
-<<<<<<< HEAD
-=======
     componentDidMount() {
       const { projectData } = this.props;
       projectData(this.props.match.params.project_id);
     }
->>>>>>> 8903972c36bc85fda11817f27ba8e49a53ca7903
 
     render(){
       const {isFetching , data} = this.props;

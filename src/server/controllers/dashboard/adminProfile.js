@@ -13,7 +13,7 @@ const password = (password) => {
 
 
 exports.post = (req, res) => {
-  const { accessToken } = req.cookies;
+  const { accessToken } = req.cookies;  
   if (accessToken) {
     const verifyCookie = jwt.verify(accessToken, process.env.SECRET_COOKIE);
     if (verifyCookie) {
@@ -58,15 +58,16 @@ exports.post = (req, res) => {
 
 exports.get = (req, res) => {
   const { accessToken } = req.cookies;
+  
   if (accessToken) {
     const verifyCookie = jwt.verify(accessToken, process.env.SECRET_COOKIE);
     if (verifyCookie) {
       const id = jwt.decode(accessToken);
-      findAdminData(id,(err,result) => {
-        if (err) {
+      findAdminData(id,(err,result) => {    
+        if (err) { 
           res.status(500).send(err);
         }
-        else {
+        else {          
           res.status(200).send({username:result.username})
         }
       })

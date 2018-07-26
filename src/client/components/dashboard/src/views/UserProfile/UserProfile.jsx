@@ -46,32 +46,32 @@ class UserProfile extends Component {
   render() {
     const { isFetching , username, isFetchingUpdate} = this.props;
     return (
-      <div className="content">
+      <div className="content user-profile">
       {
         isFetching ? <div/> :
           <Grid fluid>
             <Row>
               <Col md={8}>
                 <Card
-                  title="Edit Profile"
+                  title="تعديل اسم المستخدم وكلمة السر"
                   content={
                     <form onSubmit={this.onSubmit}>
                       <FormInputs
                         ncols={["col-md-6", "col-md-6"]}
                         proprieties={[
                           {
-                            label: "Company (disabled)",
+                            label: "اسم الشركة",
                             type: "text",
                             bsClass: "form-control",
-                            placeholder: "Company",
+                            placeholder: "الشركة",
                             defaultValue: "Nabali & Fares",
                             disabled: true
                           },
                           {
-                            label: "Username",
+                            label: "اسم المستخدم",
                             type: "text",
                             bsClass: "form-control",
-                            placeholder: "Username",
+                            placeholder: "اسم المستخدم",
                             defaultValue: `${username}`,
                             id:'username'
                           }
@@ -81,27 +81,27 @@ class UserProfile extends Component {
                         ncols={["col-md-6", "col-md-6"]}
                         proprieties={[
                           {
-                            label: "Old Password",
+                            label: "كلمة السر الجديدة",
                             type: "password",
                             bsClass: "form-control",
-                            placeholder: "Old Password",
-                            id: 'oldPassword',
-                            required : 'true'
-                          },
-                          {
-                            label: "New Password",
-                            type: "password",
-                            bsClass: "form-control",
-                            placeholder: "New Password",
+                            placeholder: "ادخل هنا كلمة السر الجديدة",
                             id: 'newPassword',
                             required : 'true'
 
+                          },
+                          {
+                            label: "كلمة السر القديمة",
+                            type: "password",
+                            bsClass: "form-control",
+                            placeholder: "ادخل هنا كلمة السر القديمة",
+                            id: 'oldPassword',
+                            required : 'true'
                           }
                         ]}
                       />
 
                       <Button bsStyle="info" pullRight fill type="submit" onClick={this.handleTestRequest}>
-                        Update Profile
+                        احفظ التعديل الآن
                       </Button>
                       <div className="clearfix" />
                       {

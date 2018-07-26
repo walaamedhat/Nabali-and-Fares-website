@@ -599,3 +599,7 @@
     display: flex !important;
     flex-direction: row-reverse !important;
 }
+
+.user-profile > .container-fluid > .row{
+    display: flex;
+}
