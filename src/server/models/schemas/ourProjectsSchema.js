@@ -10,8 +10,7 @@ const projectsSchema = mongoose.Schema({
   images: Array,
   address: Array,
   date: Date,
-  stars: Boolean,
-  type: String
+  star: Boolean
 });
 
 const ourProjects = mongoose.model('ourProjects', projectsSchema);

@@ -1,7 +1,7 @@
 const ourProjects = require('../../schemas/ourProjectsSchema');
 
-module.exports = (id,newsData,callback) => {
-  ourProjects.findByIdAndUpdate(id, {
+module.exports = (dataProject,callback) => {
+  ourProjects.findByIdAndUpdate(dataProject._id, {
     $set: {
       name: dataProject.name,
       description: dataProject.description,
@@ -10,10 +10,9 @@ module.exports = (id,newsData,callback) => {
       videoUrl: dataProject.videoUrl,
       image360Url: dataProject.image360Url,
       images: dataProject.images,
-      address: dataProject.title,
+      address: [dataProject.street,dataProject.district,dataProject.city],
       date: Date.now(),
-      stars: dataProject.starts,
-      type: dataProject.type
+      star: dataProject.star
     },
   },
   { new: true },
@@ -23,19 +22,3 @@ module.exports = (id,newsData,callback) => {
     .then(res => callback(null, res))
     .catch(err => callback(err));
 };
-
-
-// query test
-// module.exports = (id,newsData,callback) => {
-//   ourProjects.findByIdAndUpdate(id, {
-//     $set: {
-//       images: dataProject.images
-//     },
-//   },
-//   { new: true },
-//   (error, result) => {
-//     if (error) return callback(error);
-//   })
-//     .then(res => callback(null, res))
-//     .catch(err => callback(err));
-// };
