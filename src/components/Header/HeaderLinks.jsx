@@ -14,7 +14,7 @@ class HeaderLinks extends Component {
     return (
       <div>
         <Nav >
-          <NavItem eventKey={3} href="http://localhost:8000/api/v1/logout">
+          <NavItem eventKey={3} href="https://nabaliandfares.herokuapp.com/api/v1/logout">
             تسجيل الخروج
           </NavItem>
         </Nav>
