@@ -21,7 +21,6 @@ exports.get = (req,res) => {
       res.status(500).send(err);
     }
     else {
-      console.log(result,'resuuuuult');
       res.status(200).send(result);
     }
   })

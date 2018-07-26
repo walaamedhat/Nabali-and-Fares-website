@@ -24,7 +24,6 @@
 }
 
 
-
 .slider-button:hover{
   cursor: pointer;
 }
@@ -51,3 +50,27 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.slider-circle-img{
+    width: 500px;
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px) {
+    .slider-circle{
+      top: 350px !important;
+      left: 80px !important;
+      display: none !important;
+    }
+    .slider-circle-img{
+        width: 12em !important;
+    }
+
+    .slider-text{
+      display: none !important;
+    }
+    ..fade-wrapper .images-wrap div img{
+      height: 455px !important;
+    }
+  }

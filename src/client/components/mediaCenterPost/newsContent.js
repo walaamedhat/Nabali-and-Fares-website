@@ -46,8 +46,7 @@ class MediaCenterPost extends Component {
   render() {
     const data = this.props.data;
     const {anotherNews} = this.props;
-    const randomIndex = Math.floor(Math.random() * 5);
-    console.log(anotherNews,'anotherNews');
+    const randomIndex = Math.floor(Math.random() * anotherNews.newsData.length);
     return (
       <div>
         <Header Logo='../assets/nabali-fares-colored.png' WhereAmI='mediacenterpage'/>

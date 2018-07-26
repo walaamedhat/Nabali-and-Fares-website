@@ -24,12 +24,11 @@ class Post extends Component{
   }
   render() {
     const {isFetching , data, comments} = this.props;
-    console.log(comments,'comments');
     console.log(data,'daaaata');
     return (
       <div className='posts' style={{ marginBottom:'198px' }}>
         {
-          isFetching ? <div/> :
+          isFetching || data.length === 0?  <div/> :
           <div>
             <NewsContent data={data}/>
             <SendComment id={data}/>

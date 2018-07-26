@@ -58,17 +58,18 @@ class NewProjects extends Component {
             {
               allProjects.isFetching || allProjects.length==0? <div>loading</div> :
               <Slider {...settings}>
+                {allProjects.length<=3 ?
               <div className='newprojects__down'>
-
                 <ProjectSection data={allProjects[0]} props={this.props.props} />
                 <ProjectSection data={allProjects[1]} props={this.props.props}/>
                 <ProjectSection data={allProjects[2]} props={this.props.props}/>
               </div>
+              :
               <div className='newprojects__down'>
                 <ProjectSection data={allProjects[3]} props={this.props.props}/>
                 <ProjectSection data={allProjects[4]} props={this.props.props}/>
                 <ProjectSection data={allProjects[5]} props={this.props.props}/>
-              </div>
+              </div>}
 
 
               </Slider>

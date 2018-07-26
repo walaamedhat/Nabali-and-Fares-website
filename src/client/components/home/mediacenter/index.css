@@ -12,6 +12,7 @@
 .mediacenter__bottom{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .mediacenter__bottom__box{
     width: 260px;

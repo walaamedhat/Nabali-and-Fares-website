@@ -23,6 +23,7 @@
     margin: 0 5px;
     justify-content: space-evenly;
     padding-bottom: 51px;
+    flex-wrap: wrap;
 }
 .newprojects__title{
     width: 134px;
@@ -53,6 +54,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
     border-radius: 5px;
     background-color: #ffffff;
+    margin-bottom: 20px;
 
 }
 .newprojects__project:last-child{

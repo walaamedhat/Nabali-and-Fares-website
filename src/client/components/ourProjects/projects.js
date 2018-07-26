@@ -7,16 +7,17 @@ class Projects extends Component{
   constructor(props){
     super(props)
   }
-  
+
   view = (e)=> {
     this.props.props.history.push(`/project/${e.target.id}`);
   }
   render() {
     const {data} = this.props;
+    console.log();
     return (
       <div className='projects-section'>
         <div className='project-image'>
-          <img src='./assets/project.png'/>
+          <img src={data.images[0]}/>
         </div>
         <div className='project-details'>
           <h3 style={{ margin:'0', color:'#3da5f9', padding: '9px 15px 0 0' }}>{data.name}</h3>

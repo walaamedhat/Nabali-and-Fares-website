@@ -33,12 +33,9 @@ class OurProjects extends Component {
               <div className='ourProjects-headers'>
                 <div className='titleAndNumber'>
                   <h3 className='ourProjects-title'>مشاريعنا</h3>
-                  <h5 className='ourProjects-number'>345 مشروع</h5>
+                  <h5 className='ourProjects-number'>{allProjects.length} مشروع</h5>
                 </div>
                 <div>
-                  <h5 className='ourProjects-number'>ترتيب العرض
-                    <img style={{ paddingRight:'14px' }} src='./assets/sort.png'/>
-                  </h5>
                 </div>
               </div>
               {
@@ -79,3 +76,13 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OurProjects);
+
+
+
+
+
+
+
+// <h5 className='ourProjects-number'>ترتيب العرض
+//   <img style={{ paddingRight:'14px' }} src='./assets/sort.png'/>
+// </h5>
