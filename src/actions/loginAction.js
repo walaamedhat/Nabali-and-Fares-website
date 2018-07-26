@@ -26,7 +26,7 @@ const loginFetchFailure = (err) => {
 
 const LoginUser = (data) => dispatch => {
     dispatch(loginFetchStart())
-    fetch('http://localhost:8000/api/v1/login', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/login', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

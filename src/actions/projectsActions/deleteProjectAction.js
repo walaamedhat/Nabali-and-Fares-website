@@ -28,7 +28,7 @@ const deleteProjectFailure = (err) => {
 const DeleteProject = data => (dispatch, getState)=> {
     const {allProjects} = getState()
     dispatch(deleteProjectStart())
-    fetch('http://localhost:8000/api/v1/deleteProjects', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/deleteProjects', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

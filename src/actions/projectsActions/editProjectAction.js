@@ -25,14 +25,22 @@ const editProjectFailure = (err) => {
 }
 
 const editProject = data => (dispatch, getState)=> {
-    data.images = getState().filesUrl.secondaryImages;
-    data.image360Url = getState().filesUrl.image360Url;
-    data.videoUrl = getState().filesUrl.video;
+    if(data.images.length === 0 && getState().filesUrl.secondaryImages ===null){
+        data.images = data.projData.images
 
-    console.log(data, ' data here in admin');
+    }
+    else if (getState().filesUrl.secondaryImages){
+        
+        data.images = getState().filesUrl.secondaryImages;
+        
+    }
+    
+    else{
+         
+    }
     
     dispatch(editProjectwsStart())
-    fetch('http://localhost:8000/api/v1/editProject', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/editProject', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -48,6 +56,8 @@ const editProject = data => (dispatch, getState)=> {
     .catch(error => {console.error(`Fetch Error =\n`, error)
         dispatch(editProjectFailure(error))
     });
+
+    
 };
 
 export default editProject;

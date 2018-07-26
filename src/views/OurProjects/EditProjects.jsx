@@ -8,6 +8,7 @@ import { FormInputs } from '../../components/FormInputs/FormInputs';
 import Card from "../../components/Card/Card.jsx";
 import editProject from '../../actions/projectsActions/editProjectAction';
 import uploadFiles from '../../actions/uploadFilesAction';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 class EditProfile extends Component {
     constructor(props){
@@ -22,47 +23,20 @@ class EditProfile extends Component {
     closeWindow= () => {
         document.getElementById('editing_project').style.display = "none";;
     }
+    loadWindow = () =>{
+        window.location.pathname = '/ourprojects';
+      }
+    
 
     onSubmit = e => { 
         e.preventDefault();
-        // const newAddress = {
-        //     street: e.target[1].value,
-        //     district: e.target[2].value,
-        //     city: e.target[3].value
-        // }
-        // this.state = {
-        //         _id: e.target.id,
-        //         name: e.target[0].value,
-        //         address: newAddress,
-        //         description: e.target[4].value,
-        //         features: e.target[5].value
-        // }
         this.handleTypesOfApartments()
-        console.log(this.state, ' state in editpr oject');
-        
+        console.log(this.state, ' state in editpr oject');        
         const { editProject } = this.props
-
+        console.log(this.state ,' state on click edit button');
+        
         editProject(this.state)
     }
-
-
-    // handleInputChange = (e) =>{
-    //     f(e.target.name === 'apartmentType'){        
-    //         let arr = []
-    //         arr.push(e.target.value);
-    //         this.setState({
-    //         typesOfApartments: arr
-    //         })
-    //     }
-    //     if(e.target.name === 'name'){
-    //     this.setState({
-    //         name: e.target.value
-    //     })
-    //     }
-    //     this.setState({
-    //         [e.target.name]: e.target.value,
-    //     })
-    // }
 
     onPlusClick = e =>{
         const div = document.querySelector(".apartmentType_div");
@@ -121,18 +95,16 @@ class EditProfile extends Component {
         this.setState({
             name:this.props.projData[0].name,
             _id:this.props.projData[0]._id,
-            city:this.props.projData[0].address.city,
-            street:this.props.projData[0].address.street,
-            district:this.props.projData[0].address.district,
+            city:this.props.projData[0].address[2],
+            street:this.props.projData[0].address[0],
+            district:this.props.projData[0].address[1],
             description:this.props.projData[0].description,
             features:this.props.projData[0].features,
             images:this.props.projData[0].images,
             image360Url:this.props.projData[0].image360Url,
-            videoUrl:this.props.projData[0].videoUrl
-
-
-
-
+            videoUrl:this.props.projData[0].videoUrl,
+            star: this.props.projData[0].star,
+            typesOfApartments:this.props.projData[0].typesOfApartments
         })
     }
 
@@ -259,7 +231,7 @@ class EditProfile extends Component {
                         </Row>
                         <h5>هل يعد المشروع من ضمن المشاريع المميزة</h5>
                         <div className="radio">
-                            <input id='radioBtn' name="radioBtn" type="radio" checked={this.state.projData[0].star} onClick={this.onClickRadioBtn}/>
+                            <input id='radioBtn' name="radioBtn" type="radio" checked={this.state.star} onClick={this.onClickRadioBtn}/>
                             <label htmlFor='radioBtn'>يعد من المشاريع المميزة ؟</label>
                         </div>
                         <h5>صور المشروع</h5>
@@ -305,6 +277,18 @@ class EditProfile extends Component {
                             }                        
                             ]}
                             />
+
+                            {
+                    this.props.isFetchingUpload ||this.props.isFetchingEdit ?
+                      <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
+                        :this.props.messageEdit?
+                            <SweetAlert 
+                                success 
+                                title="تم تعديل المشروع بنجاح" 
+                                onConfirm={this.loadWindow}>
+                                </SweetAlert>
+                      :<div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpload}</div>
+                }
                         <Button bsStyle="info" block type="submit">
                             إحفظ التعديلات
                         </Button>
@@ -322,7 +306,14 @@ class EditProfile extends Component {
 const mapStateToProps = state => {
     return {
         projectData : state.transferIdReducer.projData,
-        isFetching: state.transferIdReducer.isFetching
+        isFetching: state.transferIdReducer.isFetching,
+        filesUrl: state.filesUrl,
+        isFetchingUpload: state.filesUrl.isFetching,
+        messageUpload : state.filesUrl.message,
+        isFetchingEdit:state.editPrjectData.isFetching,
+        messageEdit:state.editPrjectData.message        
+                
+
     };
 };
 

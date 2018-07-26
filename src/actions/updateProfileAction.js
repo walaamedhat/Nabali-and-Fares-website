@@ -26,7 +26,7 @@ const updateDataFailure = (err) => {
 
 const GetUserData = (data) => dispatch => {
     dispatch(updateDataStart())
-    fetch('http://localhost:8000/api/v1/updateAdminData', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/updateAdminData', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -27,7 +27,7 @@ const getDataFailure = (err) => {
 const GetUserData = () => dispatch => {
     dispatch(getDataStart())
     
-    fetch('http://localhost:8000/api/v1/getAdminData', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/getAdminData', {
         method: "GET",
         'credentials': 'include'
     })

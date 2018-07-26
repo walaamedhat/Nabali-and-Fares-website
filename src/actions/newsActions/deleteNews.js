@@ -26,7 +26,7 @@ const deleteFetchFailure = (err) => {
 
 const DeleteNews = data => (dispatch, getState)=> {
     dispatch(deleteFetchStart())
-    fetch('http://localhost:8000/api/v1/deleteNews', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/deleteNews', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -30,7 +30,7 @@ const AddNews = data => (dispatch, getState)=> {
     data.video = getState().filesUrl.video;
 
     dispatch(loginFetchStart())
-    fetch('http://localhost:8000/api/v1/addNews', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/addNews', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

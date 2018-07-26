@@ -41,7 +41,7 @@ const AddProject = (data) => (dispatch, getState) => {
     
     dispatch(projectFetchStart())
     
-    fetch('http://localhost:8000/api/v1/addProject', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/addProject', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

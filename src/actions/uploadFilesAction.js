@@ -29,7 +29,7 @@ return {
 
 const upload = (attr, data) => dispatch => {
   dispatch(uploadFetchStart())
-  fetch('http://localhost:8000/api/v1/upload', {
+  fetch('https://nabaliandfares.herokuapp.com/api/v1/upload', {
       method:"POST",
       body:data
     }).then((res) => {

@@ -27,7 +27,7 @@ const failure = massage => {
 
 const auth = () => dispatch => {
   dispatch(start());
-  fetch('http://localhost:8000/api/v1/current_user',
+  fetch('https://nabaliandfares.herokuapp.com/api/v1/current_user',
     {  method: 'GET',
        credentials: 'include'
      }).then(response => response.json())

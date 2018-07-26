@@ -27,7 +27,7 @@ const getFetchFailure = (err) => {
 const getAllNews = () => dispatch => {
     dispatch(getFetchStart())
 
-    fetch('http://localhost:8000/api/v1/getNews', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/getNews', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
