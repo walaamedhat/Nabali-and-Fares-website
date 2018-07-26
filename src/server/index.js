@@ -8,7 +8,7 @@ const dbConnection = require('./models/connection');
 const routes = require('./controllers/routes');
 const fileUpload = require('express-fileupload');
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 
