@@ -12,7 +12,7 @@
     "dev:start": "nodemon --exec node ./src/server/",
     "generate": "rc-autocomplete",
     "test": "node tests/index.js | tap-spec",
-    "postinstall": "npm run dev:build"
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
