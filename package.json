@@ -7,11 +7,12 @@
     "build": "webpack && babel src --out-dir lib --copy-files",
     "start": "node ./src/server/",
     "watch": "nodemon ./src/server/",
-    "dev:build": "webpack --watch",
+    "dev:build": "webpack ",
     "dev": "concurrently \"nodemon ./src/server/\" \"webpack --watch\"",
     "dev:start": "nodemon --exec node ./src/server/",
     "generate": "rc-autocomplete",
-    "test": "node tests/index.js | tap-spec"
+    "test": "node tests/index.js | tap-spec",
+    "postinstall": "npm run dev:build"
   },
   "keywords": [],
   "author": "",
