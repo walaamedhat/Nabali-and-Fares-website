@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 
 var corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://nfdashboard.herokuapp.com',
   credentials:  true
 }
 
