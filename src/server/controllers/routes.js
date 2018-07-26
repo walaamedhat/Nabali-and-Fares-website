@@ -24,7 +24,7 @@ router.get('/current_user', auth.get);
 router.get('/logout', logout.get);
 
 /////User Profile Routes
-router.get('/gall/projectsetAdminData', adminProfile.get);
+router.get('/getAdminData', adminProfile.get);
 router.post('/updateAdminData', adminProfile.post);
 
 ///Media Center Routes
