@@ -16,6 +16,7 @@ import projectsData from './projectsReducers/addProjectsReducer';
 import allProjects from './projectsReducers/getProjectsReducer'
 import deletedProject from './projectsReducers/deleteProjectReducer';
 import editPrjectData from './projectsReducers/editProjectReducer';
+import transferProject from './projectsReducers/transferIdProjectReducer';
 
 export default combineReducers({
     userData,
@@ -31,5 +32,6 @@ export default combineReducers({
     allProjects,
     transferIdReducer,
     deletedProject,
-    editPrjectData
+    editPrjectData,
+    transferProject
 });

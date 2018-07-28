@@ -584,7 +584,7 @@
 }
 
 #editing_project{
-    display: none;
+    display: block;
 }
 .logo-style{
     margin-bottom: 8px;

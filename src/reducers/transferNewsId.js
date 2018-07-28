@@ -10,13 +10,11 @@ const initialState = {
 const transferIdStart = () => {
     return ({
         type: 'TransferStart' ,
-        isFetching: false
     })
 }
 const transferId = (data) => {
     return ({
         type: 'TransferSuccess' ,
-        isFetching: true,
         id: data.id,
         payload: data
 
@@ -30,11 +28,12 @@ const transferData = (data) => {
     })
 }
 
-const transferIdProjectAction = (id) => (dispatch, getState) => {
-        dispatch(transferIdStart())        
-        const projData = getState().allProjects.projectsData.data.filter(elem => elem._id === id.id)        
-        dispatch(transferId(projData))
-}
+// const transferIdProjectAction = (id) => (dispatch, getState) => {
+//         dispatch(transferIdStart())        
+//         const projData = getState().allProjects.projectsData.data.filter(elem => elem._id === id.id)        
+//         dispatch(transferId(id.id))
+//         dispatch(transferData(projData))
+// }
 const transferIdNewsAction = id => (dispatch,getState) => {
         dispatch(transferIdStart())
         dispatch(transferId(id))
@@ -47,14 +46,13 @@ const transferIdReducer = (state = initialState, action) => {
     case 'TransferStart': {
       return {
         ...state,
-        isFetching:false,
+        isFetching:true,
       }}
     case 'TransferSuccess': {
       return {
         ...state,
         id: action.id,
-        projData: action.payload,
-        isFetching: true,
+        isFetching: false,
       }}
     case 'TransferDataSuccess': {
       return {
@@ -68,4 +66,4 @@ const transferIdReducer = (state = initialState, action) => {
   }
 };
 
-module.exports = {transferIdProjectAction, transferIdNewsAction ,transferIdReducer};
+module.exports = {transferIdNewsAction ,transferIdReducer};

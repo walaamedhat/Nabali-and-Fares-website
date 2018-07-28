@@ -28,7 +28,7 @@ class MediaCenter extends Component {
   }
 
   render() {
-    const {AllNews , idNewsToEdit , isFetching, editMessage, dataToEdit} = this.props;
+    const {isFetching, editMessage, dataToEdit} = this.props;
     return (
       <div className="content">
         {
@@ -51,7 +51,7 @@ class MediaCenter extends Component {
                   />
               </Col>
               {
-                dataToEdit && ! isFetching?
+                dataToEdit && !isFetching?
                 <EditSection  data={dataToEdit} />
 
                 : <div/>

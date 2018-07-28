@@ -13,28 +13,24 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 class EditProfile extends Component {
     constructor(props){
         super(props);
-        this.state ={
-            city:'',
-            street:'',
-            district:'',
-            projData:[]
-        }
+        // this.state ={
+        //     city:'',
+        //     street:'',
+        //     district:'',
+        //     projData:[]
+        // }
     }
     closeWindow= () => {
         document.getElementById('editing_project').style.display = "none";;
     }
     loadWindow = () =>{
         window.location.pathname = '/ourprojects';
-      }
+    }
     
-
     onSubmit = e => { 
         e.preventDefault();
         this.handleTypesOfApartments()
-        console.log(this.state, ' state in editpr oject');        
         const { editProject } = this.props
-        console.log(this.state ,' state on click edit button');
-        
         editProject(this.state)
     }
 
@@ -84,44 +80,43 @@ class EditProfile extends Component {
 
     onChangeInput = e => {
         this.setState({
-            
                 ...this.state,
                 [e.target.name]: e.target.value
             
         })
     }
 
-    componentDidMount(){
-        this.setState({
-            name:this.props.projData[0].name,
-            _id:this.props.projData[0]._id,
-            city:this.props.projData[0].address[2],
-            street:this.props.projData[0].address[0],
-            district:this.props.projData[0].address[1],
-            description:this.props.projData[0].description,
-            features:this.props.projData[0].features,
-            images:this.props.projData[0].images,
-            image360Url:this.props.projData[0].image360Url,
-            videoUrl:this.props.projData[0].videoUrl,
-            star: this.props.projData[0].star,
-            typesOfApartments:this.props.projData[0].typesOfApartments
-        })
-    }
+    // componentDidMount(){
+    //     this.setState({
+    //         name:this.props.projData[0].name,
+    //         _id:this.props.projData[0]._id,
+    //         city:this.props.projData[0].address[2],
+    //         street:this.props.projData[0].address[0],
+    //         district:this.props.projData[0].address[1],
+    //         description:this.props.projData[0].description,
+    //         features:this.props.projData[0].features,
+    //         images:this.props.projData[0].images,
+    //         image360Url:this.props.projData[0].image360Url,
+    //         videoUrl:this.props.projData[0].videoUrl,
+    //         star: this.props.projData[0].star,
+    //         typesOfApartments:this.props.projData[0].typesOfApartments
+    //     })
+    // }
 
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps, 'nextprops');
+    // componentWillReceiveProps(nextProps){
+    //     console.log(nextProps, 'nextprops');
         
-        this.setState({
-            projData: nextProps.projData
-        })
-    }
+    //     this.setState({
+    //         projData: nextProps.projData
+    //     })
+    // }
 
     render(){
-        const {projectData, isFetching} = this.props;
-        console.log(this.state, ' state is here')
+        const {projData} = this.props;
+        console.log(projData, ' project Data');
+        
         const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;        
         return(
-            isFetching && this.state.projData.length ?
             <Col md={6} id='editing_project'>
                 <OverlayTrigger placement="top" overlay={close}>
                     <CustomButton bsStyle="info" simple type="button" bsSize="xs" onClick={this.closeWindow}>
@@ -131,7 +126,7 @@ class EditProfile extends Component {
                 <Card 
                     title=" عدل المشروع من هنا"
                     content = {
-                    <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={this.state._id}>
+                    <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={projData[0].id}>
                         <FormInputs
                             ncols={["col-md-12"]}
                             proprieties={[
@@ -141,7 +136,7 @@ class EditProfile extends Component {
                                 placeholder: "ادخل اسم المشروع",
                                 required: true,
                                 name:"name",
-                                value: this.state.name,
+                                value: projData[0].name,
                                 onChange: this.onChangeInput
                                 }
                         ]} />
@@ -156,7 +151,7 @@ class EditProfile extends Component {
                                 placeholder: "ادخل اسم الشارع",
                                 required: true,
                                 name:"street",
-                                value: this.state.street,
+                                value: projData[0].address[0],
                                 onChange: this.onChangeInput                            
 
                                 },
@@ -167,7 +162,7 @@ class EditProfile extends Component {
                                 placeholder: "ادخل اسم الحي",
                                 required: true,
                                 name:"district",
-                                value: this.state.district,
+                                value: projData[0].address[1],
                                 onChange: this.onChangeInput
                                 },
                                 {
@@ -177,7 +172,7 @@ class EditProfile extends Component {
                                 placeholder: "ادخل اسم المدينة",
                                 required: true,
                                 name:"city",
-                                value: this.state.city,
+                                value: projData[0].address[2],
                                 onChange: this.onChangeInput
 
                                 }
@@ -195,7 +190,7 @@ class EditProfile extends Component {
                                 required
                                 name="description"
                                 onChange={this.onChangeInput}
-                                value={this.state.description}
+                                value={projData[0].description}
                             />
                             </FormGroup>
                         </Col>
@@ -212,7 +207,7 @@ class EditProfile extends Component {
                                 required
                                 name="features"
                                 onChange={this.onChangeInput}
-                                value={this.state.features}
+                                value={projData[0].features}
 
                             />
                             </FormGroup>
@@ -231,7 +226,7 @@ class EditProfile extends Component {
                         </Row>
                         <h5>هل يعد المشروع من ضمن المشاريع المميزة</h5>
                         <div className="radio">
-                            <input id='radioBtn' name="radioBtn" type="radio" checked={this.state.star} onClick={this.onClickRadioBtn}/>
+                            <input id='radioBtn' name="radioBtn" type="radio" checked={projData[0].star} onClick={this.onClickRadioBtn}/>
                             <label htmlFor='radioBtn'>يعد من المشاريع المميزة ؟</label>
                         </div>
                         <h5>صور المشروع</h5>
@@ -245,7 +240,7 @@ class EditProfile extends Component {
                             id:'secondaryImages',
                             onChange: this.onSelectedMultipleImages,
                             multiple:true,
-                            defaultValue: this.state.images
+                            defaultValue: projData[0].images
                             }                       
                         ]}
                         />
@@ -259,7 +254,7 @@ class EditProfile extends Component {
                                 bsClass: "form-control",
                                 name:"image360Url",
                                 onChange:this.handleFilesUpload,
-                                defaultValue:this.state.image360Url
+                                defaultValue:projData[0].image360Url
                             }                        
                             ]}
                             />
@@ -273,7 +268,7 @@ class EditProfile extends Component {
                                 bsClass: "form-control",
                                 name:"video",
                                 onChange:this.handleFilesUpload,
-                                defaultValue:this.state.videoUrl
+                                defaultValue:projData[0].videoUrl
                             }                        
                             ]}
                             />
@@ -297,7 +292,6 @@ class EditProfile extends Component {
                     
                 />
             </Col>
-        : <div></div>
         )
     }
 }
@@ -305,8 +299,8 @@ class EditProfile extends Component {
 
 const mapStateToProps = state => {
     return {
-        projectData : state.transferIdReducer.projData,
-        isFetching: state.transferIdReducer.isFetching,
+        // projData : state.transferProject.projData,
+        // isFetching: state.transferProject.isFetching,
         filesUrl: state.filesUrl,
         isFetchingUpload: state.filesUrl.isFetching,
         messageUpload : state.filesUrl.message,

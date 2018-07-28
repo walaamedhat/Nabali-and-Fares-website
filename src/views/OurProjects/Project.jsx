@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Button from "../../components/CustomButton/CustomButton.jsx";
 import DeleteProject from '../../actions/projectsActions/deleteProjectAction';
 import { BarLoader } from 'react-spinners';
-import {transferIdProjectAction} from '../../reducers/transferNewsId';
+import transferIdProjectAction from '../../actions/projectsActions/transferIdProjectAction';
 import PropTypes from 'prop-types';
 
 class Project extends Component {
@@ -13,18 +13,7 @@ class Project extends Component {
         super(props);
   }
   onClickEditButton = (e) =>{
-    const data = {type: 'Transfer', id: e.target.id};
-    this.props.transferId(data);
-    const edittingDiv = document.getElementById('editing_project');
-    if (edittingDiv) {
-      if(edittingDiv.style.display === 'block'){
-        edittingDiv.style.display='none'
-      }
-      else {
-        edittingDiv.style.display='none';
-        edittingDiv.style.display='block'
-      }
-    }
+    this.props.transferId(e.target.id);
   }
   onClickRemove = (e) =>{
     const { DeleteProject } = this.props;
@@ -70,17 +59,6 @@ class Project extends Component {
 
     return (<tbody>
               {Projs}
-              {/* {
-                       this.props.isDeleted ?
-                      <div className='sweet-alert'>
-                        <SweetAlert 
-                        success 
-                        title="تم حذف المشروع بنجاح" 
-                        onConfirm={this.hideAlert}>
-                       </SweetAlert>
-                      </div>
-                       :<div></div>
-                     } */}
               {
                 this.props.isDeleted ? 
                 <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center> : <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.massage}</div>

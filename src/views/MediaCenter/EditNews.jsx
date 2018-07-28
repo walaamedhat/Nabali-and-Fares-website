@@ -78,22 +78,9 @@ class EditSection extends Component {
      document.getElementById('editing_div').style.display = "none";;
   }
 
-  componentWillMount(){
-    console.log(this.props,'props');
-    this.setState({
-        data: this.props.data
-    });
-  }
-
-
-
-
-  componentWillReceiveProps(nextProps){
-    this.setState({data: nextProps.data});
-  }
 
   render() {
-    const {AllNews , idNewsToEdit, data} = this.props;
+    const {data} = this.props;
     console.log(data,'idNewsToEdit');
 
     const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;
@@ -119,7 +106,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
                     required: true,
-                    defaultValue: data[0].type,
+                    value: data[0].type,
                     onChange: this.handleInputChange,
                     name: 'newsType'
                   },
@@ -129,7 +116,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     placeholder: "ادخل هنا عنوان الخبر",
                     required: true,
-                    defaultValue: data[0].name,
+                    value: data[0].name,
                     onChange: this.handleInputChange,
                     name: 'newsTitle'
 
@@ -145,7 +132,7 @@ class EditSection extends Component {
                       componentClass="textarea"
                       bsClass="form-control"
                       placeholder="أدخل هنا وصف الخبر/الإعلان"
-                      defaultValue={data[0].discription}
+                      value={data[0].discription}
                       onChange={this.handleInputChange}
                       name= 'newsDescription'
                     />
@@ -219,8 +206,8 @@ class EditSection extends Component {
 
 const mapStateToProps = state => {
     return {
-      AllNews: state.allNews.newsData,
-      idNewsToEdit : state.transferIdReducer.id,
+      // AllNews: state.allNews.newsData,
+      // idNewsToEdit : state.transferIdReducer.id,
       // data : state.transferIdReducer.data,
       isFetching: state.filesUrl.isFetching,
       message : state.filesUrl.message,

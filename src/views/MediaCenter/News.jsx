@@ -15,16 +15,6 @@ class News extends Component {
   onClickEditButton = (e) =>{
     const data = {type: 'Transfer', id: e.target.id};
     this.props.transferId(data);
-    const edittingDiv = document.getElementById('editing_div');
-    if (edittingDiv) {
-      if(edittingDiv.style.display === 'block'){
-        edittingDiv.style.display='none'
-      }
-      else {
-        edittingDiv.style.display='none';
-        edittingDiv.style.display='block'
-      }
-    }
   }
   onClickRemove = (e) =>{
     const {deleteNews} = this.props;

@@ -22,8 +22,8 @@ class OurProjects extends Component {
     }
 
     render() {      
-        const {projectData, isFetchingProjectData} = this.props;  
-
+        const {projectDataToEdit, isFetchingProjectData} = this.props; 
+        
         return(
         <div className="content">
             <Grid fluid>
@@ -47,10 +47,10 @@ class OurProjects extends Component {
                     />
                 </Col>
                     {
-                        isFetchingProjectData ?  <EditProject projData={projectData}/> : <div />
+                        projectDataToEdit.length !==0 && !isFetchingProjectData ?  <EditProject projData={projectDataToEdit}/> : <div />
                     }
                 </Row>
-            </Grid>
+            </Grid> 
         </div>
         )
     } 
@@ -60,8 +60,9 @@ const mapStateTpProps = state => {
     return{
         allProjects: state.allProjects.projectsData,
         isFetching : state.allProjects.isFething,
-        isFetchingProjectData : state.transferIdReducer.isFetching,
-        projectData: state.transferIdReducer.projData
+        projectDataToEdit: state.transferProject.projectData,
+        isFetchingProjectData : state.transferProject.isFetching,
+        // projectData: state.transferIdReducer.projData
     }
 }
 const mapDispatchToProps = {
