@@ -40,7 +40,7 @@ class ContactUsInfo extends Component {
         body: JSON.stringify(data)
       })
       .then(res => {
-        this.showAlert('تم', 'تم إرسال رسالتك بنجاح', 'success')
+        this.showAlert('تم', 'تم إرسال رسالتك بنجاح', 'success',true)
       })
       .catch(error => {console.error(`Fetch Error =\n`, error)
         this.setState({err:error})
@@ -49,16 +49,30 @@ class ContactUsInfo extends Component {
     }
   }
 
-  showAlert(title,desc,type) {
-    const getAlert = () => (
-      <SweetAlert
-        type={type}
-        title={title}
-        onConfirm={() => this.hideAlert()}
-      >
-      {desc}
-      </SweetAlert>
-    );
+  showAlert(title,desc,type,load=false) {
+    if (load) {
+      var getAlert = () => (
+        <SweetAlert
+          type={type}
+          title={title}
+          onConfirm={() => this.loadWindow()}
+        >
+        {desc}
+        </SweetAlert>
+      );
+    }
+    else {
+      var getAlert = () => (
+        <SweetAlert
+          type={type}
+          title={title}
+          onConfirm={() => this.hideAlert()}
+        >
+        {desc}
+        </SweetAlert>
+      );
+    }
+
 
     this.setState({
       alert: getAlert()
