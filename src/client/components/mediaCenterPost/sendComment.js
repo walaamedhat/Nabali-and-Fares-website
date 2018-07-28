@@ -16,7 +16,7 @@ class SendComment extends Component {
 
   onSubmit = (e) =>{
     e.preventDefault()
-    if ((e.target[0].value||e.target[1].value||e.target[2].value || e.target[0].value.length <= 2 ) || (!isNaN(e.target[0].value)).trim()==='') {
+    if ((e.target[0].value||e.target[1].value||e.target[2].value || e.target[0].value.length <= 2 ).trim()==='') {
           this.showAlert()
     }
     else {
