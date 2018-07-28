@@ -24,7 +24,7 @@ class Home extends Component {
       const {allProjects, isFetching} = this.props;
         return(
           <div className='home-component'>
-            <Slideshow/>
+            <Slideshow props={this.props}/>
             <Map height='431px' data={allProjects}/>
             <NewProjects props={this.props}/>
             <FeaturedProjects />

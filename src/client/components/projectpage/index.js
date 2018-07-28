@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import { RingLoader } from 'react-spinners';
+
 import projectData from '../../actions/getProjectData';
 import Header from '../header/index';
 import Feature from './feature';
@@ -43,12 +45,12 @@ class ProjectPage extends Component {
 
     render(){
       const {isFetching , data} = this.props;
-      console.log(data[0],'data');
+      console.log(isFetching,'data');
         return(
             <div className='pojectpage'>
                 <Header Logo='../assets/nabali-fares-colored.png' WhereAmI='ourprojectpage'/>
                 {
-                  isFetching || data.length === 0 ? <div></div> :
+                  isFetching || data.length === 0 ? <center style={{marginBottom:'10px'}}><RingLoader width='150' height='7' color='4A90E2'/></center>:
                 <div>
                   <Gallary images={data[0].images}/>
                   <div className='projectpage__details'>

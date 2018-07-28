@@ -2,24 +2,59 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import addComment from '../../actions/addComment';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 class SendComment extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      send:'',
+      alert: null
+
+    }
   }
 
   onSubmit = (e) =>{
     e.preventDefault()
-    this.state ={
-      news_id : e.target.id,
-      [e.target[0].name]: e.target[0].value,
-      [e.target[1].name]: e.target[1].value,
-      [e.target[2].name]: e.target[2].value
+    if ((e.target[0].value||e.target[1].value||e.target[2].value || e.target[0].value.length <= 2 ) || (!isNaN(e.target[0].value)).trim()==='') {
+          this.showAlert()
     }
-    const { addComment } = this.props;
-    addComment(this.state);
-    window.location.reload();
+    else {
+      this.state ={
+        news_id : e.target.id,
+        [e.target[0].name]: e.target[0].value,
+        [e.target[1].name]: e.target[1].value,
+        [e.target[2].name]: e.target[2].value
+      }
+      const { addComment } = this.props;
+      addComment(this.state);
+      window.location.reload();
+
+    }
   }
+
+    showAlert() {
+      const getAlert = () => (
+        <SweetAlert
+          warning
+          title="عذرا"
+          onConfirm={() => this.hideAlert()}
+        >
+          إملأ الحقول ببيانات حقيقية
+        </SweetAlert>
+      );
+
+      this.setState({
+        alert: getAlert()
+      });
+    }
+
+    hideAlert() {
+      this.setState({
+        alert: null
+      });
+    }
+
   render () {
     const id =this.props.id;
     return (
@@ -35,7 +70,7 @@ class SendComment extends Component {
             <label className='contactUs-label'> الإسم كاملاً</label>
             <input name='commenter_name' type='text' placeholder='يرجى كتابة إسمك' required className='comment-input'/>
             <label className='contactUs-label'>البريد الإلكتروني</label>
-            <input name='email' type='text' placeholder='بريدك الإلكتروني' required className='comment-input'/>
+            <input name='email' type='email' placeholder='بريدك الإلكتروني' required className='comment-input'/>
           </div>
           <label className='contactUs-label'> اكتب تعليق</label>
           <textarea name='comment' className='contactUs-textarea' required laceholder='أكتب نص التعليق الخاص بك'/>
@@ -44,6 +79,9 @@ class SendComment extends Component {
           </div>
         </form>
         :<div/>
+        }
+        {
+          this.state.alert
         }
         </div>
       </div>

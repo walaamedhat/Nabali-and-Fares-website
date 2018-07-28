@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import { Link } from 'react-router-dom'; 
 import './index.css';
 
 
@@ -43,7 +43,10 @@ class Header extends Component {
         <div className='container__header'>
             <div className='header'>
                 <div className='header__logo__div'>
-                    <img className='header__logo' src={this.props.Logo} />
+                    <Link to='/'>
+                      <img className='header__logo' src={this.props.Logo} />
+                    </Link>
+
                 </div>
                 {this.changeColorNav(this.props.WhereAmI)}
                 <div className='header__burger'><i style={{ color : 'white'}} className="fas fa-align-justify" onClick={this.showList}></i></div>

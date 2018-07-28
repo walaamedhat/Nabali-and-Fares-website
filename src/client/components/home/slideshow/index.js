@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { RingLoader } from 'react-spinners';
+import PropTypes from 'prop-types';
 import { Fade } from 'react-slideshow-image';
 import Slider from "react-slick";
 import Header from '../../header';
+import allNews from '../../../actions/getAllNewsAction';
 
 import './index.css';
 
@@ -32,7 +36,21 @@ function SamplePrevArrow(props) {
 }
 
 class Slideshow extends Component {
+  constructor(props){
+    super(props)
+  }
+  componentDidMount(){
+      const { allNews } = this.props;
+      allNews();
+  }
+
+  view = (e)=> {
+    console.log(e.target.id,'e.target.id');
+    this.props.props.history.push(`/post/${e.target.id}`);
+  }
+
   render(){
+    const {news , isFetching} = this.props;
     var settings = {
      dots: true,
      dotsClass: "slick-dots slick-thumb",
@@ -45,6 +63,7 @@ class Slideshow extends Component {
      nextArrow: <SampleNextArrow />,
      prevArrow: <SamplePrevArrow />
    };
+   console.log(this.props.data,'this.props.data in slideshow');
     return (
       <div style={{position: 'relative' }}>
         <Fade
@@ -57,24 +76,26 @@ class Slideshow extends Component {
         </div>
           <div className='slider-text'>
             <Slider {...settings}>
-            <div>
-              <h1 className='slider-text-title'>
-                هذا النص موجود فقط لتجربة منطقة العنوان الرئيسي
-              </h1>
-              <h4 className='slider-text-desc'>
-                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-              </h4>
-              <button className='slider-button'>عرض المزيد <i class="fas fa-arrow-left"></i></button>
-            </div>
-            <div>
-              <h1 className='slider-text-title'>
-                هذا النص موجود فقط لتجربة منطقة العنوان الئيسي
-              </h1>
-              <h4 className='slider-text-desc'>
-                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-              </h4>
-              <button className='slider-button'>عرض المزيد <i class="fas fa-arrow-left"></i></button>
-            </div>
+            {
+              isFetching || news.length==0 ?
+              <center style={{marginBottom:'10px'}}><RingLoader width='150' height='7' color='4A90E2'/></center>
+              :
+
+                news.map(e=> {
+                  return(
+                    <div dir='rtl'>
+                      <h1 className='slider-text-title'>
+                        {e.name.substring(0, 50)}   ....
+                      </h1>
+                      <h4 className='slider-text-desc'>
+                        {e.discription.substring(0, 151)}  .....
+                      </h4>
+                      <button id={e._id} onClick={this.view} className='slider-button'>عرض المزيد <i class="fas fa-arrow-left"></i></button>
+                    </div>
+
+                  )
+                })
+              }
           </Slider>
         </div>
       <div className='slider-circle'>
@@ -84,4 +105,20 @@ class Slideshow extends Component {
     )
   }
 }
-export default Slideshow;
+
+Slideshow.propTypes = {
+    allNews: PropTypes.func
+}
+const mapStateToProps = state =>{
+    return{
+      news : state.allNews.newsData,
+      isFetching : state.allNews.isFetching
+    }
+}
+
+const mapDispatchToProps = {
+    allNews
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Slideshow);

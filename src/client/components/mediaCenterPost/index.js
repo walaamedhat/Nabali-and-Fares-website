@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import { RingLoader } from 'react-spinners';
 
 import NewsContent from './newsContent';
 import SendComment from './sendComment';
@@ -17,18 +18,19 @@ class Post extends Component{
   openMore = ()=>{
     this.setState({open:true})
   }
-  componentDidMount() {
+  componentWillMount() {
     const { newsData, allComments } = this.props;
     newsData(this.props.match.params.news_id);
     allComments(this.props.match.params.news_id);
   }
   render() {
-    const {isFetching , data, comments} = this.props;
-    console.log(data,'daaaata');
+    const {isFetching , data, comments,isFetchingComments} = this.props
     return (
       <div className='posts' style={{ marginBottom:'198px' }}>
         {
-          isFetching || data.length === 0?  <div/> :
+          isFetching || data.length === 0?
+            <center style={{marginBottom:'10px'}}><RingLoader width='150' height='7' color='4A90E2'/></center>
+          :
           <div>
             <NewsContent data={data}/>
             <SendComment id={data}/>
@@ -38,6 +40,9 @@ class Post extends Component{
           <div className='allComments-header'>
             <h3>التعليقات</h3>
             {
+              isFetchingComments || comments.length === 0?
+              <center style={{marginBottom:'10px'}}><RingLoader width='150' height='7' color='4A90E2'/></center>
+              :
               comments.length <=2 ?
               <h5 style={{color:'grey'}}>عرض كل التعليقات</h5>
               :
@@ -76,7 +81,8 @@ const mapStateToProps = state =>{
   return {
     data : state.newsData.newsData,
     isFetching : state.newsData.isFetching,
-    comments : state.allComment.comments
+    comments : state.allComment.comments,
+    isFetchingComments : state.allComment.isFetching
   }
 }
 const mapDispatchToProps = {

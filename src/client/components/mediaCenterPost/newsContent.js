@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
+import { RingLoader } from 'react-spinners';
+
 import allNews from '../../actions/getAllNewsAction';
 
 import Header from '../header';
@@ -51,12 +53,15 @@ class MediaCenterPost extends Component {
       <div>
         <Header Logo='../assets/nabali-fares-colored.png' WhereAmI='mediacenterpage'/>
         {
-          data.length != 0 ?
+          !this.props.data || this.props.data.length == 0 ?
+
+          <center style={{marginBottom:'10px'}}><RingLoader width='150' height='7' color='4A90E2'/></center>
+          :
         <div className='media-center-post'>
           <div className='post-image-header'>
-            <img src={data[0].mainImage} className='header-postImage' />
+            <img src={this.props.data[0].mainImage} className='header-postImage' />
             <div class="content_over_image">
-              <h2>{data[0].name}</h2>
+              <h2>{this.props.data[0].name}</h2>
               <div className='post-desc-time'>
                 <div>
                   <i className="fa fa-calendar" style={{ fontSize:'20px' }}></i>
@@ -78,7 +83,7 @@ class MediaCenterPost extends Component {
             <div className='content-secondSection'>
               <div style={{ position:'relative' }} className='projectpage__row5__video' onClick={this.runOrPauseVideo}>
                   {!this.state.controled && <input className='secondSection__runvideobutton'/>}
-                  <ReactPlayer url={[{src:data[0].video, type: 'video/webm'}]} playing={this.state.run} controls={this.state.controled}/>
+                  <ReactPlayer url={[{src:this.props.data[0].video, type: 'video/webm'}]} playing={this.state.run} controls={this.state.controled}/>
               </div>
             </div>
             <div className='content-thirdSection'>
@@ -145,8 +150,7 @@ class MediaCenterPost extends Component {
             </div>
           </div>
         </div>
-        :
-        <div/>
+
       }
 
       </div>

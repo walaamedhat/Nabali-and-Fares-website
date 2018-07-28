@@ -5,9 +5,9 @@ class ContactUsInfo extends Component {
   constructor(props){
     super(props);
     this.state = {
-      err:'',
-      message:'',
-      send:false
+      send:'',
+      alert: null
+
     }
   }
   loadWindow = () =>{
@@ -24,23 +24,53 @@ class ContactUsInfo extends Component {
       [e.target[5].name]: e.target[5].value,
       [e.target[6].name]: e.target[6].value
     }
-    fetch('/api/v1/contactUs', {
+    if ((data.Fname||data.Phnum||data.FaceLink||data.Lname||data.email||data.InstaLink||data.messasge).trim()==='') {
+      this.showAlert('عذرا', 'إملأ جميع الحقول ', 'warning')
+    }
+    else if ((data.Fname.length <= 2 || data.Lname.length <= 2 ) || (!isNaN(data.Fname) || !isNaN(data.Lname))) {
+      this.showAlert('نأسف', 'أدخل اسم صحيح', 'warning')
+    }
+    else {
+      fetch('/api/v1/contactUs', {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "credentials": "same-origin"
+          "Content-Type": "application/json",
+          "credentials": "same-origin"
         },
         body: JSON.stringify(data)
-    })
-    .then(res => {
-      this.setState({message:'Send Successfully',send:true})
-    })
-    .catch(error => {console.error(`Fetch Error =\n`, error)
+      })
+      .then(res => {
+        this.showAlert('تم', 'تم إرسال رسالتك بنجاح', 'success')
+      })
+      .catch(error => {console.error(`Fetch Error =\n`, error)
         this.setState({err:error})
+      });
+
+    }
+  }
+
+  showAlert(title,desc,type) {
+    const getAlert = () => (
+      <SweetAlert
+        type={type}
+        title={title}
+        onConfirm={() => this.hideAlert()}
+      >
+      {desc}
+      </SweetAlert>
+    );
+
+    this.setState({
+      alert: getAlert()
+    });
+  }
+
+  hideAlert() {
+    this.setState({
+      alert: null
     });
   }
   render () {
-    console.log(this.state,'this.state.');
     return (
       <form onSubmit={this.submit}>
         <div className='contactUs-content'>
@@ -49,29 +79,29 @@ class ContactUsInfo extends Component {
               <h1 style={{ color:'#475669',fontSize: '24px',fontWeight: '700',paddingTop:'10px'}}>أرسل لنا تعليق</h1>
 
               <label className='contactUs-label'>الإسم الأول</label>
-              <input name='Fname' type='text' placeholder='يرجى كتابة إسمك الأول' className='contactUs-input'/>
+              <input name='Fname' type='text' placeholder='يرجى كتابة إسمك الأول' className='contactUs-input' required/>
 
               <label className='contactUs-label'>رقم الهاتف المحمول</label>
-              <input name='Phnum' type='text' placeholder='يرجى كتابة رقمك صحيحاً لتسهيل التواصل معك' className='contactUs-input'/>
+              <input name='Phnum' type='text' placeholder='يرجى كتابة رقمك صحيحاً لتسهيل التواصل معك' className='contactUs-input' pattern="^[0-9]*$" required/>
 
               <label className='contactUs-label'>حسابك على فيس بوك</label>
-              <input name='FaceLink' type='url' placeholder='facebook.com/example' className='contactUs-input'/>
+              <input name='FaceLink' type='url' placeholder='facebook.com/example' className='contactUs-input' required/>
             </div>
             <div className='left-input'>
 
               <label className='contactUs-label'>الإسم الأخير</label>
-              <input name='Lname' type='text' placeholder='يرجى كتابة إسمك الاخير (العائلة)' className='contactUs-input'/>
+              <input name='Lname' type='text' placeholder='يرجى كتابة إسمك الاخير (العائلة)' className='contactUs-input' required/>
 
               <label className='contactUs-label'>البريد الإلكتروني</label>
-              <input name='email' type='email' placeholder='name@domain.com' className='contactUs-input'/>
+              <input name='email' type='email' placeholder='name@domain.com' className='contactUs-input' required/>
 
               <label className='contactUs-label'>حسابك على إنستاجرام</label>
-              <input name='InstaLink' type='url' placeholder='instagram.com/example' className='contactUs-input'/>
+              <input name='InstaLink' type='url' placeholder='instagram.com/example' className='contactUs-input' required/>
 
             </div>
             <div className='battom-input'>
               <label className='contactUs-label'>نص الرسالة</label>
-              <textarea name='messasge' className='contactUs-textarea'/>
+              <textarea name='messasge' className='contactUs-textarea' required/>
               <button type='submit' className='sendComment'>إرسال الرسالة</button>
             </div>
           </div>
@@ -106,13 +136,7 @@ class ContactUsInfo extends Component {
           </div>
         </div>
         {
-          this.state.send ?
-          <SweetAlert
-            success
-            title="تم ارسال رسالتك بنجاح "
-            onConfirm={this.loadWindow}>
-          </SweetAlert>
-          :<div/>
+          this.state.alert
       }
       </form>
     );
