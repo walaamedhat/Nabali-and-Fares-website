@@ -47,7 +47,7 @@ class OurProjects extends Component {
                     />
                 </Col>
                     {
-                        projectDataToEdit.length !==0 && !isFetchingProjectData ?  <EditProject projData={projectDataToEdit}/> : <div />
+                        projectDataToEdit.length !==0 && !isFetchingProjectData ?  <EditProject /> : <div />
                     }
                 </Row>
             </Grid> 

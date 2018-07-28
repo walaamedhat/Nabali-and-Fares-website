@@ -9,6 +9,7 @@ import Card from "../../components/Card/Card.jsx";
 import editProject from '../../actions/projectsActions/editProjectAction';
 import uploadFiles from '../../actions/uploadFilesAction';
 import SweetAlert from 'react-bootstrap-sweetalert';
+import {handleInputChange} from '../../actions/projectsActions/transferIdProjectAction';
 
 class EditProfile extends Component {
     constructor(props){
@@ -79,11 +80,13 @@ class EditProfile extends Component {
 
 
     onChangeInput = e => {
-        this.setState({
-                ...this.state,
-                [e.target.name]: e.target.value
+        const {handleInputChange} = this.props;
+        // this.setState({
+        //         ...this.state,
+        //         [e.target.name]: e.target.value
             
-        })
+        // })
+        handleInputChange(e.target);
     }
 
     // componentDidMount(){
@@ -299,13 +302,12 @@ class EditProfile extends Component {
 
 const mapStateToProps = state => {
     return {
-        // projData : state.transferProject.projData,
-        // isFetching: state.transferProject.isFetching,
+        projData : state.editPrjectData.projectData,
         filesUrl: state.filesUrl,
         isFetchingUpload: state.filesUrl.isFetching,
         messageUpload : state.filesUrl.message,
         isFetchingEdit:state.editPrjectData.isFetching,
-        messageEdit:state.editPrjectData.message        
+        messageEdit:state.editPrjectData.message,
                 
 
     };
@@ -313,7 +315,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     editProject,
-    uploadFiles
+    uploadFiles,
+    handleInputChange       
+
 }
 
   export default connect(mapStateToProps, mapDispatchToProps)(EditProfile);

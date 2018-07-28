@@ -2,7 +2,8 @@ import {
     FETCH_PROJECTS_START,
     FETCH_PROJECTS_SUCCESS,
     FETCH_PROJECTS_FAILURE,
-    DELETE_PROJECT_SUCCESS
+    DELETE_PROJECT_SUCCESS,
+    HANDLE_INPUT_CHANGE
 } from '../../constants/actionTypes'
 
 const intialState = {

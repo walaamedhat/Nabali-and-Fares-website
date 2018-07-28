@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Button from "../../components/CustomButton/CustomButton.jsx";
 import DeleteProject from '../../actions/projectsActions/deleteProjectAction';
 import { BarLoader } from 'react-spinners';
-import transferIdProjectAction from '../../actions/projectsActions/transferIdProjectAction';
+import {transferIdProjectAction} from '../../actions/projectsActions/transferIdProjectAction';
 import PropTypes from 'prop-types';
 
 class Project extends Component {
