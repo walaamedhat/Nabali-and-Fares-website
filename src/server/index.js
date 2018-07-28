@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 8000;
 
 const app = express();
 
+// https://nfdashboard.herokuapp.com
 var corsOptions = {
-  origin: 'https://nfdashboard.herokuapp.com',
+  origin: '*',
   credentials:  true
 }
 
