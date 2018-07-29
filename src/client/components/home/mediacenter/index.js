@@ -28,9 +28,9 @@ class MediaCenter extends Component{
                 {
                   news.isFetching || news.newsData.length==0? <div>loading</div> :
                 <div className='mediacenter__bottom'>
-                    <NewsBox data={news.newsData[0]} />
-                    <NewsBox data={news.newsData[1]} />
-                    <NewsBox data={news.newsData[2]} />
+                    <NewsBox data={news.newsData[0]} props={this.props.props} />
+                    <NewsBox data={news.newsData[1]} props={this.props.props}/>
+                    <NewsBox data={news.newsData[2]} props={this.props.props}/>
                 </div>
               }
             </div>

@@ -46,9 +46,9 @@ class MediaCenterPost extends Component {
    }
 
   render() {
-    const data = this.props.data;
-    const {anotherNews} = this.props;
-    const randomIndex = Math.floor(Math.random() * anotherNews.newsData.length);
+    const length = this.props.anotherNews.newsData.length;
+    const randomIndex = Math.floor(Math.random() * length);
+    const randomIndex2 = randomIndex + 1 === length ? randomIndex-1: randomIndex+1
     return (
       <div>
         <Header Logo='../assets/nabali-fares-colored.png' WhereAmI='mediacenterpage'/>
@@ -96,16 +96,16 @@ class MediaCenterPost extends Component {
             <div className='content-fourthSection'>
               <img style={{ width:'100%' }} src='../assets/post-image.png'/>
               <div style={{ width:'100%' }} className='fourthSection-2img'>
-                <img src='../assets/posts.jpg'/>
-                <img src='../assets/posts.jpg'/>
+                <img src='../assets/post-image.png'/>
+                <img src='../assets/post-image.png'/>
               </div>
               <div className='fourthSection-6img'>
-                <img src='../assets/posts.jpg'/>
+                <img src='../assets/post-image.png'/>
                 <div className='fourthSection-6img-left'>
-                  <img src='../assets/posts.jpg'/>
-                  <img src='../assets/posts.jpg'/>
-                  <img src='../assets/posts.jpg'/>
-                  <img src='../assets/posts.jpg'/>
+                  <img src='../assets/post-image.png'/>
+                  <img src='../assets/post-image.png'/>
+                  <img src='../assets/post-image.png'/>
+                  <img src='../assets/post-image.png'/>
                 </div>
               </div>
             </div>
@@ -121,13 +121,13 @@ class MediaCenterPost extends Component {
                 </Link>
               </div>
               {
-                anotherNews.isFetching || anotherNews.newsData.length==0? <div>loading</div> :
+                this.props.anotherNews.isFetching || this.props.anotherNews.newsData.length==0? <div>loading</div> :
                   <div className='moreNews-desc'>
                     <div className='moreNews-desc-right'>
-                      <img style={{ width:'100%', height:'161.86px' }} src={anotherNews.newsData[randomIndex].mainImage}/>
-                      <h3>{anotherNews.newsData[randomIndex].name.substring(0, 55)}....</h3>
-                      <p>{anotherNews.newsData[randomIndex].discription.substring(0, 55)}.... </p>
-                      <Link to={'/post/' + `${anotherNews.newsData[randomIndex]._id}`} onClick={this.view}>
+                      <img style={{ width:'100%', height:'161.86px' }} src={this.props.anotherNews.newsData[randomIndex].mainImage}/>
+                      <h3>{this.props.anotherNews.newsData[randomIndex].name.substring(0, 55)}....</h3>
+                      <p>{this.props.anotherNews.newsData[randomIndex].discription.substring(0, 55)}.... </p>
+                      <Link to={'/post/' + `${this.props.anotherNews.newsData[randomIndex]._id}`} onClick={this.view}>
                         <div className='newprojects__project__seemore'>
                           عرض المزيد
                           <span><i class="fas fa-arrow-left"></i></span>
@@ -135,10 +135,10 @@ class MediaCenterPost extends Component {
                       </Link>
                     </div>
                     <div className='moreNews-desc-left'>
-                      <img style={{ width:'100%', height:'161.86px' }} src={anotherNews.newsData[randomIndex+1].mainImage}/>
-                      <h3>{anotherNews.newsData[randomIndex+1].name.substring(0, 55)}....</h3>
-                      <p>{anotherNews.newsData[randomIndex+1].discription.substring(0, 55)}.... </p>
-                        <Link to={'/post/' + `${anotherNews.newsData[randomIndex+1]._id}`} onClick={this.view}>
+                      <img style={{ width:'100%', height:'161.86px' }} src={this.props.anotherNews.newsData[randomIndex2].mainImage}/>
+                      <h3>{this.props.anotherNews.newsData[randomIndex2].name.substring(0, 55)}....</h3>
+                      <p>{this.props.anotherNews.newsData[randomIndex2].discription.substring(0, 55)}.... </p>
+                        <Link to={'/post/' + `${this.props.anotherNews.newsData[randomIndex2]._id}`} onClick={this.view}>
                           <div className='newprojects__project__seemore'>
                             عرض المزيد
                             <span><i class="fas fa-arrow-left"></i></span>

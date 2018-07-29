@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Slider from "react-slick";
+import { RingLoader } from 'react-spinners';
 import  getStarProjects from '../../../actions/getFeaturedAction';
 
 import './index.css';
@@ -51,7 +52,9 @@ class FeaturedProjects extends Component{
             <div className='featured__project' style={{position:'relative'}}>
                 <span className='featured__project__title0'>مشاريع مميزة</span>
                   {
-                    starProjects.isFetching || starProjects.starProjects.length==0? <div>loading</div> :
+                    starProjects.isFetching || starProjects.starProjects.length==0?
+                    <center style={{marginBottom:'10px'}}><RingLoader width='150' height='7' color='4A90E2'/></center>
+                     :
                     <Slider {...settings}>
                       {
                         starProjects.starProjects.map(e =>{

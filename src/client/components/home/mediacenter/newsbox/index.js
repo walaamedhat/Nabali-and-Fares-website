@@ -7,9 +7,13 @@ class NewsBox extends Component {
   constructor(props){
     super(props)
   }
+  view = (e)=> {
+    this.props.props.history.push(`/post/${e.target.id}`);
+  }
   render(){
     const news = this.props.data;
   console.log(this.props.data,'props box news');
+  console.log(this.props,'props box news');
     return (
         <div className='mediacenter__bottom__box'>
                         <img src={news.mainImage}/>
@@ -21,16 +25,16 @@ class NewsBox extends Component {
                         </div>
                         <div className='mediacenter__bottom__title'>{news.name.substring(0, 30)}...</div>
                         <p className='mediacenter__bottom__p'>{news.discription.substring(0, 151)}...</p>
-                        <Link to={'/post/' + `${news._id}`}>
-                          <div className='mediacenter__bottom__readmore'>
+                          <div id={news._id} className='mediacenter__bottom__readmore' onClick={this.view}>
                             إقرأ المزيد
                             <span><i class="fas fa-arrow-left"></i></span>
                           </div>
-                        </Link>
         </div>
     );
   }
 
  }
+ // <Link to={'/post/' + `${news._id}`}>
+// </Link>
 
  export default NewsBox;

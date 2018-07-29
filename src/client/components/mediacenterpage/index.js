@@ -31,9 +31,9 @@ class MediaCenterPage extends Component {
                 <div className='mediacenterpage__components'>
                   {
                     news.isFetching || news.newsData.length==0? <div>loading</div> :
-                    
+
                       news.newsData.map(e => {
-                        return <NewsBox data={e}/>
+                        return <NewsBox props={this.props} data={e}/>
                       })
 
                     }

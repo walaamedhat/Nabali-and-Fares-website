@@ -7,7 +7,7 @@ const logout = require('./dashboard/logout');
 const auth = require('./dashboard/auth');
 const mediaCenter = require('./dashboard/mediaCenter');
 const uploadFiles = require('./dashboard/uploadFiles');
-const editProject = require('./dashboard/ourProjects');
+const ourProject = require('./dashboard/ourProjects');
 
 const findAllProject = require('./allProject');
 const findProject = require('./projectData');
@@ -34,9 +34,12 @@ router.post('/addNews', mediaCenter.post);
 router.post('/editNews', mediaCenter.edit);
 router.post('/deleteNews', mediaCenter.delete);
 
-router.post('/upload', uploadFiles.post);
 /////// Project
-router.post('/editProject', editProject.edit);
+router.post('/editProject', ourProject.edit);
+router.post('/addProject', ourProject.post);
+router.post('/deleteProjects', ourProject.delete);
+
+router.post('/upload', uploadFiles.post);
 /////////////////Website Routes
 
 

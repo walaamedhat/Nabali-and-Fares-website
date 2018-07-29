@@ -28,7 +28,7 @@ class Home extends Component {
             <Map height='431px' data={allProjects}/>
             <NewProjects props={this.props}/>
             <FeaturedProjects />
-            <MediaCenter />
+            <MediaCenter props={this.props}/>
             <OurApps />
           </div>
         )

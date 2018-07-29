@@ -1,5 +1,6 @@
 .ourProjects{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .ourProjects-map{
@@ -89,6 +90,9 @@
 
 
 @media only screen and (max-width: 1085px) {
+  .ourProjects-project{
+    width: 100%;
+  }
   .projects-section{
     flex-wrap: wrap;
     height: auto;
@@ -100,14 +104,28 @@
     width: 140px;
   }
   .project-content{
-    height: 100px;
+    height: 55px;
   }
   .project-content-descAndIcon{
     width: 70%;
     flex-wrap: wrap;
+    align-self: center;
   }
   .project-image img {
-    width: 125px;
+    width: 208px;
+  }
+  .project-image{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .ourProjects-map{
+    width: 100%
+  }
+  .project-details h3{
+    text-align: center;
   }
 
 }

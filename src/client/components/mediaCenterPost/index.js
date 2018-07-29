@@ -28,7 +28,7 @@ class Post extends Component{
     return (
       <div className='posts' style={{ marginBottom:'198px' }}>
         {
-          isFetching || data.length === 0?
+          isFetching || data.length === 0 ?
             <center style={{marginBottom:'10px'}}><RingLoader width='150' height='7' color='4A90E2'/></center>
           :
           <div>
