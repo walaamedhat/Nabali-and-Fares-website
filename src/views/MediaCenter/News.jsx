@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import {connect} from 'react-redux';
 import Button from "../../components/CustomButton/CustomButton.jsx";
-import {transferIdNewsAction} from '../../reducers/transferNewsId';
+import {transferIdNewsAction} from '../../reducers/newsReducers/transferNewsId';
 import PropTypes from 'prop-types';
 import deleteNews from '../../actions/newsActions/deleteNews';
 
@@ -13,9 +13,9 @@ class News extends Component {
     super();
   }
   onClickEditButton = (e) =>{
-    const data = {type: 'Transfer', id: e.target.id};
-    this.props.transferId(data);
+    this.props.transferId(e.target.id);
   }
+  
   onClickRemove = (e) =>{
     const {deleteNews} = this.props;
     console.log(e.target.id,'e.target.id');

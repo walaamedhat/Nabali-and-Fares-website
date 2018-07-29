@@ -3,7 +3,8 @@ import {
     EDIT_PROJECT_SUCCESS,
     EDIT_PROJECT_FAILURE,
     TRANSFER_DATA_PROJECT_SUCCESS,
-    HANDLE_INPUT_CHANGE
+    HANDLE_INPUT_CHANGE,
+    CHANGE_CHECKED_VALUE
 } from '../../constants/actionTypes';
 
 const intialState = {
@@ -50,6 +51,16 @@ const editProjectData = (state = intialState, action) => {
                 projectData: [{
                     ...state.projectData[0],
                     [action.payload.name]: action.payload.value
+                }]
+            }
+        }
+
+        case CHANGE_CHECKED_VALUE:{
+            return{
+                ...state,
+                projectData:[{
+                    ...state.projectData[0],
+                    star: action.payload
                 }]
             }
         }

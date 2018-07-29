@@ -5,7 +5,7 @@ import getUserData from './getUserDataReducer';
 import updateUserData from './updateUserDataReducer';
 import auth from './authReducer';
 import filesUrl from './uploadFilesReducer';
-import {transferIdReducer} from './transferNewsId';
+import {transferIdReducer} from '../reducers/newsReducers/transferNewsId';
 
 import newsData from './newsReducers/addNewsReducer'
 import editnewsData from './newsReducers/editNewsReducer'

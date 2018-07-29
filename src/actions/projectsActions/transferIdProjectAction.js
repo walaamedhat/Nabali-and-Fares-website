@@ -3,7 +3,7 @@ import {
     TRANSFER_ID_PROJECT_SUCCESS,
     TRANSFER_DATA_PROJECT_SUCCESS,
     HANDLE_INPUT_CHANGE,
-    TRANSFER_DATA_PROJECT_TO_EDIT
+    CHANGE_CHECKED_VALUE
 } from '../../constants/actionTypes'
 
 const transferIdProjectStart = () =>{
@@ -28,20 +28,31 @@ const transferDataProjectSuccess = (projectData) => {
     })
 }
 
+export const handleStarValue = (checkedVaule) =>{
+    return({
+        type: CHANGE_CHECKED_VALUE,
+        payload: checkedVaule
+    })
+}
 
-export const handleInputChange = (inputDtat) =>{
-    console.log(inputDtat, ' hey , it is inputdata inside tranfer actio');
-    
+export const handleInputChange = (inputDtat) =>{    
     return({
         type: HANDLE_INPUT_CHANGE,
         payload: inputDtat
     })
 }
+
 export const transferIdProjectAction = (id) => (dispatch, getState) => {
     dispatch(transferIdProjectStart())  
     dispatch(transferIdProjectSuccess(id))      
-    const projData = getState().allProjects.projectsData.data.filter(elem => elem._id === id)        
-    dispatch(transferDataProjectSuccess(projData))
+    const projData = getState().allProjects.projectsData.data.filter(elem => elem._id === id)  
+    const newAddress = {
+        city : projData[0].address[2],
+        district : projData[0].address[1],
+        street : projData[0].address[0]
+    }
+    const newProjectData = Object.assign(projData[0], newAddress);
+    dispatch(transferDataProjectSuccess([newProjectData]))
 
 }
 

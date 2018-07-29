@@ -9,17 +9,15 @@ import Card from "../../components/Card/Card.jsx";
 import editProject from '../../actions/projectsActions/editProjectAction';
 import uploadFiles from '../../actions/uploadFilesAction';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import {handleInputChange} from '../../actions/projectsActions/transferIdProjectAction';
+import {handleInputChange, handleStarValue} from '../../actions/projectsActions/transferIdProjectAction';
+import Checkbox from "../../components/CustomCheckbox/CustomCheckbox";
 
 class EditProfile extends Component {
     constructor(props){
         super(props);
-        // this.state ={
-        //     city:'',
-        //     street:'',
-        //     district:'',
-        //     projData:[]
-        // }
+        this.state = {
+            star:false
+        }
     }
     closeWindow= () => {
         document.getElementById('editing_project').style.display = "none";;
@@ -31,8 +29,9 @@ class EditProfile extends Component {
     onSubmit = e => { 
         e.preventDefault();
         this.handleTypesOfApartments()
-        const { editProject } = this.props
-        editProject(this.state)
+        this.handleStarProject()
+        const { editProject, projData } = this.props
+        editProject(projData)
     }
 
     onPlusClick = e =>{
@@ -47,9 +46,19 @@ class EditProfile extends Component {
     handleTypesOfApartments = e =>{
         const arrTypesOfApartment = Array.from(document.querySelectorAll('.apartmentType_inputText'));
         const realTypes = arrTypesOfApartment.map(e =>{return e.value});
-        this.state.typesOfApartments = realTypes;
+        console.log(realTypes, 'state is here');
+        this.setState({
+            typesOfApartments: realTypes
+        })
     }
 
+    handleStarProject = () => {
+        const radio = document.getElementsByName('star');
+        const radioArr = Array.from(radio);
+        const star = radioArr.filter(e => e.checked);
+        const {handleStarValue} = this.props;
+        handleStarValue(star[0].value==="true"? true: false);
+    }
         
     handleFilesUpload = event => {
         const file = event.target.files[0];
@@ -74,50 +83,15 @@ class EditProfile extends Component {
         uploadFiles('secondaryImages', fd)
     }
 
-    onClickRadioBtn = e => {
-    this.state.star ? this.setState({star: false}) : this.setState({star: true})
-    }
-
+ 
 
     onChangeInput = e => {
         const {handleInputChange} = this.props;
-        // this.setState({
-        //         ...this.state,
-        //         [e.target.name]: e.target.value
-            
-        // })
         handleInputChange(e.target);
     }
 
-    // componentDidMount(){
-    //     this.setState({
-    //         name:this.props.projData[0].name,
-    //         _id:this.props.projData[0]._id,
-    //         city:this.props.projData[0].address[2],
-    //         street:this.props.projData[0].address[0],
-    //         district:this.props.projData[0].address[1],
-    //         description:this.props.projData[0].description,
-    //         features:this.props.projData[0].features,
-    //         images:this.props.projData[0].images,
-    //         image360Url:this.props.projData[0].image360Url,
-    //         videoUrl:this.props.projData[0].videoUrl,
-    //         star: this.props.projData[0].star,
-    //         typesOfApartments:this.props.projData[0].typesOfApartments
-    //     })
-    // }
-
-    // componentWillReceiveProps(nextProps){
-    //     console.log(nextProps, 'nextprops');
-        
-    //     this.setState({
-    //         projData: nextProps.projData
-    //     })
-    // }
-
     render(){
-        const {projData} = this.props;
-        console.log(projData, ' project Data');
-        
+        const {projData} = this.props;        
         const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;        
         return(
             <Col md={6} id='editing_project'>
@@ -129,7 +103,7 @@ class EditProfile extends Component {
                 <Card 
                     title=" عدل المشروع من هنا"
                     content = {
-                    <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={projData[0].id}>
+                    <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={projData[0]._id}>
                         <FormInputs
                             ncols={["col-md-12"]}
                             proprieties={[
@@ -154,7 +128,7 @@ class EditProfile extends Component {
                                 placeholder: "ادخل اسم الشارع",
                                 required: true,
                                 name:"street",
-                                value: projData[0].address[0],
+                                value: projData[0].street,
                                 onChange: this.onChangeInput                            
 
                                 },
@@ -165,7 +139,7 @@ class EditProfile extends Component {
                                 placeholder: "ادخل اسم الحي",
                                 required: true,
                                 name:"district",
-                                value: projData[0].address[1],
+                                value: projData[0].district,
                                 onChange: this.onChangeInput
                                 },
                                 {
@@ -175,7 +149,7 @@ class EditProfile extends Component {
                                 placeholder: "ادخل اسم المدينة",
                                 required: true,
                                 name:"city",
-                                value: projData[0].address[2],
+                                value: projData[0].city,
                                 onChange: this.onChangeInput
 
                                 }
@@ -229,9 +203,13 @@ class EditProfile extends Component {
                         </Row>
                         <h5>هل يعد المشروع من ضمن المشاريع المميزة</h5>
                         <div className="radio">
-                            <input id='radioBtn' name="radioBtn" type="radio" checked={projData[0].star} onClick={this.onClickRadioBtn}/>
-                            <label htmlFor='radioBtn'>يعد من المشاريع المميزة ؟</label>
+                            <input id='radio' name='star' type="radio" value={true} />
+                                <label htmlFor='radio'>نعم</label>
+                                <br/>
+                            <input id='radio2' name='star' type="radio" value={false} />
+                                <label htmlFor='radio2'>لا</label>
                         </div>
+
                         <h5>صور المشروع</h5>
                         <FormInputs
                         ncols={["col-md-8"]}
@@ -299,7 +277,7 @@ class EditProfile extends Component {
     }
 }
 
-
+ 
 const mapStateToProps = state => {
     return {
         projData : state.editPrjectData.projectData,
@@ -316,7 +294,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     editProject,
     uploadFiles,
-    handleInputChange       
+    handleInputChange,
+    handleStarValue      
 
 }
 

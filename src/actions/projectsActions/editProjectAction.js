@@ -1,10 +1,11 @@
 import {
     EDIT_PROJECT_START,
     EDIT_PROJECT_SUCCESS,
-    EDIT_PROJECT_FAILURE
+    EDIT_PROJECT_FAILURE,
+    
 } from '../../constants/actionTypes'
 
-const editProjectwsStart = () =>{
+const editProjectStart = () =>{
     return {
         type: EDIT_PROJECT_START
     };
@@ -25,21 +26,17 @@ const editProjectFailure = (err) => {
 }
 
 const editProject = data => (dispatch, getState)=> {
-    if(data.images.length === 0 && getState().filesUrl.secondaryImages ===null){
-        data.images = data.projData.images
-
-    }
-    else if (getState().filesUrl.secondaryImages){
-        
-        data.images = getState().filesUrl.secondaryImages;
-        
-    }
+    // if(data.images.length === 0 && getState().filesUrl.secondaryImages ===null){
+    //     data.images = data.projData.images
+    // }
+    // else if (getState().filesUrl.secondaryImages){
+    //     data.images = getState().filesUrl.secondaryImages;
+    // }else{
+    // }
+    console.log(data,' data is here');
     
-    else{
-         
-    }
     
-    dispatch(editProjectwsStart())
+    dispatch(editProjectStart())
     fetch('https://nabaliandfares.herokuapp.com/api/v1/editProject', {
         method: "POST",
         headers: {
@@ -56,7 +53,7 @@ const editProject = data => (dispatch, getState)=> {
     .catch(error => {console.error(`Fetch Error =\n`, error)
         dispatch(editProjectFailure(error))
     });
-
+    dispatch(editProjectFailure())
     
 };
 

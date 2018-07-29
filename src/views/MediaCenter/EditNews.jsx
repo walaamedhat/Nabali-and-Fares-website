@@ -9,7 +9,7 @@ import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
 import Card from "../../components/Card/Card.jsx";
 import updateNewsData from '../../actions/newsActions/editNewsAction';
 import uploadFiles from '../../actions/uploadFilesAction';
-
+import {handelNewsInputsChange} from '../../reducers/newsReducers/transferNewsId';
 
 
 class EditSection extends Component {
@@ -78,10 +78,14 @@ class EditSection extends Component {
      document.getElementById('editing_div').style.display = "none";;
   }
 
+  handleInputChange = e => {
+    const {handelNewsInputsChange} = this.props;
+    handelNewsInputsChange(e.target)
+  }
 
   render() {
-    const {data} = this.props;
-    console.log(data,'idNewsToEdit');
+    const {newsData} = this.props;
+    console.log(newsData,'idNewsToEdit');
 
     const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;
     return(
@@ -95,7 +99,7 @@ class EditSection extends Component {
         <Card
           title=" عدل الخبر من هنا  "
           content={
-            <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={data[0]._id}>
+            <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={newsData[0]._id}>
               <FormInputs
                 ncols={["col-md-5", "col-md-7"]}
                 proprieties={[
@@ -106,9 +110,9 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
                     required: true,
-                    value: data[0].type,
+                    value: newsData[0].type,
                     onChange: this.handleInputChange,
-                    name: 'newsType'
+                    name: 'type'
                   },
                   {
                     label: "عنوان الخبر",
@@ -116,9 +120,9 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     placeholder: "ادخل هنا عنوان الخبر",
                     required: true,
-                    value: data[0].name,
+                    value: newsData[0].name,
                     onChange: this.handleInputChange,
-                    name: 'newsTitle'
+                    name: 'name'
 
                   }
                 ]}
@@ -132,9 +136,9 @@ class EditSection extends Component {
                       componentClass="textarea"
                       bsClass="form-control"
                       placeholder="أدخل هنا وصف الخبر/الإعلان"
-                      value={data[0].discription}
+                      value={newsData[0].discription}
                       onChange={this.handleInputChange}
-                      name= 'newsDescription'
+                      name= 'discription'
                     />
                   </FormGroup>
                 </Col>
@@ -149,7 +153,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     id:'mainImage',
                     onChange:this.onSelectedMainImage,
-                    defaultValue:data[0].mainImage
+                    defaultValue:newsData[0].mainImage
 
                   }
                 ]}
@@ -164,7 +168,7 @@ class EditSection extends Component {
                     id:'secondaryImages',
                     onChange: this.onSelectedMultipleImages,
                     multiple:true,
-                    defaultValue:data[0].secondaryImages
+                    defaultValue:newsData[0].secondaryImages
                   }
                 ]}
                 />
@@ -177,7 +181,7 @@ class EditSection extends Component {
                     bsClass: "form-control",
                     id:'newsVideo',
                     onChange: this.onSelectedVideo,
-                    defaultValue: data[0].video
+                    defaultValue: newsData[0].video
                   }
                 ]}
                 />
@@ -208,7 +212,7 @@ const mapStateToProps = state => {
     return {
       // AllNews: state.allNews.newsData,
       // idNewsToEdit : state.transferIdReducer.id,
-      // data : state.transferIdReducer.data,
+      newsData : state.editnewsData.newsData,
       isFetching: state.filesUrl.isFetching,
       message : state.filesUrl.message,
       isFetchingUpdate: state.editnewsData.isFetching,
@@ -218,7 +222,8 @@ const mapStateToProps = state => {
 
   const mapDispatchToProps = {
     updateNewsData,
-    uploadFiles
+    uploadFiles,
+    handelNewsInputsChange
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(EditSection);

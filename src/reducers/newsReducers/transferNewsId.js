@@ -12,11 +12,10 @@ const transferIdStart = () => {
         type: 'TransferStart' ,
     })
 }
-const transferId = (data) => {
+const transferId = (id) => {
     return ({
         type: 'TransferSuccess' ,
-        id: data.id,
-        payload: data
+        id
 
     })
 }
@@ -27,17 +26,18 @@ const transferData = (data) => {
 
     })
 }
+const handelNewsInputsChange = input => { 
+  return({
+    type :'HANDEL_NEWS_INPUTS_CHANGE',
+     payload: input
+    }
+  )
+}
 
-// const transferIdProjectAction = (id) => (dispatch, getState) => {
-//         dispatch(transferIdStart())        
-//         const projData = getState().allProjects.projectsData.data.filter(elem => elem._id === id.id)        
-//         dispatch(transferId(id.id))
-//         dispatch(transferData(projData))
-// }
 const transferIdNewsAction = id => (dispatch,getState) => {
         dispatch(transferIdStart())
         dispatch(transferId(id))
-        const data = getState().allNews.newsData.data.filter(e => e._id === id.id);
+        const data = getState().allNews.newsData.data.filter(e => e._id === id);        
         dispatch(transferData(data))
 };
 
@@ -58,12 +58,11 @@ const transferIdReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
-        isFetching: false,
+        isFetching: false
       }}
-
     default:
       return state;
   }
 };
 
-module.exports = {transferIdNewsAction ,transferIdReducer};
+module.exports = {transferIdNewsAction ,transferIdReducer, handelNewsInputsChange};

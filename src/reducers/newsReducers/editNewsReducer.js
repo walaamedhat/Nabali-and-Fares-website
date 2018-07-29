@@ -5,7 +5,7 @@ import {
 } from '../../constants/actionTypes';
 
 const intialState = {
-    newsData:{},
+    newsData:[],
     isFetching: false,
     error: undefined,
     message: ''
@@ -35,6 +35,23 @@ const editNewsData = (state = intialState, action) => {
                 isFetching: false,
                 message: 'Edit News Faild, Try Again!!'
             }
+        }
+        case 'TransferDataSuccess': {
+            return {
+              ...state,
+              newsData: action.payload,
+              isFetching: false
+        }}
+
+        case 'HANDEL_NEWS_INPUTS_CHANGE' : { 
+            
+            return{
+                ...state,
+                newsData: [{
+                    ...state.newsData[0],
+                    [action.payload.name]: action.payload.value
+                }]
+            }            
         }
         default: return state
     }
