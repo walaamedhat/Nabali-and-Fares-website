@@ -31,9 +31,11 @@ exports.post = (req, res) => {
 exports.edit = (req, res) => {
   editNews(req.body,(err,result) => {
     if (err) {
+      console.log(err,'edit error');
       res.status(500).send(err);
     }
     else {
+      console.log(result, ' edit result ');
       res.status(200).send(result);
     }
   })
