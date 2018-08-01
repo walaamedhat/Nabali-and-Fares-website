@@ -16,8 +16,8 @@ module.exports = (newsData,callback) => {
   (error, result) => {
     if (error) return callback(error);
   })
-    .then(res => callback(null, res))
-    .catch(err => callback(err));
+    .then(res => callback(null, result))
+    .catch(err => callback(error));
 };
 
 // module.exports = (newsData,callback) => {
