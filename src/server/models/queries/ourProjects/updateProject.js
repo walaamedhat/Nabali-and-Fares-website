@@ -22,5 +22,7 @@ module.exports = (dataProject,callback) => {
     if (error) return callback(error);
   })
     .then(res => callback(null, res))
-    .catch(err =>console.error(err,'error updateProject catch'););
+    .catch(err =>(console.error(err,'error updateProject catch'))
+    callback(err)
+  );
 };
