@@ -13,11 +13,13 @@ module.exports = (dataProject,callback) => {
       images: dataProject.images,
       address: [dataProject.street,dataProject.district,dataProject.city],
       date: Date.now(),
-      star: dataProject.star
+      star: dataProject.star,
+      [console.log('entered object')]: ''
     },
   },
   { new: true },
   (error, result) => {
+    console.log('line 22 erro : ', error);
     if (error) return callback(error);
   })
     .then(res => {
