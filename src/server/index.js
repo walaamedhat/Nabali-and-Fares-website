@@ -14,7 +14,6 @@ const app = express();
 
 // https://nfdashboard.herokuapp.com
 var corsOptions = {
-  origin: '*',
   credentials:  true
 }
 
