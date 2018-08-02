@@ -29,7 +29,9 @@ exports.post = (req, res) => {
 }
 
 exports.edit = (req, res) => {
+  console.log(req.body,'req.body');
   editNews(req.body,(err,result) => {
+    console.log(req.body,'inside queries');
     if (err) {
       console.log(err,'edit error');
       res.status(500).send(err);

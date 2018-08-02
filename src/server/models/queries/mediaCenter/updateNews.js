@@ -1,6 +1,7 @@
 const mediaCenter = require('../../schemas/mediaCenterSchema');
 
 module.exports = (newsData,callback) => {
+  console.log(newsDatam,'newsData newsData');
   mediaCenter.findByIdAndUpdate(newsData._id, {
     $set: {
               name: newsData.name,
