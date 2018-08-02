@@ -11,6 +11,7 @@ exports.edit = (req, res) => {
       res.status(500).send(err);
     }
     else {
+      console.log(result,'result updateProject');
       res.status(200).send(result);
     }
   })
