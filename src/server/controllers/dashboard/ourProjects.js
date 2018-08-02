@@ -9,8 +9,7 @@ exports.edit = (req, res) => {
     if (err) {
       console.log(err,'err in update controllers');
       res.status(500).send(err);
-    }
-    else {
+    } else {
       console.log(result,'result updateProject controllers');
       res.status(200).send(result);
     }
@@ -24,8 +23,7 @@ exports.post = (req , res) => {
   createProject(req.body,(err,result) => {
     if (err) {
       res.status(500).send(err);
-    }
-    else {
+    } else {
       res.status(200).send(result);
     }
 

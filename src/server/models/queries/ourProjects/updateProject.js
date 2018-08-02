@@ -1,6 +1,7 @@
 const ourProjects = require('../../schemas/ourProjectsSchema');
 
 module.exports = (dataProject,callback) => {
+  console.log('dataProject', dataProject);
   ourProjects.findByIdAndUpdate(dataProject._id, {
     $set: {
       name: dataProject.name,
@@ -17,10 +18,11 @@ module.exports = (dataProject,callback) => {
   },
   { new: true },
   (error, result) => {
-    console.log(error,'error updateProject in queries');
-    console.log(result,'result updateProject in queries');
     if (error) return callback(error);
   })
-    .then(res => callback(null, res))
+    .then(res => {
+      console.log('line 24: ', res);
+      callback(null, res);
+    })
     .catch(err => callback(err));
 };
