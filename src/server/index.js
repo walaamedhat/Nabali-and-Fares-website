@@ -14,7 +14,8 @@ const app = express();
 
 // https://nfdashboard.herokuapp.com
 var corsOptions = {
-  origin : 'https://nfdashboard.herokuapp.com',
+  origin : 'http://localhost:3000',
+  ssl: true,
   credentials:  true
 }
 
