@@ -603,3 +603,14 @@
 .user-profile > .container-fluid > .row{
     display: flex;
 }
+
+#dropdown-size-small{
+    width: 10em;
+    margin-top: 7px;
+    padding: 9px;
+}
+.dropdown-with-input{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col, Button, Table ,FormGroup, ControlLabel, FormControl} from "react-bootstrap";
+import { Row, Col, Button, Table ,FormGroup, ControlLabel, FormControl} from "react-bootstrap";
 import { BarLoader } from 'react-spinners';
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import CustomButton from "../../components/CustomButton/CustomButton.jsx";
@@ -10,6 +10,7 @@ import Card from "../../components/Card/Card.jsx";
 import updateNewsData from '../../actions/newsActions/editNewsAction';
 import uploadFiles from '../../actions/uploadFilesAction';
 import {handelNewsInputsChange} from '../../reducers/newsReducers/transferNewsId';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 class EditSection extends Component {
@@ -34,7 +35,14 @@ class EditSection extends Component {
       [e.target[2].name]: e.target[2].value
     }
     const { updateNewsData } = this.props;
-    updateNewsData(this.state);
+    console.log(
+      'this.state',
+    );
+    const {newsData} = this.props;
+    console.log(
+      'this.newsData', newsData
+    );
+    updateNewsData(newsData);
   }
 
 
@@ -73,7 +81,9 @@ class EditSection extends Component {
     uploadFiles('video',data)
 
   }
-  
+  loadWindow = () =>{
+    window.location.pathname = '/ourprojects';
+  }
   closeWindow= () => {
      document.getElementById('editing_div').style.display = "none";;
   }
@@ -85,7 +95,6 @@ class EditSection extends Component {
 
   render() {
     const {newsData} = this.props;
-    console.log(newsData,'idNewsToEdit');
 
     const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;
     return(
@@ -193,7 +202,17 @@ class EditSection extends Component {
                       : <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
                 }
 
-
+                {
+                    this.props.isFetching ?
+                    <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
+                        :this.props.isUpdated?
+                            <SweetAlert 
+                                success 
+                                title="تم تعديل المشروع بنجاح" 
+                                onConfirm={this.loadWindow}>
+                            </SweetAlert>
+                    :<div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpload}</div>
+                }
               <Button bsStyle="info" block type="submit">
                 Update News
               </Button>
@@ -210,12 +229,10 @@ class EditSection extends Component {
 
 const mapStateToProps = state => {
     return {
-      // AllNews: state.allNews.newsData,
-      // idNewsToEdit : state.transferIdReducer.id,
       newsData : state.editnewsData.newsData,
       isFetching: state.filesUrl.isFetching,
       message : state.filesUrl.message,
-      isFetchingUpdate: state.editnewsData.isFetching,
+      isUpdated: state.editnewsData.isUpdateSuccess,
       messageUpdate : state.editnewsData.message,
       };
   };

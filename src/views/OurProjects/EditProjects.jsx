@@ -10,7 +10,6 @@ import editProject from '../../actions/projectsActions/editProjectAction';
 import uploadFiles from '../../actions/uploadFilesAction';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import {handleInputChange, handleStarValue} from '../../actions/projectsActions/transferIdProjectAction';
-import Checkbox from "../../components/CustomCheckbox/CustomCheckbox";
 
 class EditProfile extends Component {
     constructor(props){
@@ -57,7 +56,13 @@ class EditProfile extends Component {
         const radioArr = Array.from(radio);
         const star = radioArr.filter(e => e.checked);
         const {handleStarValue} = this.props;
-        handleStarValue(star[0].value==="true"? true: false);
+        if(star.length === 0 ){
+            this.setState({
+                massageError: 'اختر المشروع مميز ام ﻻ '
+            })
+        }else{
+            handleStarValue(star[0].value==="true"? true: false);
+        }
     }
         
     handleFilesUpload = event => {
@@ -254,17 +259,17 @@ class EditProfile extends Component {
                             ]}
                             />
 
-                            {
-                    this.props.isFetchingUpload ||this.props.isFetchingEdit ?
-                      <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
-                        :this.props.messageEdit?
-                            <SweetAlert 
-                                success 
-                                title="تم تعديل المشروع بنجاح" 
-                                onConfirm={this.loadWindow}>
-                                </SweetAlert>
-                      :<div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpload}</div>
-                }
+                        {
+                            this.props.isFetchingUpload || this.props.isFetchingEdit ?
+                            <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
+                                :this.props.messageEdit?
+                                    <SweetAlert 
+                                        success 
+                                        title="تم تعديل المشروع بنجاح" 
+                                        onConfirm={this.loadWindow}>
+                                        </SweetAlert>
+                            :<div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpload}</div>
+                        }
                         <Button bsStyle="info" block type="submit">
                             إحفظ التعديلات
                         </Button>
@@ -284,7 +289,7 @@ const mapStateToProps = state => {
         filesUrl: state.filesUrl,
         isFetchingUpload: state.filesUrl.isFetching,
         messageUpload : state.filesUrl.message,
-        isFetchingEdit:state.editPrjectData.isFetching,
+        isFetchingEdit: state.editPrjectData.isFetching,
         messageEdit:state.editPrjectData.message,
                 
 

@@ -8,7 +8,8 @@ const intialState = {
     newsData:[],
     isFetching: false,
     error: undefined,
-    message: ''
+    message: '',
+    isUpdateSuccess: false
 }
 
 
@@ -17,7 +18,8 @@ const editNewsData = (state = intialState, action) => {
         case EDIT_NEWS_START:{
             return{
                 ...state,
-                isFetching:true
+                isFetching:true,
+                isUpdateSuccess:false
             }
         }
         case EDIT_NEWS_SUCCESS :{
@@ -25,7 +27,8 @@ const editNewsData = (state = intialState, action) => {
                 ...state,
                 newsData:action.payload,
                 isFetching:false,
-                message: 'Edit News Success'
+                message: 'Edit News Success',
+                isUpdateSuccess: true
             }
         }
         case EDIT_NEWS_FAILURE :{
@@ -33,7 +36,8 @@ const editNewsData = (state = intialState, action) => {
                 ...state,
                 error: action.error,
                 isFetching: false,
-                message: 'Edit News Faild, Try Again!!'
+                message: 'Edit News Faild, Try Again!!',
+                isUpdateSuccess: false
             }
         }
         case 'TransferDataSuccess': {

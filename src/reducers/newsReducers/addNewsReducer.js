@@ -7,6 +7,7 @@ import {
 const intialState = {
     newsData:{},
     isFetching: false,
+    isAddingSuccess: false,
     error: undefined,
     message: ''
 }
@@ -17,7 +18,8 @@ const addNewsData = (state = intialState, action) => {
         case ADDING_NEWS_START:{
             return{
                 ...state,
-                isFetching:true
+                isFetching:true,
+                isAddingSuccess:false
             }
         }
         case ADDING_NEWS_SUCCESS :{
@@ -25,6 +27,7 @@ const addNewsData = (state = intialState, action) => {
                 ...state,
                 newsData:action.payload,
                 isFetching:false,
+                isAddingSuccess: true,
                 message: 'Add News Success'
             }
         }
@@ -33,6 +36,7 @@ const addNewsData = (state = intialState, action) => {
                 ...state,
                 error: action.error,
                 isFetching: false,
+                isAddingSuccess:false,
                 message: 'Add News Faild, Try Again!!'
             }
         }

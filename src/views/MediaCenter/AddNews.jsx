@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Grid, Row, Col, Button, Table ,FormGroup, ControlLabel, FormControl} from "react-bootstrap";
 import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
 import Card from "../../components/Card/Card.jsx";
-import { thArray, tdArray } from "../../variables/Variables.jsx";
 import { connect } from 'react-redux';
 import { BarLoader } from 'react-spinners';
-import Popup from 'react-popup';
+import { DropdownButton, MenuItem } from "react-bootstrap";
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 import addNewsData from '../../actions/newsActions/addNewsAction';
@@ -15,24 +15,23 @@ class AddNews extends Component {
   constructor(props){
     super(props);
     this.state = {
-      newsType:"",
+      newsType:'نوع المقال',
       newsTitle:"",
       newsDescription:"",
       mainImage:null,
       secondaryImages:[],
-      video:null
+      video:null,
     }
   }
 
   onSubmit = (e) =>{
     e.preventDefault()
     const { addNewsData } = this.props;
-    addNewsData(this.state);
-  }
-  handleTypeInputChange = (e) =>{
-    this.setState({
-      newsType: e.target.value
-    })
+    if(this.state.newsType === 'نوع المقال'){
+      alert('اختار نوع المقال')
+    }else{
+      addNewsData(this.state);
+    }
   }
   handleTitInputChange = (e) =>{
     this.setState({
@@ -57,6 +56,10 @@ class AddNews extends Component {
 
   }
 
+  loadWindow = () =>{
+    window.location.pathname = '/mediacenter';
+  }
+
   onSelectedMultipleImages = (e) => {
     const photos = Array.from(e.target.files);
     const fd = new FormData();
@@ -78,6 +81,13 @@ class AddNews extends Component {
     data.append('name', fileName);
     const { uploadFiles } = this.props;
     uploadFiles('video',data)
+  }
+
+  changeTitleOfDrowdown = e =>{
+  
+    this.setState({
+      newsType: e.target.innerText
+    });
 
   }
 
@@ -92,31 +102,42 @@ class AddNews extends Component {
                 title="إضف هنا في المركز الإعلامي"
                 content={
                   <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit}>
-                    <FormInputs
-                      ncols={["col-md-5", "col-md-7"]}
-                      proprieties={[
+                    <Row className='dropdown-with-input'>
+                    <Col md={6}>
+                      <DropdownButton bsSize="small" title={this.state.newsType} id="dropdown-size-small" required>
+                        <MenuItem eventKey="1" value='خبر' onClick={this.changeTitleOfDrowdown}>خبر</MenuItem>
+                        <MenuItem eventKey="2" value='بيان صحفي' onClick={this.changeTitleOfDrowdown}>بيان صحفي</MenuItem>
+                        <MenuItem eventKey="3" value='تقرير سنوي' onClick={this.changeTitleOfDrowdown}>تقرير سنوي</MenuItem>
+                      </DropdownButton>
+                    </Col>
+                    <Col md={6}>
+                      <FormInputs
+                        ncols={["col-md-12"]}
+                        proprieties={[
+                          // {
+                          //   label: "نوع الخبر",
+                          //   type: "text",
+                          //   bsClass: "form-control",
+                          //   placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
+                          //   required: true,
+                          //   onChange: this.handleTypeInputChange
+                          // },
+                          {
+                            label: "عنوان الخبر",
+                            type: "text",
+                            bsClass: "form-control",
+                            placeholder: "ادخل هنا عنوان الخبر",
+                            required: true,
+                            onChange: this.handleTitInputChange
 
-                        {
-                          label: "نوع الخبر",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
-                          required: true,
-                          onChange: this.handleTypeInputChange
-                        },
-                        {
-                          label: "عنوان الخبر",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "ادخل هنا عنوان الخبر",
-                          required: true,
-                          onChange: this.handleTitInputChange
-
-                        }
-                      ]}
-                    />
+                          }
+                        ]}
+                      />
+                    </Col>
+                    </Row>
                     <Row>
-                      <Col md={12}>
+                      <Col md={3}></Col>
+                      <Col md={9}>
                         <FormGroup>
                           <ControlLabel>وصف الخبر/الإعلان</ControlLabel>
                           <FormControl
@@ -180,6 +201,15 @@ class AddNews extends Component {
                     <Button bsStyle="info" block type="submit">
                       Add News
                     </Button>
+                    {
+                       this.props.isAddingDone ?
+                       <SweetAlert 
+                       success 
+                       title="تم إضاقة المشروع بنجاح" 
+                       onConfirm={this.loadWindow}>
+                       </SweetAlert>
+                       :<div></div>
+                     }
                   </form>
                 }
               />
@@ -196,6 +226,7 @@ const mapStateToProps = state => {
     isFetching: state.filesUrl.isFetching,
     message : state.filesUrl.message,
     isFetchingAddNews: state.newsData.newsData.isFetching,
+    isAddingDone: state.newsData.isAddingSuccess,
     messageAddNews: state.newsData.newsData.message
   }
 }

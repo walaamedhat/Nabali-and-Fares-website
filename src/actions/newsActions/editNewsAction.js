@@ -38,6 +38,10 @@ const AddNews = data => (dispatch, getState)=> {
         },
         body: JSON.stringify(data)
     }).then(response =>{
+        console.log(
+            'response', response
+        );
+        
        return response.json()
     })
     .then(res => {
