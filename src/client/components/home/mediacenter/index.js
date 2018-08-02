@@ -13,25 +13,34 @@ class MediaCenter extends Component{
   }
   componentDidMount(){
       const { allNews } = this.props;
-      allNews();
+      allNews('lastnews');
   }
 
     render(){
       const {news} = this.props;
-      console.log(news,'props news');
+      console.log(news.newsData[0],'props news');
+      console.log(news.newsData[1],'props news');
         return(
             <div className='mediacenter'>
                 <div className='mediacenter__top'>
                     <span className='mediacenter__top__righttext'>المركز الإعلامي</span>
-                    <Link to='/mediacenter'><span className='mediacenter__top__lefttext'>عرض كل الأخبار</span></Link>
+                    <Link to='/mediacenter/lastnews'><span className='mediacenter__top__lefttext'>عرض كل الأخبار</span></Link>
                 </div>
                 {
                   news.isFetching || news.newsData.length==0? <div>loading</div> :
-                <div className='mediacenter__bottom'>
-                    <NewsBox data={news.newsData[0]} props={this.props.props} />
-                    <NewsBox data={news.newsData[1]} props={this.props.props}/>
-                    <NewsBox data={news.newsData[2]} props={this.props.props}/>
-                </div>
+                    news.newsData.length >= 3 ?
+                    <div className='mediacenter__bottom'>
+                      <NewsBox data={news.newsData[0]} props={this.props.props} />
+                      <NewsBox data={news.newsData[1]} props={this.props.props}/>
+                      <NewsBox data={news.newsData[2]} props={this.props.props}/>
+                    </div>
+
+                    :
+                    <div className='mediacenter__bottom'>
+                      <NewsBox data={news.newsData[0]} props={this.props.props} />
+                      <NewsBox data={news.newsData[1]} props={this.props.props}/>
+                    </div>
+              
               }
             </div>
         );

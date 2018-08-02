@@ -24,9 +24,9 @@ const projectFetchFailure = (err) => {
     })
 }
 
-const allNews = () => dispatch => {
+const allNews = type => dispatch => {
     dispatch(projectFetchStart())
-    fetch('/api/v1/allnews', {
+    fetch(`/api/v1/allnews/${type}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

@@ -41,7 +41,7 @@ class Slideshow extends Component {
   }
   componentDidMount(){
       const { allNews } = this.props;
-      allNews();
+      allNews('lastnews');
   }
 
   view = (e)=> {
@@ -72,7 +72,7 @@ class Slideshow extends Component {
           transitionDuration={1000}
           />
         <div className='slider-header-nav'>
-          <Header Logo='./assets/nabali-fares-logo.png' WhereAmI='homepage'/>
+          <Header Logo='./assets/nabali-fares-colored.png' WhereAmI='homepage'/>
         </div>
           <div className='slider-text'>
             <Slider {...settings}>

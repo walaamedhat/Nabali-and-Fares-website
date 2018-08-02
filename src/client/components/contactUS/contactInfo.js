@@ -145,7 +145,7 @@ class ContactUsInfo extends Component {
               <h4 style={{ display: 'flex',justifyContent: 'space-around',width: '184px',color: '#8492a6'}}>
                 <img src='./assets/clock.png'/> ساعات الدوام الرسمي
               </h4>
-              <h4 style={{ color: '#475669' }}>يومياً عد الجمعة والسبت من الساعة 9 صباحاً وحتى الساعة 5 مساءً والعطل الرسمية في البلاد</h4>
+              <h4 style={{ color: '#475669' }}>يومياً عد الجمعة من الساعة 9 صباحاً وحتى الساعة 5 مساءً والعطل الرسمية في البلاد</h4>
             </div>
           </div>
         </div>

@@ -1,16 +1,115 @@
 {
   "components": {
+    "Gallary": {},
+    "Apartmentpage": {},
     "contactInfo": {},
     "ContactUS": {},
     "Footer": {},
     "Header": {},
-    "Home": {},
-    "newsContent": {},
-    "sendComment": {},
-    "Mediacenterpage": {},
-    "OurProjects": {},
+    "Home": {
+      "attributes": [
+        "fetchAllProjects"
+      ],
+      "props": {
+        "fetchAllProjects": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Map": {},
+    "allComments": {},
+    "anotherNews": {},
+    "descContent": {},
+    "MediaCenterPost": {
+      "attributes": [
+        "newsData"
+      ],
+      "props": {
+        "newsData": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "newsContent": {
+      "attributes": [
+        "allNews"
+      ],
+      "props": {
+        "allNews": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "newsImages": {},
+    "sendComment": {
+      "attributes": [
+        "addComment"
+      ],
+      "props": {
+        "addComment": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Mediacenterpage": {
+      "attributes": [
+        "allNews"
+      ],
+      "props": {
+        "allNews": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "OurProjects": {
+      "attributes": [
+        "fetchAllProjects"
+      ],
+      "props": {
+        "fetchAllProjects": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
     "projects": {},
     "Page404": {},
-    "Projectpage": {}
+    "Projectpage": {
+      "attributes": [
+        "projectData"
+      ],
+      "props": {
+        "projectData": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    }
   }
 }

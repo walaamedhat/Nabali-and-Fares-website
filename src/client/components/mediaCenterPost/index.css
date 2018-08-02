@@ -53,9 +53,8 @@
   flex-direction: column;
   align-items: center;
 }
-.content-fistSection{
-  width: 50%;
-  margin:
+.content-firstSection{
+  width: 50%
 }
 .secondSection__runvideobutton{
   position: absolute;

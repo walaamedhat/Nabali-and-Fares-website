@@ -18,9 +18,9 @@ class NewsBox extends Component {
         <div className='mediacenter__bottom__box'>
                         <img src={news.mainImage}/>
                         <div className='mediacenter__bottom__icon'>
-                            <img src='./assets/calender.png'/>
+                            <img src='../assets/calender.png'/>
                             <span>قبل 5 دقائق</span>
-                            <img src='./assets/flag.png'/>
+                            <img src='../assets/flag.png'/>
                             <span>{news.type}</span>
                         </div>
                         <div className='mediacenter__bottom__title'>{news.name.substring(0, 30)}...</div>

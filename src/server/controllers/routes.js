@@ -48,7 +48,7 @@ router.get('/stars_project', findAllProject.starProjects);
 router.get('/project/:project_id', findProject.get);
 
 
-router.get('/allnews', allNews.get);
+router.get('/allnews/:type', allNews.get);
 router.get('/post/:news_id', newsData.get);
 
 

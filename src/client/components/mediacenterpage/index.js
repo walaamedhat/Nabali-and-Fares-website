@@ -14,8 +14,9 @@ class MediaCenterPage extends Component {
     super(props);
   }
   componentDidMount(){
+    console.log(this.props.match.params.type_of_media,'type_of_media');
       const { allNews } = this.props;
-      allNews();
+      allNews(this.props.match.params.type_of_media);
   }
 
     render(){
@@ -23,7 +24,7 @@ class MediaCenterPage extends Component {
       console.log(this.props,'props');
         return(
             <div>
-                <Header Logo='./assets/nabali-fares-colored.png' WhereAmI='mediacenterpage'/>
+                <Header Logo='../assets/nabali-fares-colored.png' WhereAmI='mediacenterpage'/>
                 <div className='mediacenterpage__nav'>
                     <span>المركز الإعلامي</span>
                     <span>ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى</span>

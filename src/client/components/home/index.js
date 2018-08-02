@@ -25,6 +25,11 @@ class Home extends Component {
         return(
           <div className='home-component'>
             <Slideshow props={this.props}/>
+            <div className='newprojects__top'  style={{justifyContent: 'center', width:'100%', marginBottom:'21px'}}>
+                <div style={{color: '#3da5f9',fontSize: '22px',fontWeight: '400',
+                borderBottom:'1px dashed #3da5f9'}}>خريطة مشاريع النبالي والفارس للعقارات</div>
+
+            </div>
             <Map height='431px' data={allProjects}/>
             <NewProjects props={this.props}/>
             <FeaturedProjects />

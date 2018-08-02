@@ -23,7 +23,7 @@ ReactDOM.render(
           <Route exact path='/' component={Home} />
           <Route exact path='/contactUs' component={ContactUs} />
           <Route exact path='/ourprojects' component={OurProjects} />
-          <Route path='/mediacenter' component={MediaCenter} />
+          <Route path='/mediacenter/:type_of_media' component={MediaCenter} />
           <Route path='/project/:project_id' component={ProjectPage} />
           <Route path='/apartment' component={Apartment} />
           <Route path='/post/:news_id' component={MediaCenterPost} />

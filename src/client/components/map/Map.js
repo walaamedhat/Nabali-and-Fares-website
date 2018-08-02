@@ -19,7 +19,7 @@ export default class MyMap extends Component {
     const position = [this.state.lat, this.state.lng];
 
     return (
-      <Map className='markercluster-map' center={position} zoom={this.state.zoom} style={{height:this.props.height}}>
+      <Map className='markercluster-map' center={position} zoom={this.state.zoom} style={{height:this.props.height, zIndex:'1'}}>
 
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"

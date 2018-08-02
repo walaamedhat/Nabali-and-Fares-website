@@ -6,7 +6,9 @@ import ReactPlayer from 'react-player';
 import { RingLoader } from 'react-spinners';
 
 import allNews from '../../actions/getAllNewsAction';
-
+import AnotherNews from './anotherNews';
+import NewsImages from './newsImages';
+import Content from './descContent';
 import Header from '../header';
 
 import './index.css';
@@ -38,7 +40,7 @@ class MediaCenterPost extends Component {
   }
   componentDidMount(){
       const { allNews } = this.props;
-      allNews();
+      allNews('lastnews');
   }
   view = (e)=> {
     window.scrollTo(0, 0);
@@ -46,9 +48,10 @@ class MediaCenterPost extends Component {
    }
 
   render() {
-    const length = this.props.anotherNews.newsData.length;
-    const randomIndex = Math.floor(Math.random() * length);
-    const randomIndex2 = randomIndex + 1 === length ? randomIndex-1: randomIndex+1
+      const desc = this.props.data[0].discription.split("[\\. \\]+");
+      console.log(desc,'desc kkkkkkk');
+      // console.log(this.props.data[0].discription.split("[\\s\\.]+")[0],'desc desc'):
+
     return (
       <div>
         <Header Logo='../assets/nabali-fares-colored.png' WhereAmI='mediacenterpage'/>
@@ -75,77 +78,31 @@ class MediaCenterPost extends Component {
             </div>
           </div>
           <div className='post-content'>
-            <div className='content-fistSection'>
-              <p>
-                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها
-              </p>
-            </div>
+            <Content  desc={this.props.data[0].discription}/>
+
             <div className='content-secondSection'>
               <div style={{ position:'relative' }} className='projectpage__row5__video' onClick={this.runOrPauseVideo}>
                   {!this.state.controled && <input className='secondSection__runvideobutton'/>}
                   <ReactPlayer url={[{src:this.props.data[0].video, type: 'video/webm'}]} playing={this.state.run} controls={this.state.controled}/>
               </div>
             </div>
-            <div className='content-thirdSection'>
-              <h3>عنوان وهمي لاظهار شكل عناوين الفقرات</h3>
-              <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها</p>
-              <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها</p>
-              <h3>عنوان وهمي ثاني</h3>
-              <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها</p>
-            </div>
-            <div className='content-fourthSection'>
-              <img style={{ width:'100%' }} src='../assets/post-image.png'/>
-              <div style={{ width:'100%' }} className='fourthSection-2img'>
-                <img src='../assets/post-image.png'/>
-                <img src='../assets/post-image.png'/>
-              </div>
-              <div className='fourthSection-6img'>
-                <img src='../assets/post-image.png'/>
-                <div className='fourthSection-6img-left'>
-                  <img src='../assets/post-image.png'/>
-                  <img src='../assets/post-image.png'/>
-                  <img src='../assets/post-image.png'/>
-                  <img src='../assets/post-image.png'/>
-                </div>
-              </div>
-            </div>
-            <div className='content-fifthSection'>
-              <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها</p>
 
-            </div>
+            <Content  desc={this.props.data[0].discription}/>
+
+            <NewsImages />
+
+            <Content  desc={this.props.data[0].discription}/>
+
             <div className='content-sixthSection'>
               <div className='sixthSection-moreNews'>
                 <h3 style={{ color:'#475669'}}>أخبار أخرى</h3>
-                <Link to='/mediacenter'>
+                <Link to='/mediacenter/lastnews'>
                   <h5 style={{ color:'#3da5f9'}}>عرض كل الأخبار</h5>
                 </Link>
               </div>
               {
                 this.props.anotherNews.isFetching || this.props.anotherNews.newsData.length==0? <div>loading</div> :
-                  <div className='moreNews-desc'>
-                    <div className='moreNews-desc-right'>
-                      <img style={{ width:'100%', height:'161.86px' }} src={this.props.anotherNews.newsData[randomIndex].mainImage}/>
-                      <h3>{this.props.anotherNews.newsData[randomIndex].name.substring(0, 55)}....</h3>
-                      <p>{this.props.anotherNews.newsData[randomIndex].discription.substring(0, 55)}.... </p>
-                      <Link to={'/post/' + `${this.props.anotherNews.newsData[randomIndex]._id}`} onClick={this.view}>
-                        <div className='newprojects__project__seemore'>
-                          عرض المزيد
-                          <span><i class="fas fa-arrow-left"></i></span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className='moreNews-desc-left'>
-                      <img style={{ width:'100%', height:'161.86px' }} src={this.props.anotherNews.newsData[randomIndex2].mainImage}/>
-                      <h3>{this.props.anotherNews.newsData[randomIndex2].name.substring(0, 55)}....</h3>
-                      <p>{this.props.anotherNews.newsData[randomIndex2].discription.substring(0, 55)}.... </p>
-                        <Link to={'/post/' + `${this.props.anotherNews.newsData[randomIndex2]._id}`} onClick={this.view}>
-                          <div className='newprojects__project__seemore'>
-                            عرض المزيد
-                            <span><i class="fas fa-arrow-left"></i></span>
-                          </div>
-                        </Link>
-                    </div>
-                  </div>
+                  <AnotherNews anotherNews={this.props.anotherNews}/>
                 }
             </div>
           </div>

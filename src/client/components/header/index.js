@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import './index.css';
 
 
@@ -51,18 +51,6 @@ class Header extends Component {
                 {this.changeColorNav(this.props.WhereAmI)}
                 <div className='header__burger'><i style={{ color : 'white'}} className="fas fa-align-justify" onClick={this.showList}></i></div>
             </div>
-            {
-                this.state.show &&
-                <div className='header__list'>
-                    <ul>
-                        <a href='/'><li>الرئيسية</li></a>
-                        <a href='#aboutUs'><li>عن الشركة</li></a>
-                        <a href='/ourprojects'><li>مشاريعنا</li></a>
-                        <a href='/mediacenter'><li>المركز الإعلامي</li></a>
-                        <a href='/contactus'><li>إتصل بنا</li></a>
-                    </ul>
-                </div>
-            }
         </div>
       );
 
@@ -75,7 +63,16 @@ const CompHome = () =>{
                     <a style={{color:'white'}} href='#' className='colored_blue'><div >الرئيسية</div></a>
                     <a style={{color:'white'}} href='#aboutUs'><div>عن الشركة</div></a>
                     <a style={{color:'white'}} href='/ourprojects'><div>مشاريعنا</div></a>
-                    <a style={{color:'white'}} href='/mediacenter'><div>المركز الإعلامي</div></a>
+                    <a style={{color:'white'}}>
+                      <div class="dropdown">
+                      <div>المركز الإعلامي</div>
+                          <div class="dropdown-content">
+                            <a href="/mediacenter/lastnews">أخر الأخبار</a>
+                            <a href="/mediacenter/mediainfo">بيانات صحفية</a>
+                            <a href="/mediacenter/reports">تقارير سنوية</a>
+                          </div>
+                      </div>
+                    </a>
                     <a href='/contactus'><div className='header__nav__contactus'>
                         <i class="fas fa-phone"></i>
                         إتصل بنا
@@ -90,7 +87,16 @@ const CompMediaCenter = () =>{
                     <a href='/'><div >الرئيسية</div></a>
                     <a href='#aboutUs'><div>عن الشركة</div></a>
                     <a href='/ourprojects'><div>مشاريعنا</div></a>
-                    <a href='#' className='colored_blue'><div>المركز الإعلامي</div></a>
+                    <a className='colored_blue'>
+                        <div class="dropdown">
+                        <div>المركز الإعلامي</div>
+                            <div class="dropdown-content">
+                              <a href="/mediacenter/lastnews">أخر الأخبار</a>
+                              <a href="/mediacenter/mediainfo">بيانات صحفية</a>
+                              <a href="/mediacenter/reports">تقارير سنوية</a>
+                            </div>
+                        </div>
+                      </a>
                     <a href='/contactus'><div className='header__nav__contactus'>
                         <i class="fas fa-phone"></i>
                         إتصل بنا
@@ -105,7 +111,16 @@ const CompOurProject = () =>{
                     <a href='/'><div >الرئيسية</div></a>
                     <a href='#aboutUs'><div>عن الشركة</div></a>
                     <a href='#' className='colored_blue'><div>مشاريعنا</div></a>
-                    <a href='/mediacenter'><div>المركز الإعلامي</div></a>
+                    <a href='/mediacenter'>
+                      <div class="dropdown">
+                      <div>المركز الإعلامي</div>
+                          <div class="dropdown-content">
+                            <a href="/mediacenter/lastnews">أخر الأخبار</a>
+                            <a href="/mediacenter/mediainfo">بيانات صحفية</a>
+                            <a href="/mediacenter/reports">تقارير سنوية</a>
+                          </div>
+                      </div>
+                    </a>
                     <a href='/contactus'><div className='header__nav__contactus'>
                         <i class="fas fa-phone"></i>
                         إتصل بنا
@@ -119,7 +134,16 @@ const CompContactUs = () =>{
                     <a href='/'><div >الرئيسية</div></a>
                     <a href='#aboutUs'><div>عن الشركة</div></a>
                     <a href='/ourprojects'><div>مشاريعنا</div></a>
-                    <a href='/mediacenter'><div>المركز الإعلامي</div></a>
+                    <a href='/mediacenter'>
+                      <div class="dropdown">
+                      <div>المركز الإعلامي</div>
+                          <div class="dropdown-content">
+                            <a href="/mediacenter/lastnews">أخر الأخبار</a>
+                            <a href="/mediacenter/mediainfo">بيانات صحفية</a>
+                            <a href="/mediacenter/reports">تقارير سنوية</a>
+                          </div>
+                      </div>
+                    </a>
                     <a href='#' className='colored_blue'><div className='header__nav__contactus'>
                         <i class="fas fa-phone"></i>
                         إتصل بنا
