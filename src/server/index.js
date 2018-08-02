@@ -13,12 +13,12 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 
 // https://nfdashboard.herokuapp.com
-var corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials:  true
-}
+// var corsOptions = {
+//   origin: 'http://localhost:3000',
+//   credentials:  true
+// }
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ limit: '50mb',extended: false }));
