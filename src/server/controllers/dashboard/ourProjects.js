@@ -7,11 +7,11 @@ exports.edit = (req, res) => {
   console.log(req.body,'request body ');
   editProject(req.body,(err,result) => {
     if (err) {
-      console.log(err,'err in update');
+      console.log(err,'err in update controllers');
       res.status(500).send(err);
     }
     else {
-      console.log(result,'result updateProject');
+      console.log(result,'result updateProject controllers');
       res.status(200).send(result);
     }
   })
@@ -23,7 +23,6 @@ exports.edit = (req, res) => {
 exports.post = (req , res) => {
   createProject(req.body,(err,result) => {
     if (err) {
-      console.log(err,'err in addProject');
       res.status(500).send(err);
     }
     else {

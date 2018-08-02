@@ -17,8 +17,8 @@ module.exports = (dataProject,callback) => {
   },
   { new: true },
   (error, result) => {
-    console.log(error,'error updateProject');
-    console.log(result,'result updateProject');
+    console.log(error,'error updateProject in queries');
+    console.log(result,'result updateProject in queries');
     if (error) return callback(error);
   })
     .then(res => callback(null, res))
