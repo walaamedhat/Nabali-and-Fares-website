@@ -60,6 +60,14 @@ const upload = (state = intialState, action) => {
                       massage : 'Upload image 360degrees is Success'
                   }
               break;
+            case 'projectFile': 
+              return{
+                  ...state,
+                  projectFile:action.url,
+                  isFetching:false,
+                  massage : 'Upload File is Success'
+              }
+            break;
           }
         }
 

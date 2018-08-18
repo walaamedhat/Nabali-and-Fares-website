@@ -4,7 +4,8 @@ import {
     EDIT_PROJECT_FAILURE,
     TRANSFER_DATA_PROJECT_SUCCESS,
     HANDLE_INPUT_CHANGE,
-    CHANGE_CHECKED_VALUE
+    CHANGE_CHECKED_VALUE,
+    HANDLE_PROJECT_TYPE_CHANGE
 } from '../../constants/actionTypes';
 
 const intialState = {
@@ -26,7 +27,7 @@ const editProjectData = (state = intialState, action) => {
         case EDIT_PROJECT_SUCCESS :{
             return{
                 ...state,
-                projectData:action.payload,
+                projectData:[action.payload],
                 isFetching:false,
                 message: 'Edit Project Success'
             }
@@ -54,7 +55,15 @@ const editProjectData = (state = intialState, action) => {
                 }]
             }
         }
-
+        case HANDLE_PROJECT_TYPE_CHANGE:{
+            return{
+                ...state,
+                projectData: [{
+                    ...state.projectData[0],
+                    type: action.payload
+                }]
+            }
+        }
         case CHANGE_CHECKED_VALUE:{
             return{
                 ...state,

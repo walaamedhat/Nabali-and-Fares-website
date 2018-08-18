@@ -3,7 +3,8 @@ import {
     TRANSFER_ID_PROJECT_SUCCESS,
     TRANSFER_DATA_PROJECT_SUCCESS,
     HANDLE_INPUT_CHANGE,
-    CHANGE_CHECKED_VALUE
+    CHANGE_CHECKED_VALUE,
+    HANDLE_PROJECT_TYPE_CHANGE
 } from '../../constants/actionTypes'
 
 const transferIdProjectStart = () =>{
@@ -38,6 +39,12 @@ export const handleStarValue = (checkedVaule) =>{
 export const handleInputChange = (inputDtat) =>{    
     return({
         type: HANDLE_INPUT_CHANGE,
+        payload: inputDtat
+    })
+}
+export const handleProjectTypeChange = (inputDtat) =>{    
+    return({
+        type: HANDLE_PROJECT_TYPE_CHANGE,
         payload: inputDtat
     })
 }

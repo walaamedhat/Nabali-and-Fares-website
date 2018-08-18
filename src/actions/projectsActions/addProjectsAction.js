@@ -29,7 +29,8 @@ const AddProject = (data) => (dispatch, getState) => {
     data.image360Url = getState().filesUrl.image360Url;
     data.videoUrl = getState().filesUrl.video
     data.images = getState().filesUrl.secondaryImages;
-        
+    data.projectFile = getState().filesUrl.projectFile;
+
     let obj = {
         address : [
         data.street,
@@ -39,7 +40,7 @@ const AddProject = (data) => (dispatch, getState) => {
     }
     const newdata = Object.assign(data,  obj);
     
-    dispatch(projectFetchStart())
+    dispatch(projectFetchStart());
     
     fetch('https://nabaliandfares.herokuapp.com/api/v1/addProject', {
         method: "POST",

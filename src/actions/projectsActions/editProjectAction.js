@@ -48,6 +48,8 @@ const editProject = data => (dispatch, getState)=> {
        return response.json()
     })
     .then(res => {
+        console.log(res, ' res is here');
+        
         dispatch(editProjectSuccess(res))
     })
     .catch(error => {console.error(`Fetch Error =\n`, error)

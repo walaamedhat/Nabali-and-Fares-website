@@ -28,7 +28,7 @@ const allProjectsFetchFailure = (err) => {
 
 const getAllProjects = () => (dispatch) => {
     dispatch(allProjectsFetchStart())
-    fetch('https://nabaliandfares.herokuapp.com/api/v1/all/projects', {
+    fetch('https://nabaliandfares.herokuapp.com/api/v1/allprojects', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

@@ -8,8 +8,9 @@ import { FormInputs } from '../../components/FormInputs/FormInputs';
 import Card from "../../components/Card/Card.jsx";
 import editProject from '../../actions/projectsActions/editProjectAction';
 import uploadFiles from '../../actions/uploadFilesAction';
+import { DropdownButton, MenuItem } from "react-bootstrap";
 import SweetAlert from 'react-bootstrap-sweetalert';
-import {handleInputChange, handleStarValue} from '../../actions/projectsActions/transferIdProjectAction';
+import {handleInputChange, handleStarValue, handleProjectTypeChange} from '../../actions/projectsActions/transferIdProjectAction';
 
 class EditProfile extends Component {
     constructor(props){
@@ -31,7 +32,10 @@ class EditProfile extends Component {
         this.handleTypesOfApartments()
         this.handleStarProject()
         const { editProject, projData } = this.props
-        editProject(projData)
+        console.log(this.props,' this.props is here');
+        editProject(projData);
+        this.props.props.history.push('/ourprojects');
+
     }
 
     onPlusClick = e =>{
@@ -88,9 +92,13 @@ class EditProfile extends Component {
         const { uploadFiles } = this.props;
         uploadFiles('secondaryImages', fd)
     }
-
- 
-
+    changeTitleOfDrowdown = e => {
+        this.setState({
+            projectType: e.target.innerText
+        });
+        const { handleProjectTypeChange } = this.props;
+        handleProjectTypeChange(e.target.innerText)
+    }
     onChangeInput = e => {
         const {handleInputChange} = this.props;
         handleInputChange(e.target);
@@ -110,10 +118,20 @@ class EditProfile extends Component {
                     title=" عدل المشروع من هنا"
                     content = {
                     <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={projData[0]._id}>
-                        <FormInputs
+                        <Row>
+                            <Col md={6}>
+                            <div>نوع المشروع</div>
+                            <DropdownButton bsSize="small" title={projData[0].type} id="dropdown-size-small" required>
+                                <MenuItem eventKey="1" value='مشروع سكني' onClick={this.changeTitleOfDrowdown}>مشروع سكني</MenuItem>
+                                <MenuItem eventKey="2" value='مشروع تجاري' onClick={this.changeTitleOfDrowdown}>مشروع تجاري</MenuItem>
+                            </DropdownButton>
+                            </Col>
+                            <Col md={6}>
+                            <FormInputs
                             ncols={["col-md-12"]}
                             proprieties={[
                                 {
+                                label: "اسم المشروع",
                                 type: "text",
                                 bsClass: "form-control",
                                 placeholder: "ادخل اسم المشروع",
@@ -121,8 +139,10 @@ class EditProfile extends Component {
                                 name:"name",
                                 value: projData[0].name,
                                 onChange: this.onChangeInput
-                                }
-                        ]} />
+                            }
+                           ]} />
+                        </Col>
+                        </Row>
                         <h5>مكان المشروع</h5>
                         <FormInputs
                         ncols={["col-md-4", "col-md-4", "col-md-4"]}
@@ -292,7 +312,7 @@ const mapStateToProps = state => {
         messageUpload : state.filesUrl.message,
         isFetchingEdit: state.editPrjectData.isFetching,
         messageEdit:state.editPrjectData.message,
-                
+        isFetchingAllProject : state.allProjects.isFetching
 
     };
 };
@@ -301,7 +321,8 @@ const mapDispatchToProps = {
     editProject,
     uploadFiles,
     handleInputChange,
-    handleStarValue      
+    handleStarValue,
+    handleProjectTypeChange
 
 }
 

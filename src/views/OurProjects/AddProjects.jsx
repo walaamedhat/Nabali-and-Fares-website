@@ -4,6 +4,7 @@ import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { connect } from 'react-redux';
 import { BarLoader } from 'react-spinners';
+import { DropdownButton, MenuItem } from "react-bootstrap";
 
 import Card from "../../components/Card/Card.jsx";
 import uploadFiles from '../../actions/uploadFilesAction';
@@ -24,7 +25,9 @@ class OurProjects extends Component {
       images:[],
       image360Url: null,
       videoUrl:null,
-      star:false
+      projectFile:null,
+      star:false,
+      projectType: 'سكني/تجاري'
     }
   }
   onSubmit = (e) => { 
@@ -99,6 +102,12 @@ class OurProjects extends Component {
   onClickRadioBtn = e => {
   this.state.star ? this.setState({star: false}) : this.setState({star: true})
   }
+
+  changeTitleOfDrowdown = e =>{
+    this.setState({
+      projectType: e.target.innerText
+    });
+  }
   render() {    
     const { isFetching, massage } = this.props
     
@@ -111,7 +120,16 @@ class OurProjects extends Component {
                 title="إضافة مشروع جديد"
                 content={
                   <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit}>
-                    <h5>اسم المشروع</h5>
+                  <Row>
+                  <Col md={6}>
+                  <h5>نوع المشروع</h5>
+                      <DropdownButton bsSize="small" title={this.state.projectType} id="dropdown-size-small" required>
+                        <MenuItem eventKey="1" value='مشروع سكني' onClick={this.changeTitleOfDrowdown}>مشروع سكني</MenuItem>
+                        <MenuItem eventKey="2" value='مشروع تجاري' onClick={this.changeTitleOfDrowdown}>مشروع تجاري</MenuItem>
+                      </DropdownButton>
+                  </Col>
+                  <Col md={6}>
+                  <h5>اسم المشروع</h5>
                     <FormInputs
                       ncols={["col-md-12"]}
                       proprieties={[
@@ -125,6 +143,8 @@ class OurProjects extends Component {
                         }
                       ]}
                     />
+                    </Col>
+                  </Row>
                     <h5>مكان المشروع</h5>
                     <FormInputs
                       ncols={["col-md-4", "col-md-4", "col-md-4"]}
@@ -215,6 +235,7 @@ class OurProjects extends Component {
                           type: "file",
                           bsClass: "form-control",
                           id:'secondaryImages',
+                          accept: "image/*",
                           onChange: this.onSelectedMultipleImages,
                           multiple:true
                         }                       
@@ -241,18 +262,20 @@ class OurProjects extends Component {
                             label: "أدخل هنا الفيديو (إن وجد)",
                             type: "file",
                             bsClass: "form-control",
+                            accept: "video/*",
                             name:"video",
                             onChange:this.handleFilesUpload
                           }                        
                         ]}
                         />
                         <h5> ملف المشروع (pdf)</h5>
-                           <FormInputs
+                        <FormInputs
                         ncols={["col-md-8"]}
                         proprieties={[                        
                           {
                             label: "ارفع ملف الممشروع هنا",
                             type: "file",
+                            accept:"application/pdf",
                             bsClass: "form-control",
                             name:"projectFile",
                             onChange:this.handleFilesUpload

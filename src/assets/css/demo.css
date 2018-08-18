@@ -606,8 +606,9 @@
 
 #dropdown-size-small{
     width: 10em;
-    margin-top: 7px;
+    margin-top: 10px;
     padding: 9px;
+    border-color: #e3e3e3;
 }
 .dropdown-with-input{
     display: flex;

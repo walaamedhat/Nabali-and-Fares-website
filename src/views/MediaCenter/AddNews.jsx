@@ -114,14 +114,6 @@ class AddNews extends Component {
                       <FormInputs
                         ncols={["col-md-12"]}
                         proprieties={[
-                          // {
-                          //   label: "نوع الخبر",
-                          //   type: "text",
-                          //   bsClass: "form-control",
-                          //   placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
-                          //   required: true,
-                          //   onChange: this.handleTypeInputChange
-                          // },
                           {
                             label: "عنوان الخبر",
                             type: "text",
@@ -159,6 +151,7 @@ class AddNews extends Component {
                           label: "أدخل هنا الصورة الرئيسية",
                           type: "file",
                           bsClass: "form-control",
+                          accept: "image/*",
                           id:'mainImage',
                           onChange:this.onSelectedMainImage,
                           required: true
@@ -172,6 +165,7 @@ class AddNews extends Component {
                           label: "أدخل هنا الصور الثانوية",
                           type: "file",
                           bsClass: "form-control",
+                          accept: "image/*",
                           id:'secondaryImages',
                           onChange: this.onSelectedMultipleImages,
                           multiple:true
@@ -185,6 +179,7 @@ class AddNews extends Component {
                           label: "أدخل هنا الفيديو (إن وجد)",
                           type: "file",
                           bsClass: "form-control",
+                          accept: "video/*",
                           id:'newsVideo',
                           onChange: this.onSelectedVideo
                         }
