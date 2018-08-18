@@ -21,6 +21,7 @@ class EditProfile extends Component {
     closeWindow= () => {
         document.getElementById('editing_project').style.display = "none";;
     }
+
     loadWindow = () =>{
         window.location.pathname = '/ourprojects';
     }
@@ -258,16 +259,16 @@ class EditProfile extends Component {
                             }                        
                             ]}
                             />
-
                         {
                             this.props.isFetchingUpload || this.props.isFetchingEdit ?
                             <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
                                 :this.props.messageEdit?
-                                    <SweetAlert 
-                                        success 
-                                        title="تم تعديل المشروع بنجاح" 
-                                        onConfirm={this.loadWindow}>
-                                        </SweetAlert>
+                                <SweetAlert 
+                                    success 
+                                    title="تم تعديل المشروع بنجاح" 
+                                    onConfirm = {this.loadWindow}
+                                >
+                                </SweetAlert>
                             :<div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpload}</div>
                         }
                         <Button bsStyle="info" block type="submit">

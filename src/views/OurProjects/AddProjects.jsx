@@ -246,6 +246,19 @@ class OurProjects extends Component {
                           }                        
                         ]}
                         />
+                        <h5> ملف المشروع (pdf)</h5>
+                           <FormInputs
+                        ncols={["col-md-8"]}
+                        proprieties={[                        
+                          {
+                            label: "ارفع ملف الممشروع هنا",
+                            type: "file",
+                            bsClass: "form-control",
+                            name:"projectFile",
+                            onChange:this.handleFilesUpload
+                          }                        
+                        ]}
+                        />
                        {
                     this.props.isFetching ?
                       <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>

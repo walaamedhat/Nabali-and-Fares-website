@@ -95,8 +95,9 @@ class EditSection extends Component {
 
   render() {
     const {newsData} = this.props;
-
     const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;
+    console.log(this.props.isUpdateSuccess,' this.props.isUpdated');
+    
     return(
 
       <Col md={6} id='editing_div'>
@@ -205,13 +206,12 @@ class EditSection extends Component {
                 {
                     this.props.isFetching ?
                     <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
-                        :this.props.isUpdated?
-                            <SweetAlert 
-                                success 
-                                title="تم تعديل المشروع بنجاح" 
-                                onConfirm={this.loadWindow}>
-                            </SweetAlert>
                     :<div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpload}</div>
+                }
+                {
+                  this.props.isUpdateSuccess?
+                  <div>successsssssssssssssssss</div>
+                  :<div></div>
                 }
               <Button bsStyle="info" block type="submit">
                 Update News
@@ -232,7 +232,7 @@ const mapStateToProps = state => {
       newsData : state.editnewsData.newsData,
       isFetching: state.filesUrl.isFetching,
       message : state.filesUrl.message,
-      isUpdated: state.editnewsData.isUpdateSuccess,
+      isUpdateSuccess: state.editnewsData.isUpdateSuccess,
       messageUpdate : state.editnewsData.message,
       };
   };
