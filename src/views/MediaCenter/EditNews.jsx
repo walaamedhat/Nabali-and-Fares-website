@@ -9,8 +9,9 @@ import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
 import Card from "../../components/Card/Card.jsx";
 import updateNewsData from '../../actions/newsActions/editNewsAction';
 import uploadFiles from '../../actions/uploadFilesAction';
-import {handelNewsInputsChange} from '../../reducers/newsReducers/transferNewsId';
+import {handelNewsInputsChange, handleNewsTypeChange} from '../../reducers/newsReducers/transferNewsId';
 import SweetAlert from 'react-bootstrap-sweetalert';
+import { DropdownButton, MenuItem } from "react-bootstrap";
 
 
 class EditSection extends Component {
@@ -35,13 +36,7 @@ class EditSection extends Component {
       [e.target[2].name]: e.target[2].value
     }
     const { updateNewsData } = this.props;
-    console.log(
-      'this.state',
-    );
     const {newsData} = this.props;
-    console.log(
-      'this.newsData', newsData
-    );
     updateNewsData(newsData);
   }
 
@@ -82,12 +77,18 @@ class EditSection extends Component {
 
   }
   loadWindow = () =>{
-    window.location.pathname = '/ourprojects';
+    window.location.pathname = '/mediacenter';
   }
   closeWindow= () => {
      document.getElementById('editing_div').style.display = "none";;
   }
-
+  changeTitleOfDrowdown = e => {
+    this.setState({
+        projectType: e.target.innerText
+    });
+    const { handleNewsTypeChange } = this.props;
+    handleNewsTypeChange(e.target.innerText)
+}
   handleInputChange = e => {
     const {handelNewsInputsChange} = this.props;
     handelNewsInputsChange(e.target)
@@ -96,10 +97,7 @@ class EditSection extends Component {
   render() {
     const {newsData} = this.props;
     const close = <Tooltip id="edit_tooltip">Close Edit window</Tooltip>;
-    console.log(this.props.isUpdateSuccess,' this.props.isUpdated');
-    
     return(
-
       <Col md={6} id='editing_div'>
         <OverlayTrigger placement="top" overlay={close}>
           <CustomButton bsStyle="info" simple type="button" bsSize="xs" onClick={this.closeWindow}>
@@ -110,34 +108,35 @@ class EditSection extends Component {
           title=" عدل الخبر من هنا  "
           content={
             <form method="post" encType="multipart/form-data" onSubmit={this.onSubmit} id={newsData[0]._id}>
-              <FormInputs
-                ncols={["col-md-5", "col-md-7"]}
-                proprieties={[
+                  <Row>
+                  <Col md={6}>
+                    <h5 className='edit-news-type'>نوع الخبر</h5>
+                    <DropdownButton bsSize="small" title={newsData[0].type} id="dropdown-size-small2" required>
+                        <MenuItem eventKey="1" value='خبر' onClick={this.changeTitleOfDrowdown}>خبر</MenuItem>
+                        <MenuItem eventKey="2" value='بيان صحفي' onClick={this.changeTitleOfDrowdown}>بيان صحفي</MenuItem>
+                        <MenuItem eventKey="3" value='تقرير سنوي' onClick={this.changeTitleOfDrowdown}>تقرير سنوي</MenuItem>
+                    </DropdownButton>
+                    </Col>
+                    <Col md={6}>
+                    <FormInputs
+                    ncols={["col-md-12"]}
+                    proprieties={[
+                      {
+                        label: "عنوان الخبر",
+                        type: "text",
+                        bsClass: "form-control",
+                        placeholder: "ادخل هنا عنوان الخبر",
+                        required: true,
+                        value: newsData[0].name,
+                        onChange: this.handleInputChange,
+                        name: 'name'
 
-                  {
-                    label: "نوع الخبر",
-                    type: "text",
-                    bsClass: "form-control",
-                    placeholder: "ادخل هنا نوع الخبر: مثال (خبر , إعلان)",
-                    required: true,
-                    value: newsData[0].type,
-                    onChange: this.handleInputChange,
-                    name: 'type'
-                  },
-                  {
-                    label: "عنوان الخبر",
-                    type: "text",
-                    bsClass: "form-control",
-                    placeholder: "ادخل هنا عنوان الخبر",
-                    required: true,
-                    value: newsData[0].name,
-                    onChange: this.handleInputChange,
-                    name: 'name'
-
-                  }
-                ]}
-              />
-              <Row>
+                      }
+                    ]}
+                  />
+                    </Col>
+                </Row>
+               <Row>
                 <Col md={12}>
                   <FormGroup>
                     <ControlLabel>وصف الخبر/الإعلان</ControlLabel>
@@ -196,25 +195,21 @@ class EditSection extends Component {
                 ]}
                 />
                 {
-                    this.props.isFetching || this.props.isFetchingUpdate ?
-                      <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
-                        : this.props.messageUpdate ?
-                      <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpdate}</div>
-                      : <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
-                }
-
-                {
                     this.props.isFetching ?
-                    <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
-                    :<div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.messageUpload}</div>
+                      <center style={{marginBottom:'10px'}}><BarLoader width='150' height='7' color='4A90E2'/></center>
+                      : <div style={{color: "4A90E2", fontSize: "18px", textAlign:'center', marginBottom:'15px'}}>{this.props.message}</div>
                 }
                 {
                   this.props.isUpdateSuccess?
-                  <div>successsssssssssssssssss</div>
-                  :<div></div>
+                    <SweetAlert 
+                              success 
+                              title="تم تعديل الخبر بنجاح" 
+                              onConfirm={this.loadWindow}>
+                    </SweetAlert>:<div></div>
+
                 }
               <Button bsStyle="info" block type="submit">
-                Update News
+                احفظ التعديلات
               </Button>
             </form>
           }
@@ -232,15 +227,16 @@ const mapStateToProps = state => {
       newsData : state.editnewsData.newsData,
       isFetching: state.filesUrl.isFetching,
       message : state.filesUrl.message,
+      isFetchingNewsData: state.editnewsData.message,
       isUpdateSuccess: state.editnewsData.isUpdateSuccess,
-      messageUpdate : state.editnewsData.message,
       };
   };
 
   const mapDispatchToProps = {
     updateNewsData,
     uploadFiles,
-    handelNewsInputsChange
+    handelNewsInputsChange,
+    handleNewsTypeChange
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(EditSection);

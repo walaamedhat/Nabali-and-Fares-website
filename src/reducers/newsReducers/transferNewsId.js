@@ -1,3 +1,6 @@
+import {
+  HANDLE_NEWS_TYPE_CHANGE
+} from '../../constants/actionTypes'
 
 const initialState = {
   id:'',
@@ -26,7 +29,7 @@ const transferData = (data) => {
 
     })
 }
-const handelNewsInputsChange = input => { 
+export const handelNewsInputsChange = input => { 
   return({
     type :'HANDEL_NEWS_INPUTS_CHANGE',
      payload: input
@@ -34,14 +37,21 @@ const handelNewsInputsChange = input => {
   )
 }
 
-const transferIdNewsAction = id => (dispatch,getState) => {
+export const transferIdNewsAction = id => (dispatch,getState) => {
         dispatch(transferIdStart())
         dispatch(transferId(id))
         const data = getState().allNews.newsData.data.filter(e => e._id === id);        
         dispatch(transferData(data))
 };
 
-const transferIdReducer = (state = initialState, action) => {
+export const handleNewsTypeChange = data => {
+  return({
+    type : HANDLE_NEWS_TYPE_CHANGE,
+    payload: data
+  })
+}
+
+export const transferIdReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'TransferStart': {
       return {
@@ -64,5 +74,3 @@ const transferIdReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-module.exports = {transferIdNewsAction ,transferIdReducer, handelNewsInputsChange};

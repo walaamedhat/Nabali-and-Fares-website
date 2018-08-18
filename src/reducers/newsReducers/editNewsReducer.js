@@ -1,7 +1,8 @@
 import {
     EDIT_NEWS_START,
     EDIT_NEWS_SUCCESS,
-    EDIT_NEWS_FAILURE
+    EDIT_NEWS_FAILURE, 
+    HANDLE_NEWS_TYPE_CHANGE
 } from '../../constants/actionTypes';
 
 const intialState = {
@@ -25,7 +26,7 @@ const editNewsData = (state = intialState, action) => {
         case EDIT_NEWS_SUCCESS :{
             return{
                 ...state,
-                newsData:action.payload,
+                newsData:[action.payload],
                 isFetching:false,
                 message: 'Edit News Success',
                 isUpdateSuccess: true
@@ -56,6 +57,17 @@ const editNewsData = (state = intialState, action) => {
                     [action.payload.name]: action.payload.value
                 }]
             }            
+        }
+
+        case HANDLE_NEWS_TYPE_CHANGE : {
+            return{
+                ...state,
+                newsData: [{
+                    ...state.newsData[0],
+                    type: action.payload
+
+                }]
+            }
         }
         default: return state
     }

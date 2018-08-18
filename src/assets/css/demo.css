@@ -610,8 +610,22 @@
     padding: 9px;
     border-color: #e3e3e3;
 }
+#dropdown-size-small2{
+    width: 10em;
+    margin-top: 1px;
+    padding: 9px;
+    border: 1px solid #e3e3e3;
+}
 .dropdown-with-input{
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+}
+
+.edit-news-type{
+    font-size: 13px;
+    margin: 0;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    color: #9a9a9a;
 }

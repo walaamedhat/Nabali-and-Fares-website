@@ -20,7 +20,7 @@ class EditProfile extends Component {
         }
     }
     closeWindow= () => {
-        document.getElementById('editing_project').style.display = "none";;
+        document.getElementById('editing_project').style.display = "none";
     }
 
     loadWindow = () =>{

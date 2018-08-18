@@ -29,11 +29,10 @@ class MediaCenter extends Component {
 
   render() {
     const {isFetching, editMessage, dataToEdit} = this.props;
+    
     return (
       <div className="content">
         {
-          editMessage ? <div></div>:
-
           <Grid fluid>
             <Row>
               <Col md ={6} style={{float:'right'}}>
@@ -53,7 +52,6 @@ class MediaCenter extends Component {
               {
                 dataToEdit && !isFetching?
                 <EditSection  data={dataToEdit} />
-
                 : <div/>
               }
 
